@@ -6,7 +6,7 @@ const appColorClasses = "text-primary-700 dark:text-primary-100 bg-primary-100 d
 
 export function App() {
     return (<>
-        <div className={`h-screen ${appColorClasses} grid grid-rows-[auto_1fr_auto]`}>
+        <div className={`h-screen ${appColorClasses} text-sm grid grid-rows-[auto_1fr_auto]`}>
             <SectionHeader />
             <SectionMain />
             <SectionFooter />
