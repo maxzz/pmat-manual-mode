@@ -18,6 +18,10 @@
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
+
+    "paths": {
+        "@/*": ["./src/*"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
