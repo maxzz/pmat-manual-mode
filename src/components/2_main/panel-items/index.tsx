@@ -1,5 +1,6 @@
-import { initialItems } from "@/store";
+import { useSnapshot } from "valtio";
 import { classNames } from "@/utils";
+import { clientState } from "@/store";
 import { IconAdd } from "@/components/ui/icons";
 import { boxClasses } from "..";
 
@@ -18,6 +19,7 @@ function ButtonAdd() {
 }
 
 export function PanelList() {
+    const { items } = useSnapshot(clientState);
     return (
         <div className="space-y-1">
             <div className="h-7 flex items-end justify-between">
@@ -26,7 +28,7 @@ export function PanelList() {
             </div>
 
             <div className={classNames("min-h-[20rem]", boxClasses)}>
-                {initialItems.map((item, idx) =>
+                {items.map((item, idx) =>
                     <div className="grid grid-cols-[min-content,auto] gap-x-2" key={idx}>
                         <div className="">{item.type}</div>
                         <div className="">{'char' in item && item.char}</div>

@@ -1,8 +1,3 @@
-import React, { Fragment } from 'react';
-import { classNames } from '@/utils';
-import { IconAdd } from '../ui/icons';
-import { Item } from '@/store/editor-types';
-import { initialItems } from '@/store';
 import { PanelList } from './panel-items';
 import { PanelProps } from './panel-item-props';
 

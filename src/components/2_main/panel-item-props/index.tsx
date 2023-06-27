@@ -1,4 +1,5 @@
-import { initialItems } from "@/store";
+import { useSnapshot } from "valtio";
+import { clientState } from "@/store";
 import { boxClasses } from "..";
 
 function ActionProps() {
@@ -8,6 +9,7 @@ function ActionProps() {
 }
 
 export function PanelProps() {
+    const { items } = useSnapshot(clientState);
     return (
         <div className="space-y-1">
             <div className="h-7 flex items-end justify-between">
@@ -15,7 +17,7 @@ export function PanelProps() {
             </div>
 
             <div className={boxClasses}>
-                {initialItems.map((item, idx) =>
+                {items.map((item, idx) =>
                     <div className="grid grid-cols-[min-content,auto] gap-x-2" key={idx}>
                         <div className="">{item.type}</div>
                         <div className="">{'char' in item && item.char}</div>
