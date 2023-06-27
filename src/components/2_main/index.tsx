@@ -1,41 +1,8 @@
-import { classNames } from '@/utils';
 import React, { Fragment } from 'react';
+import { classNames } from '@/utils';
 import { IconAdd } from '../ui/icons';
-
-type ItemType = 'key' | 'pos' | 'delay';
-
-type ItemKey = {
-    type: 'key',
-    char: string;
-};
-
-type ItemPos = {
-    type: 'pos',
-    x: number;
-    y: number;
-};
-
-type ItemDelay = {
-    type: 'delay',
-    n: number;
-};
-
-type Item = ItemKey | ItemPos | ItemDelay;
-
-const items: Item[] = [
-    {
-        type: 'key', char: 'a',
-    },
-    {
-        type: 'key', char: 'a',
-    },
-    {
-        type: 'key', char: 'a',
-    },
-    {
-        type: 'key', char: 'a',
-    },
-];
+import { Item } from '@/store/editor-types';
+import { initialItems } from '@/store';
 
 function ActionRow() {
     return (
@@ -68,7 +35,7 @@ function PanelList() {
             </div>
 
             <div className={classNames("min-h-[20rem]", boxClasses)}>
-                {items.map((item, idx) =>
+                {initialItems.map((item, idx) =>
                     <div className="grid grid-cols-[min-content,auto] gap-x-2" key={idx}>
                         <div className="">{item.type}</div>
                         <div className="">{'char' in item && item.char}</div>
@@ -87,7 +54,7 @@ function PanelProps() {
             </div>
 
             <div className={boxClasses}>
-                {items.map((item, idx) =>
+                {initialItems.map((item, idx) =>
                     <div className="grid grid-cols-[min-content,auto] gap-x-2" key={idx}>
                         <div className="">{item.type}</div>
                         <div className="">{'char' in item && item.char}</div>
