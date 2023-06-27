@@ -1,4 +1,4 @@
-import { PanelList } from './panel-items';
+import { PanelList } from './panel-item-list';
 import { PanelProps } from './panel-item-props';
 
 export const boxClasses = "px-2 py-1 border-primary-500 border rounded";

@@ -9,7 +9,7 @@ function ActionProps() {
 }
 
 export function PanelProps() {
-    const { items } = useSnapshot(clientState);
+    const { scriptItems } = useSnapshot(clientState);
     return (
         <div className="space-y-1">
             <div className="h-7 flex items-end justify-between">
@@ -17,7 +17,7 @@ export function PanelProps() {
             </div>
 
             <div className={boxClasses}>
-                {items.map((item, idx) =>
+                {scriptItems.map((item, idx) =>
                     <div className="grid grid-cols-[min-content,auto] gap-x-2" key={idx}>
                         <div className="">{item.type}</div>
                         <div className="">{'char' in item && item.char}</div>

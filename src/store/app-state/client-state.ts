@@ -1,25 +1,28 @@
 import { proxy } from 'valtio';
-import { Item } from '../editor-types';
+import { ScriptItem } from '../editor-types';
 
 type ClientState = {
-    items: Item[];
+    scriptItems: ScriptItem[];
 };
 
-export const initialItems: Item[] = [
+export const initialItems: ScriptItem[] = [
     {
-        type: 'key', char: 'a',
+        type: 'pos', x: 0, y: 1,
     },
     {
-        type: 'key', char: 'a',
+        type: 'field', id: '123',
     },
     {
-        type: 'key', char: 'a',
+        type: 'delay', n: 1000,
     },
     {
-        type: 'key', char: 'a',
+        type: 'field', id: '456',
+    },
+    {
+        type: 'key', char: 'Enter',
     },
 ];
 
 export const clientState = proxy<ClientState>({
-    items: [...initialItems],
+    scriptItems: [...initialItems],
 });

@@ -1,3 +1,8 @@
+export type ItemField = {
+    type: 'field',
+    id: string;
+};
+
 export type ItemKey = {
     type: 'key',
     char: string;
@@ -14,4 +19,4 @@ export type ItemDelay = {
     n: number;
 };
 
-export type Item = ItemKey | ItemPos | ItemDelay;
+export type ScriptItem = ItemField | ItemKey | ItemPos | ItemDelay;
