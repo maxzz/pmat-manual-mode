@@ -1,37 +1,70 @@
 import { useSnapshot } from "valtio";
-import { classNames } from "@/utils";
+import { ScriptItem } from "@/store/editor-types";
 import { clientState } from "@/store";
+import { classNames } from "@/utils";
 import { IconAdd } from "@/components/ui/icons";
 import { boxClasses } from "..";
-import { ScriptItem } from "@/store/editor-types";
 
 function RowField({ item }: { item: ScriptItem; }) {
-    return (<>
-        {
-            item.type === 'field'
-                ? (<>
-                    <div className="">Field</div>
-                    <div className="">{item.id}</div>
-                </>)
-                : item.type === 'key'
-                    ? (<>
-                        <div className="">Keystroke</div>
-                        <div className="">{item.char}</div>
-                    </>)
-                    : item.type === 'pos'
-                        ? (<>
-                            <div className="">Position</div>
-                            <div className="">{item.x}</div>
-                        </>)
-                        : item.type === 'delay'
-                            ? (<>
-                                <div className="">Delay</div>
-                                <div className="">{item.n}</div>
-                            </>)
-                            : null
+    switch (item.type) {
+        case 'field': {
+            return <>
+                <div className="">Field</div>
+                <div className="">{item.id}</div>
+            </>;
         }
-    </>);
+        case 'key': {
+            return <>
+                <div className="">Keystroke</div>
+                <div className="">{item.char}</div>
+            </>;
+        }
+        case 'pos': {
+            return <>
+                <div className="">Position</div>
+                <div className="">{item.x}</div>
+            </>;
+        }
+        case 'delay': {
+            return <>
+                <div className="">Delay</div>
+                <div className="">{item.n}</div>
+            </>;
+        }
+        default: {
+            const really: never = item;
+            console.error(really);
+        }
+    }
 }
+
+// function RowField({ item }: { item: ScriptItem; }) {
+//     return (<>
+//         {
+//             item.type === 'field'
+//                 ? (<>
+//                     <div className="">Field</div>
+//                     <div className="">{item.id}</div>
+//                 </>)
+//                 : item.type === 'key'
+//                     ? (<>
+//                         <div className="">Keystroke</div>
+//                         <div className="">{item.char}</div>
+//                     </>)
+//                     : item.type === 'pos'
+//                         ? (<>
+//                             <div className="">Position</div>
+//                             <div className="">{item.x}</div>
+//                         </>)
+//                         : item.type === 'delay'
+//                             ? (<>
+//                                 <div className="">Delay</div>
+//                                 <div className="">{item.n}</div>
+//                             </>)
+//                             : null
+//         }
+//     </>);
+// }
 
 function Row2() {
     return (
