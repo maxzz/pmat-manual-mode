@@ -46,7 +46,7 @@ function Row2() {
 export function PanelList() {
     const { scriptItems } = useSnapshot(clientState);
     return (
-        <div className="space-y-1">
+        <div className="space-y-1 select-none">
             <Title />
 
             <div className={classNames("min-h-[20rem]", boxClasses)}>

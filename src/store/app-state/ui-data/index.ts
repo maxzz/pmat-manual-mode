@@ -2,6 +2,8 @@ import { proxy } from "valtio";
 import { initializeUiState } from "./app-initial-state";
 import { loadUiInitialState, watchUiStateCnages } from "./storage-ui-data";
 
+export * from './app-initial-state';
+
 export type UiState = {
     darkMode: boolean;
 };

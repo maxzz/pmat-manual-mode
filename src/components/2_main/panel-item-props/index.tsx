@@ -11,7 +11,7 @@ function ActionProps() {
 export function PanelProps() {
     const { scriptItems } = useSnapshot(clientState);
     return (
-        <div className="space-y-1">
+        <div className="space-y-1 select-none">
             <div className="h-7 flex items-end justify-between">
                 <div className="">Action properties</div>
             </div>
