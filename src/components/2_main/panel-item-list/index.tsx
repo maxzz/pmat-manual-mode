@@ -1,6 +1,5 @@
 import { useSnapshot } from "valtio";
-import { ScriptItem } from "@/store/editor-script-types";
-import { clientState } from "@/store";
+import { clientState, ScriptItem } from "@/store";
 import { classNames } from "@/utils";
 import { boxClasses } from "..";
 import { Title } from "./action-add-item";

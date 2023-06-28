@@ -1,8 +1,6 @@
-import { proxy, subscribe } from 'valtio';
+import { proxy } from 'valtio';
 import { ScriptItem } from '@/store/editor-script-types';
-import { initialItems } from './initial-items';
-import { mergeDefaultAndLoaded } from '@/utils';
-import { loadUiInitialState, watchClientStateCnages } from './storage-data';
+import { loadUiInitialState, watchClientStateCnages } from './storage-client-data';
 
 export * from './add-item';
 export * from './initial-items';
