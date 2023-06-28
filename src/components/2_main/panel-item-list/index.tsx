@@ -8,15 +8,7 @@ import { ScrollList } from "./scroll-list";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 
 const itemClasses = "leading-6 hover:text-red-500 hover:bg-primary-500";
-const selectedItemClasses = "text-primary-800 bg-primary-200 cursor-default";
-
-function RowItem({ part1, part2, idx }: { part1: string; part2: string | number; idx: number; }) {
-    const { selectedIdx } = useSnapshot(clientState);
-    return (<>
-        <div className={classNames(selectedIdx === idx && selectedItemClasses, itemClasses, "pl-2")} onClick={() => { clientState.selectedIdx = idx; }}>{part1}</div>
-        <div className={classNames(selectedIdx === idx && selectedItemClasses, itemClasses, "pl-8")} onClick={() => { clientState.selectedIdx = idx; }}>{part2}</div>
-    </>);
-}
+const selectedItemClasses = "text-primary-200 bg-primary-400/20 cursor-default outline-primary-400 outline-1 outline rounded-sm";
 
 function RowIcon({ type }: { type: ScriptItemType; }) {
     switch (type) {
@@ -31,12 +23,25 @@ function RowIcon({ type }: { type: ScriptItemType; }) {
     }
 }
 
+function RowItem({ part1, part2, idx, type }: { part1: string; part2: string | number; idx: number; type: ScriptItemType; }) {
+    const { selectedIdx } = useSnapshot(clientState);
+    return (<>
+        <div className={classNames(selectedIdx === idx && selectedItemClasses, itemClasses, "pl-2 flex items-center gap-x-2")} onClick={() => { clientState.selectedIdx = idx; }}>
+            <RowIcon type={type} />
+            {part1}
+        </div>
+        <div className={classNames(selectedIdx === idx && selectedItemClasses, itemClasses, "pl-8")} onClick={() => { clientState.selectedIdx = idx; }}>
+            {part2}
+        </div>
+    </>);
+}
+
 function RowField({ item, idx }: { item: ScriptItem; idx: number; }) {
     switch (item.type) {
-        case 'field': return <RowItem part1="Field" part2={item.id} idx={idx} />;
-        case 'key': return <RowItem part1="Keystroke" part2={item.char} idx={idx} />;
-        case 'pos': return <RowItem part1="Position" part2={`x: ${item.x}, y: ${item.x}`} idx={idx} />;
-        case 'delay': return <RowItem part1="Delay" part2={item.n} idx={idx} />;
+        case 'field': /**/ return <RowItem part1="Field"     /**/ part2={item.id} idx={idx} type={item.type} />;
+        case 'key':   /**/ return <RowItem part1="Keystroke" /**/ part2={item.char} idx={idx} type={item.type} />;
+        case 'pos':   /**/ return <RowItem part1="Position"  /**/ part2={`x: ${item.x}, y: ${item.x}`} idx={idx} type={item.type} />;
+        case 'delay': /**/ return <RowItem part1="Delay"     /**/ part2={item.n} idx={idx} type={item.type} />;
         default: {
             const really: never = item;
             return <></>;
