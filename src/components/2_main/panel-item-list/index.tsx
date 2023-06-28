@@ -3,6 +3,7 @@ import { clientState, ScriptItem } from "@/store";
 import { classNames } from "@/utils";
 import { boxClasses } from "..";
 import { Title } from "./action-add-item";
+import { Fragment } from "react";
 
 function RowField({ item }: { item: ScriptItem; }) {
     switch (item.type) {
@@ -37,23 +38,17 @@ function RowField({ item }: { item: ScriptItem; }) {
     }
 }
 
-function Row2() {
-    return (
-        <div className=""></div>
-    );
-}
-
 export function PanelList() {
     const { scriptItems } = useSnapshot(clientState);
     return (
-        <div className="space-y-1 select-none">
+        <div className="min-h-[20rem] flex flex-col space-y-1 select-none">
             <Title />
 
-            <div className={classNames("min-h-[20rem]", boxClasses)}>
+            <div className={classNames("grid grid-cols-[min-content,auto] gap-x-4", boxClasses)}>
                 {scriptItems.map((item, idx) =>
-                    <div className="grid grid-cols-[min-content,auto] gap-x-2" key={idx}>
+                    <Fragment key={idx}>
                         <RowField item={item} />
-                    </div>
+                    </Fragment>
                 )}
             </div>
         </div>

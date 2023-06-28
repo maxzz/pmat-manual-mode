@@ -5,13 +5,15 @@ focus:ring-1 focus:ring-offset-1 focus:outline-none \
 ";
 
 export const menuContentClasses = "p-1 min-w-[14ch] text-sm \
-text-primary-200 dark:text-primary-800 \
-bg-primary-200 dark:bg-primary-300 \
+text-primary-800 dark:text-primary-800 \
+bg-primary-100 dark:bg-primary-300 \
 data-[side=top]:animate-slideDownAndFade \
 data-[side=right]:animate-slideLeftAndFade \
 data-[side=bottom]:animate-slideUpAndFade \
 data-[side=left]:animate-slideRightAndFade \
-rounded-sm select-none \
+border-primary-500 dark:border-primary-200 border \
+dark:shadow-primary-500 \
+rounded shadow select-none \
 ";
 
 export const menuItemClasses = "px-2 py-1 rounded-sm outline-none \

@@ -13,7 +13,7 @@ function ButtonAdd() {
                 </button>
             </Menu.Trigger>
             <Menu.Portal container={document.getElementById('portal')}>
-                <Menu.Content className={menuContentClasses} sideOffset={4} side="bottom" align="end">
+                <Menu.Content className={menuContentClasses} sideOffset={1} alignOffset={-8} side="bottom" align="end">
                     <Menu.Item className={menuItemClasses} onClick={() => addScriptItem('key')}>Keystroke</Menu.Item>
                     <Menu.Item className={menuItemClasses} onClick={() => addScriptItem('pos')}>Position</Menu.Item>
                     <Menu.Item className={menuItemClasses} onClick={() => addScriptItem('field')}>Field</Menu.Item>

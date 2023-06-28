@@ -20,9 +20,15 @@ export function loadUiInitialState(): ClientState {
 
     const initialState: ClientState = {
         scriptItems: [...initialItems],
+        selectedIdx: 0,
     };
 
-    const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData });;
+    const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData });
+
+    if (ready.selectedIdx > ready.scriptItems.length) {
+        ready.selectedIdx = 0;
+    }
+
     return ready;
 }
 

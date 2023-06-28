@@ -7,6 +7,7 @@ export * from './initial-items';
 
 export type ClientState = {
     scriptItems: ScriptItem[];
+    selectedIdx: number;
 };
 
 export const clientState = proxy<ClientState>(loadUiInitialState());
