@@ -1,7 +1,50 @@
 import { IconAdd } from "@/components/ui/icons";
+import { clientState } from "@/store";
+import { ItemDelay, ItemField, ItemKey, ItemPos, ScriptItemType } from "@/store/editor-types";
 import * as Menu from '@radix-ui/react-dropdown-menu';
 
 function ButtonAdd() {
+    function onClick(type: ScriptItemType) {
+        switch (type) {
+            case "field": {
+                const newItem: ItemField = {
+                    type: 'field',
+                    id: '444',
+                }
+                clientState.scriptItems.push(newItem);
+                break;
+            }
+            case "key": {
+                const newItem: ItemKey = {
+                    type: 'key',
+                    char: 'Tab',
+                }
+                clientState.scriptItems.push(newItem);
+                break;
+            }
+            case "pos": {
+                const newItem: ItemPos = {
+                    type: 'pos',
+                    x: 10,
+                    y: 20,
+                }
+                clientState.scriptItems.push(newItem);
+                break;
+            }
+            case "delay": {
+                const newItem: ItemDelay = {
+                    type: 'delay',
+                    n: 1000,
+                }
+                clientState.scriptItems.push(newItem);
+                break;
+            }
+            default: {
+                const really: never = type;
+                console.error(really);
+            }
+        }
+    }
     return (
         <Menu.Root>
             <Menu.Trigger asChild>
@@ -11,10 +54,10 @@ function ButtonAdd() {
             </Menu.Trigger>
             <Menu.Portal container={document.getElementById('portal')}>
                 <Menu.Content className={contentClasses} sideOffset={4} side="bottom" align="end">
-                    <Menu.Item className={itemClasses}>Keystroke</Menu.Item>
-                    <Menu.Item className={itemClasses}>Position</Menu.Item>
-                    <Menu.Item className={itemClasses}>Field</Menu.Item>
-                    <Menu.Item className={itemClasses}>Delay</Menu.Item>
+                    <Menu.Item className={itemClasses} onClick={() => onClick('key')}>Keystroke</Menu.Item>
+                    <Menu.Item className={itemClasses} onClick={() => onClick('pos')}>Position</Menu.Item>
+                    <Menu.Item className={itemClasses} onClick={() => onClick('field')}>Field</Menu.Item>
+                    <Menu.Item className={itemClasses} onClick={() => onClick('delay')}>Delay</Menu.Item>
                 </Menu.Content>
             </Menu.Portal>
         </Menu.Root>

@@ -20,3 +20,7 @@ export type ItemDelay = {
 };
 
 export type ScriptItem = ItemField | ItemKey | ItemPos | ItemDelay;
+
+export type ScriptItemType = {
+    [K in keyof ScriptItem]: ScriptItem[K]
+}['type'];
