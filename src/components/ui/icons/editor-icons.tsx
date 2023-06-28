@@ -10,11 +10,20 @@ export function IconDelay({ className, title, ...rest }: HTMLAttributes<SVGSVGEl
     );
 }
 
-export function IconKey({ className, title, ...rest }: HTMLAttributes<SVGSVGElement>) {
+export function IconKeyFill({ className, title, ...rest }: HTMLAttributes<SVGSVGElement>) {
     return (
         <svg className={classNames("fill-current stroke-none", className)} viewBox="0 0 24 24" {...rest}>
             {title && <title>{title}</title>}
             <path d="M7.75 8A2.75 2.75 0 0 0 5 10.75v2.5A2.75 2.75 0 0 0 7.75 16h.5a.75.75 0 0 0 0-1.5h-.5c-.69 0-1.25-.56-1.25-1.25v-2.5c0-.69.56-1.25 1.25-1.25h.5a.75.75 0 0 0 0-1.5h-.5Zm3.75.75a.75.75 0 0 0-1.5 0V11h-.25a.75.75 0 0 0 0 1.5H10V14a2 2 0 0 0 2 2h.25a.75.75 0 0 0 0-1.5H12a.5.5 0 0 1-.5-.5v-1.5h.75a.75.75 0 0 0 0-1.5h-.75V8.75Zm8 0a.75.75 0 0 0-1.5 0v6.5a.75.75 0 0 0 1.5 0v-6.5Zm-4 4.25a.5.5 0 0 1 .5-.5h.25a.75.75 0 0 0 0-1.5H16a2 2 0 0 0-2 2v2.25a.75.75 0 0 0 1.5 0V13ZM5.25 4A3.25 3.25 0 0 0 2 7.25v9.5A3.25 3.25 0 0 0 5.25 20h13.5A3.25 3.25 0 0 0 22 16.75v-9.5A3.25 3.25 0 0 0 18.75 4H5.25ZM3.5 7.25c0-.966.784-1.75 1.75-1.75h13.5c.966 0 1.75.784 1.75 1.75v9.5a1.75 1.75 0 0 1-1.75 1.75H5.25a1.75 1.75 0 0 1-1.75-1.75v-9.5Z" />
+        </svg>
+    );
+}
+
+export function IconKey({ className, title, ...rest }: HTMLAttributes<SVGSVGElement>) {
+    return (
+        <svg className={classNames("fill-none stroke-current stroke-[1.5]", className)} viewBox="0 0 24 24" {...rest}>
+            {title && <title>{title}</title>}
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9.81 11.72h2.46m6.08-2.97-.04 6.47m-10.05.08c-1.48 0-2.48-.81-2.46-2.25v-1.68 1.32-1.68c-.02-1.44.78-2.25 2.46-2.25m4.64 6.55c-1.86 0-2.17-.65-2.14-2.09V8.76m4.03 6.5v-1.4c-.02-1.44.31-2.09 1.45-2.09m-11.2 7.45h13.93a2.25 2.25 0 0 0 2.25-2.25V7.05a2.25 2.25 0 0 0-2.25-2.25H5.03a2.25 2.25 0 0 0-2.25 2.25v9.91a2.25 2.25 0 0 0 2.25 2.25Z" />
         </svg>
     );
 }
@@ -33,6 +42,15 @@ export function IconField({ className, title, ...rest }: HTMLAttributes<SVGSVGEl
         <svg className={classNames("fill-none stroke-current stroke-[1.5]", className)} viewBox="0 0 24 24" {...rest}>
             {title && <title>{title}</title>}
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm1 2.5h1.5m1.5 0H6.5m0 0v7m0 0H5m1.5 0H8" />
+        </svg>
+    );
+}
+
+export function IconCode({ className, title, ...rest }: HTMLAttributes<SVGSVGElement>) {
+    return (
+        <svg className={classNames("fill-none stroke-current stroke-[1.5]", className)} viewBox="0 0 24 24" {...rest}>
+            {title && <title>{title}</title>}
+            <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
         </svg>
     );
 }
