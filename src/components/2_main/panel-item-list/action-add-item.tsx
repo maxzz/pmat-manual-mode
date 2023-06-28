@@ -1,6 +1,6 @@
 import { addScriptItem } from "@/store";
 import { focusClasses, menuContentClasses, menuItemClasses } from "@/components/shared-styles";
-import { IconAdd } from "@/components/ui/icons";
+import { IconAdd, IconCode, IconDelay, IconField, IconKey, IconPos } from "@/components/ui/icons";
 import { classNames } from "@/utils";
 import * as Menu from '@radix-ui/react-dropdown-menu';
 
@@ -29,6 +29,11 @@ export function Title() {
         <div className="h-7 flex items-end justify-between">
             <div className="">Fill in actions</div>
             <ButtonAdd />
+            <IconPos className="w-4 h-4" />
+            <IconField className="w-4 h-4" />
+            <IconKey className="w-4 h-4" />
+            <IconDelay className="w-4 h-4" />
+            <IconCode className="w-4 h-4" />
         </div>
     );
 }
