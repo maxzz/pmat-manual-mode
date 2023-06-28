@@ -1,10 +1,11 @@
 import { useSnapshot } from "valtio";
-import { clientState, ScriptItem } from "@/store";
+import { clientState, ScriptItem, ScriptItemType } from "@/store";
 import { classNames } from "@/utils";
 import { boxClasses } from "..";
 import { Title } from "./action-add-item";
 import { Fragment } from "react";
 import { ScrollList } from "./scroll-list";
+import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 
 const itemClasses = "leading-6 hover:text-red-500 hover:bg-primary-500";
 const selectedItemClasses = "text-primary-800 bg-primary-200 cursor-default";
@@ -17,6 +18,19 @@ function RowItem({ part1, part2, idx }: { part1: string; part2: string | number;
     </>);
 }
 
+function RowIcon({ type }: { type: ScriptItemType; }) {
+    switch (type) {
+        case 'field': return <IconField className="w-4 h-4" />;
+        case 'key': return <IconKey className="w-4 h-4" />;
+        case 'pos': return <IconPos className="w-4 h-4" />;
+        case 'delay': return <IconDelay className="w-4 h-4" />;
+        default: {
+            const really: never = type;
+            return <></>;
+        }
+    }
+}
+
 function RowField({ item, idx }: { item: ScriptItem; idx: number; }) {
     switch (item.type) {
         case 'field': return <RowItem part1="Field" part2={item.id} idx={idx} />;
@@ -25,7 +39,7 @@ function RowField({ item, idx }: { item: ScriptItem; idx: number; }) {
         case 'delay': return <RowItem part1="Delay" part2={item.n} idx={idx} />;
         default: {
             const really: never = item;
-            console.error(really);
+            return <></>;
         }
     }
 }
