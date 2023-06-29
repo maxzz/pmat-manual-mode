@@ -1,13 +1,13 @@
-import { ReactNode, useRef, useState } from "react";
+import { ReactNode } from "react";
 import { useSnapshot } from "valtio";
 import { clientState, ScriptItem } from "@/store";
-import { classNames, removeImm, swap } from "@/utils";
+import { classNames, swap } from "@/utils";
 import { boxClasses } from "..";
 import { Title } from "./title";
 import { ScrollList } from "./scroll-list";
-import { IconField, IconKey, IconPos, IconDelay, IconMenu, IconArrowDown, IconArrowUp, IconClose, IconTrash } from "@/components/ui/icons";
+import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";
-import { useClickAway } from "react-use";
+import { MenuState, RowMenuButton } from "./row-popup-menu";
 
 function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: string; } {
     switch (item.type) {
@@ -22,46 +22,7 @@ function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: st
     }
 }
 
-type MenuState = {
-    onDelete: (event: React.MouseEvent) => void;
-    onUp: (event: React.MouseEvent) => void;
-    onDn: (event: React.MouseEvent) => void;
-    hasUp: boolean;
-    hasDn: boolean;
-};
-
-const submenuBoxClasses = "absolute -right-2 -top-[5px] px-2 py-1 \
-text-primary-800 \
-dark:text-primary-200 \
-\
-bg-primary-100 \
-dark:bg-primary-800 \
-\
-border-primary-500/50 \
-dark:border-primary-100/50 \
-border shadow rounded flex";
-
-const submenuIconClasses = "p-1 w-5 h-5 hover:bg-primary-400 rounded";
-const submenuDelClasses = "p-1 w-5 h-5 hover:text-white hover:bg-red-600 rounded";
-
-function MenuButtons({ menuState, onClose }: { menuState: MenuState; onClose: (event: React.MouseEvent) => void; }) {
-    const { onDelete, onUp, onDn, hasUp, hasDn } = menuState;
-    return (
-        <div className={submenuBoxClasses}>
-            <IconArrowUp className={classNames(submenuIconClasses, !hasUp && "invisible")} title="Move item up" onClick={onUp} />
-            <IconArrowDown className={classNames(submenuIconClasses, !hasDn && "invisible")} title="Move item down" onClick={onDn} />
-            <IconTrash className={submenuDelClasses} title="Delete item" onClick={onDelete} />
-            <IconClose className={submenuIconClasses} onClick={onClose} />
-        </div>
-    );
-}
-
 function RowFieldCompound({ item, idx, menuState }: { item: ScriptItem; idx: number; menuState: MenuState; }) {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const onClose = (event: React.MouseEvent) => { event.preventDefault(); setMenuOpen(v => !v); };
-    const btnRef = useRef(null);
-    useClickAway(btnRef, () => { setMenuOpen(false); });
-
     const { selectedIdx } = useSnapshot(clientState);
     const { icon, name, details } = rowText(item);
     return (
@@ -79,15 +40,7 @@ function RowFieldCompound({ item, idx, menuState }: { item: ScriptItem; idx: num
                 {details}
             </div>
 
-            <button ref={btnRef} className="relative mr-1">
-                <IconMenu
-                    className="p-1 w-5 h-5 hover:text-white hover:bg-primary-500 rounded"
-                    onClick={(event) => { event.preventDefault(); setMenuOpen(v => !v); }}
-                />
-                {menuOpen &&
-                    <MenuButtons onClose={onClose} menuState={menuState} />
-                }
-            </button>
+            <RowMenuButton item={item} idx={idx} menuState={menuState} />
         </div>
     );
 }
