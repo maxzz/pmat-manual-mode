@@ -3,16 +3,17 @@ import { useSnapshot } from "valtio";
 import { clientState, ScriptItem } from "@/store";
 import { classNames } from "@/utils";
 import { boxClasses } from "..";
-import { Title } from "./action-add-item";
+import { Title } from "./title";
 import { ScrollList } from "./scroll-list";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
+import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";
 
-function rowText(item: ScriptItem): { icon: ReactNode; name: string; details: string; } {
+function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: string; } {
     switch (item.type) {
-        case 'field': /**/ return { icon: <IconField /**/ className="ml-2 w-4 h-4" />,      /**/ name: "Field"     /**/, details: `${item.id}` };
-        case 'key':   /**/ return { icon: <IconKey   /**/ className="ml-2 w-4 h-4" />,      /**/ name: "Keystroke" /**/, details: `${item.char}` };
-        case 'pos':   /**/ return { icon: <IconPos   /**/ className="ml-2 mt-1 w-4 h-4" />, /**/ name: "Position"  /**/, details: `${`x: ${item.x}, y: ${item.x}`}` };
-        case 'delay': /**/ return { icon: <IconDelay /**/ className="ml-2 w-4 h-4" />,      /**/ name: "Delay"     /**/, details: `${item.n}` };
+        case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 w-4 h-4" />, details: `${item.id}` };
+        case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 w-4 h-4" />, details: `${item.char}` };
+        case 'pos':   /**/ return { /**/ name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 mt-1 w-4 h-4" />, details: `${`x: ${item.x}, y: ${item.x}`}` };
+        case 'delay': /**/ return { /**/ name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 w-4 h-4" />, details: `${item.n}` };
         default: {
             const really: never = item;
             return { icon: null, name: '', details: '' };
@@ -20,25 +21,22 @@ function rowText(item: ScriptItem): { icon: ReactNode; name: string; details: st
     }
 }
 
-const rowClasses = "leading-6 hover:bg-primary-700/10 dark:hover:bg-primary-300/10";
-const rowSelectedClasses = "text-primary-800 bg-primary-400/20 dark:text-primary-200 dark:bg-primary-400/20 outline-primary-400 outline-1 outline rounded-sm cursor-default";
-
 function RowFieldCompound({ item, idx }: { item: ScriptItem; idx: number; }) {
     const { selectedIdx } = useSnapshot(clientState);
-    const parts = rowText(item);
+    const { icon, name, details } = rowText(item);
     return (
         <div
             className={classNames("py-0.5 grid grid-cols-[min-content,5rem,auto] items-center", rowClasses, selectedIdx === idx && rowSelectedClasses)}
             onClick={() => { clientState.selectedIdx = idx; }}
         >
-            {parts.icon}
+            {icon}
 
             <div className="px-2 font-semibold">
-                {parts.name}
+                {name}
             </div>
-            
+
             <div className="px-4 text-xs">
-                {parts.details}
+                {details}
             </div>
         </div>
     );
