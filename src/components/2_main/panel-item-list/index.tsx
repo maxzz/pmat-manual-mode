@@ -7,15 +7,12 @@ import { Fragment } from "react";
 import { ScrollList } from "./scroll-list";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 
-const itemClasses = "leading-6 hover:text-red-500 hover:bg-primary-500";
-const selectedItemClasses = "text-primary-200 bg-primary-400/20 cursor-default outline-primary-400 outline-1 outline rounded-sm";
-
 function RowIcon({ type }: { type: ScriptItemType; }) {
     switch (type) {
-        case 'field': return <IconField className="w-4 h-4" />;
-        case 'key': return <IconKey className="w-4 h-4" />;
-        case 'pos': return <IconPos className="w-4 h-4" />;
-        case 'delay': return <IconDelay className="w-4 h-4" />;
+        case 'field': return <IconField className="ml-2 w-4 h-4" />;
+        case 'key': return <IconKey className="ml-2 w-4 h-4" />;
+        case 'pos': return <IconPos className="ml-2 mt-1 w-4 h-4" />;
+        case 'delay': return <IconDelay className="ml-2 w-4 h-4" />;
         default: {
             const really: never = type;
             return <></>;
@@ -24,13 +21,11 @@ function RowIcon({ type }: { type: ScriptItemType; }) {
 }
 
 function RowItem({ part1, part2, idx, type }: { part1: string; part2: string | number; idx: number; type: ScriptItemType; }) {
-    const { selectedIdx } = useSnapshot(clientState);
     return (<>
-        <div className={classNames(selectedIdx === idx && selectedItemClasses, itemClasses, "pl-2 flex items-center gap-x-2")} onClick={() => { clientState.selectedIdx = idx; }}>
-            <RowIcon type={type} />
+        <div className="px-2 font-semibold">
             {part1}
         </div>
-        <div className={classNames(selectedIdx === idx && selectedItemClasses, itemClasses, "pl-8")} onClick={() => { clientState.selectedIdx = idx; }}>
+        <div className="px-4 text-xs">
             {part2}
         </div>
     </>);
@@ -49,6 +44,26 @@ function RowField({ item, idx }: { item: ScriptItem; idx: number; }) {
     }
 }
 
+const itemClasses = "leading-6 hover:bg-primary-700/10 dark:hover:bg-primary-300/10";
+const selectedItemClasses = "text-primary-800 bg-primary-400/20 dark:text-primary-200 dark:bg-primary-400/20 outline-primary-400 outline-1 outline rounded-sm cursor-default";
+
+function RowFieldCompound({ item, idx }: { item: ScriptItem; idx: number; }) {
+    const { selectedIdx } = useSnapshot(clientState);
+    return (
+        <div
+            className={classNames(
+                selectedIdx === idx && selectedItemClasses,
+                itemClasses,
+                "py-0.5 grid grid-cols-[min-content,5rem,auto] items-center"
+            )}
+            onClick={() => { clientState.selectedIdx = idx; }}
+        >
+            <RowIcon type={item.type} />
+            <RowField item={item} idx={idx} key={idx} />
+        </div>
+    );
+}
+
 export function PanelList() {
     const { scriptItems } = useSnapshot(clientState);
     return (
@@ -56,11 +71,9 @@ export function PanelList() {
             <Title />
 
             <ScrollList>
-                <div className={classNames("grid grid-cols-[min-content,auto]", boxClasses)}>
+                <div className={classNames("", boxClasses)}>
                     {scriptItems.map((item, idx) =>
-                        <Fragment key={idx}>
-                            <RowField item={item} idx={idx} />
-                        </Fragment>
+                        <RowFieldCompound item={item} idx={idx} key={idx} />
                     )}
                 </div>
             </ScrollList>
