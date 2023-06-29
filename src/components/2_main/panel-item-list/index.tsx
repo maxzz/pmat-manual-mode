@@ -1,12 +1,13 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { useSnapshot } from "valtio";
 import { clientState, ScriptItem } from "@/store";
-import { classNames } from "@/utils";
+import { classNames, removeImm, swap } from "@/utils";
 import { boxClasses } from "..";
 import { Title } from "./title";
 import { ScrollList } from "./scroll-list";
-import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
+import { IconField, IconKey, IconPos, IconDelay, IconMenu, IconArrowDown, IconArrowUp, IconClose, IconTrash } from "@/components/ui/icons";
 import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";
+import { useClickAway } from "react-use";
 
 function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: string; } {
     switch (item.type) {
@@ -21,12 +22,36 @@ function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: st
     }
 }
 
-function RowFieldCompound({ item, idx }: { item: ScriptItem; idx: number; }) {
+type MenuState = {
+    onDelete: (event: React.MouseEvent) => void;
+    onUp: (event: React.MouseEvent) => void;
+    onDn: (event: React.MouseEvent) => void;
+    hasUp: boolean;
+    hasDn: boolean;
+};
+
+function MenuButtons({ onClose, onDelete, onUp, onDn, hasUp, hasDn }: { onClose: (event: React.MouseEvent) => void; } & MenuState) {
+    return (
+        <div className="absolute -right-2 top-0 px-2 py-1 bg-yellow-500 border-gray-900/20 border shadow rounded-sm flex">
+            <IconArrowUp className={classNames("p-1 w-5 h-5 hover:bg-yellow-400 rounded", !hasUp && "invisible")} title="Move field up" onClick={onUp} />
+            <IconArrowDown className={classNames("p-1 w-5 h-5 hover:bg-yellow-400 rounded", !hasDn && "invisible")} title="Move field down" onClick={onDn} />
+            <IconTrash className="p-1 w-5 h-5 hover:text-white hover:bg-red-600 rounded" title="Delete field" onClick={onDelete} />
+            <IconClose className="p-1 w-5 h-5 hover:bg-yellow-400 rounded" onClick={onClose} />
+        </div>
+    );
+}
+
+function RowFieldCompound({ item, idx, menuState }: { item: ScriptItem; idx: number; menuState: MenuState }) {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const onClose = (event: React.MouseEvent) => { event.preventDefault(); setMenuOpen(v => !v); };
+    const btnRef = useRef(null);
+    useClickAway(btnRef, () => { setMenuOpen(false); });
+
     const { selectedIdx } = useSnapshot(clientState);
     const { icon, name, details } = rowText(item);
     return (
         <div
-            className={classNames("py-0.5 grid grid-cols-[min-content,5rem,auto] items-center", rowClasses, selectedIdx === idx && rowSelectedClasses)}
+            className={classNames("py-0.5 grid grid-cols-[min-content,5rem,1fr,min-content] items-center", rowClasses, selectedIdx === idx && rowSelectedClasses)}
             onClick={() => { clientState.selectedIdx = idx; }}
         >
             {icon}
@@ -38,6 +63,16 @@ function RowFieldCompound({ item, idx }: { item: ScriptItem; idx: number; }) {
             <div className="px-4 text-xs">
                 {details}
             </div>
+
+            <button ref={btnRef} className="relative">
+                <IconMenu
+                    className="p-1 w-5 h-5 hover:text-white hover:bg-yellow-500 rounded"
+                    onClick={(event) => { event.preventDefault(); setMenuOpen(v => !v); }}
+                />
+                {menuOpen &&
+                    <MenuButtons onClose={onClose} {...menuState} />
+                }
+            </button>
         </div>
     );
 }
@@ -50,9 +85,17 @@ export function PanelList() {
 
             <ScrollList>
                 <div className={classNames("", boxClasses)}>
-                    {scriptItems.map((item, idx) =>
-                        <RowFieldCompound item={item} idx={idx} key={idx} />
-                    )}
+                    {scriptItems.map((item, idx) => {
+                        const menuState: MenuState = {
+                            onDelete: (event: React.MouseEvent) => { event.preventDefault(); delete clientState.scriptItems[idx]; },
+                            onUp: (event: React.MouseEvent) => { event.preventDefault(); idx > 0 && swap(clientState.scriptItems, idx - 1, idx); },
+                            onDn: (event: React.MouseEvent) => { event.preventDefault(); idx < scriptItems.length - 1 && swap(clientState.scriptItems, idx, idx + 1); },
+                            hasUp: idx > 0,
+                            hasDn: idx < scriptItems.length - 1,
+                        };
+
+                        return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={idx} />;
+                    })}
                 </div>
             </ScrollList>
         </div>
