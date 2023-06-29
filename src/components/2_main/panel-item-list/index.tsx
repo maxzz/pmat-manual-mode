@@ -30,13 +30,17 @@ type MenuState = {
     hasDn: boolean;
 };
 
+const submenuBoxClasses = "absolute -right-2 -top-[5px] px-2 py-1 bg-primary-500 border-primary-300/50 border shadow rounded-sm flex";
+const submenuIconClasses = "p-1 w-5 h-5 hover:bg-primary-400 rounded";
+const submenuDelClasses = "p-1 w-5 h-5 hover:text-white hover:bg-red-600 rounded";
+
 function MenuButtons({ onClose, onDelete, onUp, onDn, hasUp, hasDn }: { onClose: (event: React.MouseEvent) => void; } & MenuState) {
     return (
-        <div className="absolute -right-2 top-0 px-2 py-1 bg-yellow-500 border-gray-900/20 border shadow rounded-sm flex">
-            <IconArrowUp className={classNames("p-1 w-5 h-5 hover:bg-yellow-400 rounded", !hasUp && "invisible")} title="Move field up" onClick={onUp} />
-            <IconArrowDown className={classNames("p-1 w-5 h-5 hover:bg-yellow-400 rounded", !hasDn && "invisible")} title="Move field down" onClick={onDn} />
-            <IconTrash className="p-1 w-5 h-5 hover:text-white hover:bg-red-600 rounded" title="Delete field" onClick={onDelete} />
-            <IconClose className="p-1 w-5 h-5 hover:bg-yellow-400 rounded" onClick={onClose} />
+        <div className={submenuBoxClasses}>
+            <IconArrowUp className={classNames(submenuIconClasses, !hasUp && "invisible")} title="Move item up" onClick={onUp} />
+            <IconArrowDown className={classNames(submenuIconClasses, !hasDn && "invisible")} title="Move item down" onClick={onDn} />
+            <IconTrash className={submenuDelClasses} title="Delete item" onClick={onDelete} />
+            <IconClose className={submenuIconClasses} onClick={onClose} />
         </div>
     );
 }
@@ -64,9 +68,9 @@ function RowFieldCompound({ item, idx, menuState }: { item: ScriptItem; idx: num
                 {details}
             </div>
 
-            <button ref={btnRef} className="relative">
+            <button ref={btnRef} className="relative mr-1">
                 <IconMenu
-                    className="p-1 w-5 h-5 hover:text-white hover:bg-yellow-500 rounded"
+                    className="p-1 w-5 h-5 hover:text-white hover:bg-primary-500 rounded"
                     onClick={(event) => { event.preventDefault(); setMenuOpen(v => !v); }}
                 />
                 {menuOpen &&
