@@ -17,11 +17,16 @@ export function PanelProps() {
             </div>
 
             <div className={boxClasses}>
-                {scriptItems.map((item, idx) =>
-                    <div className="grid grid-cols-[min-content,auto] gap-x-2" key={idx}>
-                        <div className="">{item.type}</div>
-                        <div className="">{'char' in item && item.char}</div>
-                    </div>
+                {scriptItems.map((item, idx) => {
+                    if (!item) {
+                        return null;
+                    }
+                    return (
+                        <div className="grid grid-cols-[min-content,auto] gap-x-2" key={idx}>
+                            <div className="">{item.type}</div>
+                            <div className="">{'char' in item && item.char}</div>
+                        </div>);
+                }
                 )}
             </div>
         </div>
