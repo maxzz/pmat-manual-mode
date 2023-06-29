@@ -30,7 +30,17 @@ type MenuState = {
     hasDn: boolean;
 };
 
-const submenuBoxClasses = "absolute -right-2 -top-[5px] px-2 py-1 bg-primary-500 border-primary-300/50 border shadow rounded-sm flex";
+const submenuBoxClasses = "absolute -right-2 -top-[5px] px-2 py-1 \
+text-primary-800 \
+dark:text-primary-200 \
+\
+bg-primary-100 \
+dark:bg-primary-800 \
+\
+border-primary-300/50 \
+dark:border-primary-300/50 \
+border shadow rounded-sm flex";
+
 const submenuIconClasses = "p-1 w-5 h-5 hover:bg-primary-400 rounded";
 const submenuDelClasses = "p-1 w-5 h-5 hover:text-white hover:bg-red-600 rounded";
 
@@ -90,6 +100,9 @@ export function PanelList() {
             <ScrollList>
                 <div className={classNames("", boxClasses)}>
                     {scriptItems.map((item, idx) => {
+                        if (!item) {
+                            return null;
+                        }
                         const menuState: MenuState = {
                             onDelete: (event: React.MouseEvent) => { event.preventDefault(); delete clientState.scriptItems[idx]; },
                             onUp: (event: React.MouseEvent) => { event.preventDefault(); idx > 0 && swap(clientState.scriptItems, idx - 1, idx); },
