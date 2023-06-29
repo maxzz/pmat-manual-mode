@@ -1,6 +1,8 @@
 import { HTMLAttributes, SVGAttributes } from 'react';
 import { classNames } from '@/utils';
 
+export * from './editor-icons';
+
 export function IconStar({ title, ...rest }: HTMLAttributes<SVGSVGElement>) {
     return (
         <svg viewBox="0 0 24 24" {...rest}>
@@ -77,8 +79,8 @@ export function IconHamburger({ className, title, ...rest }: HTMLAttributes<SVGS
     <circle cx="12.1" cy="12.1" r="1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
     </svg> */}
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-  
-</svg>
+
+</svg>;
 
 export function IconDot({ className, title, ...rest }: HTMLAttributes<SVGSVGElement>) {
     return (
