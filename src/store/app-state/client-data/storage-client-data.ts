@@ -1,7 +1,7 @@
 // Local storage
 
 import { subscribe } from "valtio";
-import { ClientState, initialItems, clientState } from ".";
+import { ClientState, initialItems, clientState, editorState } from ".";
 import { mergeDefaultAndLoaded } from "@/utils";
 
 const STORAGE_UI_KEY = 'pmat-manual-mode:data';
@@ -20,15 +20,9 @@ export function loadUiInitialState(): ClientState {
 
     const initialState: ClientState = {
         scriptItems: [...initialItems],
-        selectedIdx: 0,
     };
 
     const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData });
-
-    if (ready.selectedIdx > ready.scriptItems.length) {
-        ready.selectedIdx = 0;
-    }
-
     return ready;
 }
 
