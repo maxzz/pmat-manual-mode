@@ -10,6 +10,7 @@ export default {
         extend: {
             colors: {
                 primary: twColors.stone,
+                // primary: twColors.slate,
             },
             keyframes: {
                 slideDownAndFade: {
