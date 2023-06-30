@@ -1,40 +1,41 @@
 import { ScriptItemType, ItemField, ItemKey, ItemPos, ItemDelay, ScriptItem } from "@/store/editor-script-types";
-import { clientState } from ".";
-import { uuid } from "@/utils";
+import { clientState, editorState } from ".";
+import { swap, uuid } from "@/utils";
+import { snapshot } from "valtio";
 
-function createScriptItem(type: ScriptItemType): Omit<ScriptItem, 'unsaved'> {
-    let item: Omit<ScriptItem, 'unsaved'>;
+function createScriptItem(type: ScriptItemType): ScriptItem {
+    let item: ScriptItem;
     switch (type) {
         case "field": {
-            const newItem: Omit<ItemField, 'unsaved'> = {
+            const newItem: ItemField = {
                 type: 'field',
                 id: '444',
-            }
+            };
             item = newItem;
             break;
         }
         case "key": {
-            const newItem: Omit<ItemKey, 'unsaved'> = {
+            const newItem: ItemKey = {
                 type: 'key',
                 char: 'Tab',
-            }
+            };
             item = newItem;
             break;
         }
         case "pos": {
-            const newItem: Omit<ItemPos, 'unsaved'> = {
+            const newItem: ItemPos = {
                 type: 'pos',
                 x: 10,
                 y: 20,
-            }
+            };
             item = newItem;
             break;
         }
         case "delay": {
-            const newItem: Omit<ItemDelay, 'unsaved'> = {
+            const newItem: ItemDelay = {
                 type: 'delay',
                 n: 1000,
-            }
+            };
             item = newItem;
             break;
         }
@@ -47,7 +48,31 @@ function createScriptItem(type: ScriptItemType): Omit<ScriptItem, 'unsaved'> {
 }
 
 export function addScriptItem(type: ScriptItemType) {
-    let item = createScriptItem(type) as ScriptItem;
-    item.unsaved.uuid = uuid.asRelativeNumber();
+    let item = createScriptItem(type);
     clientState.scriptItems.push(item);
+    editorState.itemMeta.push({ uuid: uuid.asRelativeNumber() });
 }
+
+export function removeScriptItem(idx: number) {
+    clientState.scriptItems.splice(idx, 1);
+    editorState.itemMeta.splice(idx, 1);
+}
+
+export function swapScriptItems(idxA: number, idxB: number) {
+    const { selectedIdx } = snapshot(editorState);
+    if (editorState.selectedIdx === idxA) {
+        editorState.selectedIdx = idxB;
+    }
+    console.log(`idxA ${idxA}, idxB ${idxB}, selectedIdx ${selectedIdx}, editorState.selectedIdx ${editorState.selectedIdx}`, 'snapshot(editorState)', snapshot(editorState).selectedIdx);
+    swap(clientState.scriptItems, idxA, idxB);
+    swap(editorState.itemMeta, idxA, idxB);
+}
+// export function swapScriptItems(idxA: number, idxB: number) {
+//     const { selectedIdx } = snapshot(editorState);
+//     if (selectedIdx === idxA) {
+//         editorState.selectedIdx = idxB;
+//     }
+//     console.log(`idxA ${idxA}, idxB ${idxB}, selectedIdx ${selectedIdx}, editorState.selectedIdx ${editorState.selectedIdx}`, 'snapshot(editorState)', snapshot(editorState).selectedIdx);
+//     swap(clientState.scriptItems, idxA, idxB);
+//     swap(editorState.itemMeta, idxA, idxB);
+// }
