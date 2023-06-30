@@ -3,6 +3,7 @@ import { useClickAway } from "react-use";
 import { ScriptItem } from "@/store";
 import { classNames } from "@/utils";
 import { IconArrowUp, IconArrowDown, IconTrash, IconClose, IconMenu } from "@/components/ui/icons";
+import { focusClasses } from "@/components/shared-styles";
 
 export type MenuState = {
     onDelete: (event: React.MouseEvent) => void;
@@ -23,8 +24,8 @@ border-primary-500/50 \
 dark:border-primary-100/50 \
 border shadow rounded flex";
 
-const submenuIconClasses = "p-1 w-5 h-5 hover:bg-primary-400 rounded";
-const submenuDelClasses = "p-1 w-5 h-5 hover:text-white hover:bg-red-600 rounded";
+const submenuIconClasses = "p-1 w-5 h-5 hover:bg-primary-300 dark:hover:bg-primary-400 rounded" + focusClasses;
+const submenuDelClasses = "p-1 w-5 h-5 hover:text-white hover:bg-red-600 rounded" + focusClasses;
 
 function MenuButtons({ menuState, onClose }: { menuState: MenuState; onClose: (event: React.MouseEvent) => void; }) {
     const { onDelete, onUp, onDn, hasUp, hasDn } = menuState;
@@ -44,9 +45,9 @@ export function RowMenuButton({ item, idx, menuState }: { item: ScriptItem; idx:
     const btnRef = useRef(null);
     useClickAway(btnRef, () => { setMenuOpen(false); });
     return (
-        <button ref={btnRef} className="relative mr-1">
+        <button ref={btnRef} className={classNames("relative mr-1 rounded-sm", focusClasses)} tabIndex={-1}>
             <IconMenu
-                className="p-1 w-5 h-5 hover:text-white hover:bg-primary-500 rounded"
+                className="p-1 w-5 h-5 hover:text-primary-700 hover:bg-primary-400/50 dark:hover:text-white dark:hover:bg-primary-500 rounded-sm"
                 onClick={(event) => { event.preventDefault(); setMenuOpen(v => !v); }}
             />
             {menuOpen &&
