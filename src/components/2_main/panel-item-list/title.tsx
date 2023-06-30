@@ -51,7 +51,7 @@ function ButtonAdd() {
 export function Title() {
     return (
         <div className="h-7 flex items-end justify-between">
-            <div className="">Fill in actions</div>
+            <div className="pl-2">Fill in actions</div>
             <ButtonAdd />
         </div>
     );
