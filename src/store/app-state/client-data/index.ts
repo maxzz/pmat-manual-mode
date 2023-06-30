@@ -1,9 +1,9 @@
-import { proxy, subscribe } from 'valtio';
+import { proxy } from 'valtio';
 import { ItemUnsaved, ScriptItem } from '@/store/editor-script-types';
 import { loadUiInitialState, watchClientStateCnages } from './storage-client-data';
 import { uuid } from '@/utils';
 
-export * from './add-item';
+export * from './item-access';
 export * from './initial-items';
 
 export type ClientState = { // stored data
