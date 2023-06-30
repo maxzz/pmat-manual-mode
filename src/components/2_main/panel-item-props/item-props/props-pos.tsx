@@ -1,0 +1,27 @@
+import { InputHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import { useSnapshot } from "valtio";
+import { SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "@/store";
+import { classNames } from "@/utils";
+import { focusClasses } from "@/components/shared-styles";
+import { propsBoxClasses, InputField } from "./ui";
+
+export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
+    const snap = useSnapshot(item);
+    return (
+        <div className={propsBoxClasses} {...rest}>
+            <div className="flex items-center space-x-2">
+                <InputField className="w-12" label="x" value={`${snap.x}`} onChange={(e) => item.x = parseInt(e.target.value)} />
+                <InputField className="w-12" label="y" value={`${snap.y}`} onChange={(e) => item.y = parseInt(e.target.value)} />
+            </div>
+
+            <div className="!mt-6 space-y-2">
+                <div className="">Click on the preview window below to select the click point.</div>
+                <div className="aspect-auto h-28 bg-primary-700 border-primary-400 border grid place-items-center cursor-pointer">
+                    {/* TODO: zoom in/out buttons */}
+                    {/* TODO: button: select the click point */}
+                    <div className="text-[.65rem]">app preview</div>
+                </div>
+            </div>
+        </div>
+    );
+}
