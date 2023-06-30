@@ -3,7 +3,7 @@
 import { subscribe } from "valtio";
 import { ClientState, initialItems, clientState } from ".";
 import { mergeDefaultAndLoaded, uuid } from "@/utils";
-import { ScriptItem } from "@/store";
+import { ItemUnsaved, ScriptItem } from "@/store";
 
 const STORAGE_UI_KEY = 'pmat-manual-mode:data';
 const STORAGE_UI_VER = 'v1';
@@ -24,9 +24,6 @@ export function loadUiInitialState(): ClientState {
     };
 
     const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData });
-
-    ready.scriptItems.forEach((item) => item.unsaved.uuid = uuid.asRelativeNumber());
-
     return ready;
 }
 

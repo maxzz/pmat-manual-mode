@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useSnapshot } from "valtio";
-import { clientState, editorState, ScriptItem } from "@/store";
-import { classNames, swap } from "@/utils";
+import { clientState, editorState, removeScriptItem, ScriptItem, swapScriptItems } from "@/store";
+import { classNames } from "@/utils";
 import { boxClasses } from "..";
 import { Title } from "./title";
 import { ScrollList } from "./scroll-list";
@@ -25,6 +25,7 @@ function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: st
 function RowFieldCompound({ item, idx, menuState }: { item: ScriptItem; idx: number; menuState: MenuState; }) {
     const { selectedIdx } = useSnapshot(editorState);
     const { icon, name, details } = rowText(item);
+    console.log('RowFieldCompound.selectedIdx', selectedIdx);
     return (
         <div
             className={classNames("py-0.5 grid grid-cols-[min-content,5rem,1fr,min-content] items-center", rowClasses, selectedIdx === idx && rowSelectedClasses)}
@@ -47,7 +48,7 @@ function RowFieldCompound({ item, idx, menuState }: { item: ScriptItem; idx: num
 
 export function PanelList() {
     const { scriptItems } = useSnapshot(clientState);
-    const { selectedIdx } = useSnapshot(editorState);
+    const { itemMeta } = useSnapshot(editorState);
     return (
         <div className="h-full min-h-[20rem] flex flex-col space-y-1 select-none">
             <Title />
@@ -60,14 +61,14 @@ export function PanelList() {
                         }
 
                         const menuState: MenuState = {
-                            onDelete: (event: React.MouseEvent) => { event.preventDefault(); clientState.scriptItems.splice(idx, 1); },
-                            onUp: (event: React.MouseEvent) => { event.preventDefault(); idx > 0 && swap(clientState.scriptItems, idx - 1, idx); editorState.selectedIdx = selectedIdx - 1; },
-                            onDn: (event: React.MouseEvent) => { event.preventDefault(); idx < scriptItems.length - 1 && swap(clientState.scriptItems, idx, idx + 1); editorState.selectedIdx = selectedIdx + 1; },
+                            onDelete: (event: React.MouseEvent) => { event.stopPropagation(); removeScriptItem(idx); },
+                            onUp: (event: React.MouseEvent) => { event.stopPropagation(); idx > 0 && swapScriptItems(idx, idx - 1); },
+                            onDn: (event: React.MouseEvent) => { event.stopPropagation(); idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
                             hasUp: idx > 0,
                             hasDn: idx < scriptItems.length - 1,
                         };
 
-                        return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={idx} />;
+                        return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={itemMeta[idx].uuid} />;
                     })}
                 </div>
             </ScrollList>
