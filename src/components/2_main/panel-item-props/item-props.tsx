@@ -4,11 +4,11 @@ import { ItemField, ItemKey, ItemPos, ItemDelay, ScriptItem } from "@/store";
 import { classNames } from "@/utils";
 import { focusClasses } from "@/components/shared-styles";
 
-function InputField({ label, ...rest }: { label: string; } & InputHTMLAttributes<HTMLInputElement>) {
+function InputField({ label, className, ...rest }: { label: string; } & InputHTMLAttributes<HTMLInputElement>) {
     return (
         <label className="flex flex-col space-y-1">
             <div className="text-xs">{label}</div>
-            <input className={classNames("px-2 py-1 bg-primary-700/50 rounded", focusClasses)} {...rest} />
+            <input className={classNames("px-2 py-1 bg-primary-700/50 rounded", focusClasses, className)} {...rest} />
         </label>
     );
 }
@@ -44,8 +44,17 @@ function PropsPos({ item, ...rest }: { item: ItemPos; } & HTMLAttributes<HTMLEle
     const snap = useSnapshot(item);
     return (
         <div className={propsBoxClasses} {...rest}>
-            <InputField label="x" value={`${snap.x}`} onChange={(e) => item.x = parseInt(e.target.value)} />
-            <InputField label="y" value={`${snap.y}`} onChange={(e) => item.y = parseInt(e.target.value)} />
+            <div className="flex items-center space-x-2">
+                <InputField className="w-12" label="x" value={`${snap.x}`} onChange={(e) => item.x = parseInt(e.target.value)} />
+                <InputField className="w-12" label="y" value={`${snap.y}`} onChange={(e) => item.y = parseInt(e.target.value)} />
+            </div>
+
+            <div className="!mt-6 space-y-2">
+                <div className="">Click on the preview window below to select the click point.</div>
+                <div className="mx-auto w-48 h-28 bg-primary-700 border-primary-400 border grid place-items-center">
+                    <div className="text-[.65rem]">app preview</div>
+                </div>
+            </div>
         </div>
     );
 }

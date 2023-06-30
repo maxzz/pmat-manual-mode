@@ -30,8 +30,8 @@ function ItemProps({ idx }: { idx: number; }) {
     const Comp: ReactNode = getPropsView({ snap, item });
     const { name, icon } = itemNameAndIcon(snap);
     return (
-        <div className="">
-            <div className="mt-1 mb-4 font-semibold flex items-center justify-between">
+        <div className="text-xs">
+            <div className="mt-1 mb-4 text-sm font-semibold flex items-center justify-between">
                 <div className="">{name}</div>
                 {icon}
             </div>
