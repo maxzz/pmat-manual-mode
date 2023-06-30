@@ -25,7 +25,6 @@ function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: st
 function RowFieldCompound({ item, idx, menuState }: { item: ScriptItem; idx: number; menuState: MenuState; }) {
     const { selectedIdx } = useSnapshot(editorState);
     const { icon, name, details } = rowText(item);
-    console.log('RowFieldCompound.selectedIdx', selectedIdx);
     return (
         <div
             className={classNames("py-0.5 grid grid-cols-[min-content,5rem,1fr,min-content] items-center", rowClasses, selectedIdx === idx && rowSelectedClasses)}

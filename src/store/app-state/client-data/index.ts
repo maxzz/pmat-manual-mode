@@ -32,8 +32,4 @@ if (editorState.selectedIdx > clientState.scriptItems.length) {
 
 watchClientStateCnages();
 
-(function watchClientStateCnages() {
-    subscribe(editorState, () => {
-        console.log('editorState', JSON.stringify(editorState));
-    });
-})();
+//(function watchClientStateCnages() { subscribe(editorState, () => console.log('editorState', JSON.stringify(editorState))); })();

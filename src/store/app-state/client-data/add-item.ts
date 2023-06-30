@@ -59,20 +59,9 @@ export function removeScriptItem(idx: number) {
 }
 
 export function swapScriptItems(idxA: number, idxB: number) {
-    const { selectedIdx } = snapshot(editorState);
     if (editorState.selectedIdx === idxA) {
         editorState.selectedIdx = idxB;
     }
-    console.log(`idxA ${idxA}, idxB ${idxB}, selectedIdx ${selectedIdx}, editorState.selectedIdx ${editorState.selectedIdx}`, 'snapshot(editorState)', snapshot(editorState).selectedIdx);
     swap(clientState.scriptItems, idxA, idxB);
     swap(editorState.itemMeta, idxA, idxB);
 }
-// export function swapScriptItems(idxA: number, idxB: number) {
-//     const { selectedIdx } = snapshot(editorState);
-//     if (selectedIdx === idxA) {
-//         editorState.selectedIdx = idxB;
-//     }
-//     console.log(`idxA ${idxA}, idxB ${idxB}, selectedIdx ${selectedIdx}, editorState.selectedIdx ${editorState.selectedIdx}`, 'snapshot(editorState)', snapshot(editorState).selectedIdx);
-//     swap(clientState.scriptItems, idxA, idxB);
-//     swap(editorState.itemMeta, idxA, idxB);
-// }
