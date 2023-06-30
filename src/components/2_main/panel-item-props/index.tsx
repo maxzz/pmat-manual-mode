@@ -1,7 +1,7 @@
 import { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 import { useSnapshot } from "valtio";
-import { ClientState, ItemDelay, ItemField, ItemKey, ItemPos, ScriptItem, clientState, editorState } from "@/store";
-import { editorFrameClasses, focusClasses } from "../../shared-styles";
+import { ItemDelay, ItemField, ItemKey, ItemPos, ScriptItem, clientState, editorState } from "@/store";
+import { editorFrameClasses, focusWithinClasses } from "../../shared-styles";
 import { classNames } from "@/utils";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { Title } from "./title";
@@ -118,7 +118,7 @@ export function PanelProps() {
         <div className="space-y-1 select-none">
             <Title />
 
-            <div className={classNames("min-h-[20rem]", editorFrameClasses, focusClasses)} tabIndex={0}>
+            <div className={classNames("min-h-[20rem]", editorFrameClasses, focusWithinClasses)} tabIndex={0}>
                 <ItemProps idx={selectedIdx} />
             </div>
         </div>
