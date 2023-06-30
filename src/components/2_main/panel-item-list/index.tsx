@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { useSnapshot } from "valtio";
-import { clientState, editorState, removeScriptItem, ScriptItem, swapScriptItems } from "@/store";
+import { clientState, editorState, moveScriptCursor, removeScriptItem, ScriptItem, swapScriptItems } from "@/store";
 import { classNames } from "@/utils";
 import { boxClasses } from "..";
 import { Title } from "./title";
@@ -49,28 +49,32 @@ export function PanelList() {
     const { scriptItems } = useSnapshot(clientState);
     const { itemMeta } = useSnapshot(editorState);
     return (
-        <div className="h-full min-h-[20rem] flex flex-col space-y-1 select-none">
+        <div className="h-full min-h-[20rem] flex flex-col space-y-1 select-none   ouline-red-500 focus-within:outline-dotted">
             <Title />
 
-            <ScrollList>
-                <div className={classNames("", boxClasses)}>
-                    {scriptItems.map((item, idx) => {
-                        if (!item) {
-                            return null;
-                        }
+            {/* <ScrollList> */}
+            <div
+                className={classNames("", boxClasses)}
+                tabIndex={0}
+                onKeyDown={(event) => moveScriptCursor(event.key)}
+                >
+                {scriptItems.map((item, idx) => {
+                    if (!item) {
+                        return null;
+                    }
 
-                        const menuState: MenuState = {
-                            onDelete: () => { removeScriptItem(idx); },
-                            onUp: () => { idx > 0 && swapScriptItems(idx, idx - 1); },
-                            onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
-                            hasUp: idx > 0,
-                            hasDn: idx < scriptItems.length - 1,
-                        };
+                    const menuState: MenuState = {
+                        onDelete: () => { removeScriptItem(idx); },
+                        onUp: () => { idx > 0 && swapScriptItems(idx, idx - 1); },
+                        onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
+                        hasUp: idx > 0,
+                        hasDn: idx < scriptItems.length - 1,
+                    };
 
-                        return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={itemMeta[idx].uuid} />;
-                    })}
-                </div>
-            </ScrollList>
+                    return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={itemMeta[idx].uuid} />;
+                })}
+            </div>
+            {/* </ScrollList> */}
         </div>
     );
 }

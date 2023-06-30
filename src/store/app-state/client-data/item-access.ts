@@ -58,3 +58,26 @@ export function swapScriptItems(idxCurrent: number, idxNew: number) {
     swap(clientState.scriptItems, idxCurrent, idxNew);
     swap(editorState.itemMeta, idxCurrent, idxNew);
 }
+
+export function moveScriptCursor(key: string) {
+    if (editorState.itemMeta.length) {
+        switch (key) {
+            case 'ArrowUp': {
+                (editorState.selectedIdx > 0) && editorState.selectedIdx--;
+                break;
+            }
+            case 'ArrowDown': {
+                (editorState.selectedIdx < editorState.itemMeta.length - 1) && editorState.selectedIdx++;
+                break;
+            }
+            case 'Home': {
+                editorState.selectedIdx = 0;
+                break;
+            }
+            case 'End': {
+                editorState.selectedIdx = editorState.itemMeta.length - 1;
+                break;
+            }
+        }
+    }
+}
