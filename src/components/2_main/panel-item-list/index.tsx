@@ -60,9 +60,9 @@ export function PanelList() {
                         }
 
                         const menuState: MenuState = {
-                            onDelete: (event: React.MouseEvent) => { event.stopPropagation(); removeScriptItem(idx); },
-                            onUp: (event: React.MouseEvent) => { event.stopPropagation(); idx > 0 && swapScriptItems(idx, idx - 1); },
-                            onDn: (event: React.MouseEvent) => { event.stopPropagation(); idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
+                            onDelete: () => { removeScriptItem(idx); },
+                            onUp: () => { idx > 0 && swapScriptItems(idx, idx - 1); },
+                            onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
                             hasUp: idx > 0,
                             hasDn: idx < scriptItems.length - 1,
                         };

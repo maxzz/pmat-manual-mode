@@ -30,9 +30,9 @@ function MenuButtons({ menuState, onClose }: { menuState: MenuState; onClose: (e
     const { onDelete, onUp, onDn, hasUp, hasDn } = menuState;
     return (
         <div className={submenuBoxClasses}>
-            <IconArrowUp className={classNames(submenuIconClasses, !hasUp && "invisible")} title="Move item up" onClick={onUp} />
-            <IconArrowDown className={classNames(submenuIconClasses, !hasDn && "invisible")} title="Move item down" onClick={onDn} />
-            <IconTrash className={submenuDelClasses} title="Delete item" onClick={onDelete} />
+            <IconArrowUp className={classNames(submenuIconClasses, !hasUp && "invisible")} title="Move item up" onClick={(e) => { e.stopPropagation(); onUp(e); }} />
+            <IconArrowDown className={classNames(submenuIconClasses, !hasDn && "invisible")} title="Move item down" onClick={(e) => { e.stopPropagation(); onDn(e); }} />
+            <IconTrash className={submenuDelClasses} title="Delete item" onClick={(e) => { e.stopPropagation(); onDelete(e); }} />
             <IconClose className={submenuIconClasses} onClick={onClose} />
         </div>
     );
