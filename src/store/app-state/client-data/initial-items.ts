@@ -1,6 +1,6 @@
-import { ScriptItem } from "@/store/editor-script-types";
+import { ItemUnsaved, ScriptItem } from "@/store/editor-script-types";
 
-export const initialItems: ScriptItem[] = [
+export const initialItems: Omit<ScriptItem, ItemUnsaved>[] = [
     {
         type: 'pos', x: 0, y: 1,
     },
