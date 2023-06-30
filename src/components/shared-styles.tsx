@@ -33,8 +33,8 @@ dark:data-[highlighted]:bg-primary-700";
 
 export const rowClasses = "\
 leading-6 \
-hover:bg-primary-700/10 \
-dark:hover:bg-primary-300/10";
+hover:bg-primary-400/10 \
+dark:hover:bg-primary-600/10";
 
 export const rowSelectedClasses = "\
 text-primary-800 \
