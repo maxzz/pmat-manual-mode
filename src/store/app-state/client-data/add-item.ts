@@ -1,44 +1,53 @@
-import { ScriptItemType, ItemField, ItemKey, ItemPos, ItemDelay } from "@/store/editor-script-types";
+import { ScriptItemType, ItemField, ItemKey, ItemPos, ItemDelay, ScriptItem } from "@/store/editor-script-types";
 import { clientState } from ".";
+import { uuid } from "@/utils";
 
-export function addScriptItem(type: ScriptItemType) {
+function createScriptItem(type: ScriptItemType): Omit<ScriptItem, 'unsaved'> {
+    let item: Omit<ScriptItem, 'unsaved'>;
     switch (type) {
         case "field": {
-            const newItem: ItemField = {
+            const newItem: Omit<ItemField, 'unsaved'> = {
                 type: 'field',
                 id: '444',
             }
-            clientState.scriptItems.push(newItem);
+            item = newItem;
             break;
         }
         case "key": {
-            const newItem: ItemKey = {
+            const newItem: Omit<ItemKey, 'unsaved'> = {
                 type: 'key',
                 char: 'Tab',
             }
-            clientState.scriptItems.push(newItem);
+            item = newItem;
             break;
         }
         case "pos": {
-            const newItem: ItemPos = {
+            const newItem: Omit<ItemPos, 'unsaved'> = {
                 type: 'pos',
                 x: 10,
                 y: 20,
             }
-            clientState.scriptItems.push(newItem);
+            item = newItem;
             break;
         }
         case "delay": {
-            const newItem: ItemDelay = {
+            const newItem: Omit<ItemDelay, 'unsaved'> = {
                 type: 'delay',
                 n: 1000,
             }
-            clientState.scriptItems.push(newItem);
+            item = newItem;
             break;
         }
         default: {
             const really: never = type;
-            console.error(really);
+            throw new Error(really);
         }
     }
+    return item;
+}
+
+export function addScriptItem(type: ScriptItemType) {
+    let item = createScriptItem(type) as ScriptItem;
+    item.unsaved.uuid = uuid.asRelativeNumber();
+    clientState.scriptItems.push(item);
 }

@@ -19,7 +19,13 @@ export type ItemDelay = {
     n: number;
 };
 
-export type ScriptItem = ItemField | ItemKey | ItemPos | ItemDelay;
+export type ItemUnsaved = {
+    unsaved: {
+        uuid: number;
+    }
+};
+
+export type ScriptItem = (ItemField | ItemKey | ItemPos | ItemDelay) & ItemUnsaved;
 
 export type ScriptItemType = {
     [K in keyof ScriptItem]: ScriptItem[K]

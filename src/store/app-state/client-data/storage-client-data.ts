@@ -1,8 +1,9 @@
 // Local storage
 
 import { subscribe } from "valtio";
-import { ClientState, initialItems, clientState, editorState } from ".";
-import { mergeDefaultAndLoaded } from "@/utils";
+import { ClientState, initialItems, clientState } from ".";
+import { mergeDefaultAndLoaded, uuid } from "@/utils";
+import { ScriptItem } from "@/store";
 
 const STORAGE_UI_KEY = 'pmat-manual-mode:data';
 const STORAGE_UI_VER = 'v1';
@@ -23,13 +24,23 @@ export function loadUiInitialState(): ClientState {
     };
 
     const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData });
+
+    ready.scriptItems.forEach((item) => item.unsaved.uuid = uuid.asRelativeNumber());
+
     return ready;
 }
 
 export function watchClientStateCnages() {
     subscribe(clientState, () => {
         //console.log('store ui  ', appUi.uiState);
-    
-        localStorage.setItem(STORAGE_UI_KEY, JSON.stringify({ [STORAGE_UI_VER]: clientState }));
+        const data = { ...clientState };
+
+        (data as any).scriptItems = clientState.scriptItems.map((item) => {
+            const newItem: Omit<ScriptItem, 'unsaved'> = { ...item };
+            delete (newItem as any).unsaved;
+            return newItem;
+        });
+
+        localStorage.setItem(STORAGE_UI_KEY, JSON.stringify({ [STORAGE_UI_VER]: data }));
     });
 }
