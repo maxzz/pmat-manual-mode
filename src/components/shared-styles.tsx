@@ -6,6 +6,8 @@ dark:focus:ring-offset-primary-800 \
 \
 focus:ring-1 focus:ring-offset-1 focus:outline-none";
 
+export const editorFrameClasses = "px-2 py-1 border-primary-500 border rounded";
+
 export const menuContentClasses = "p-1 min-w-[14ch] text-sm \
 text-primary-800 \
 dark:text-primary-200 \

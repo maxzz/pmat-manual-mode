@@ -1,6 +1,6 @@
 import { useSnapshot } from "valtio";
 import { clientState } from "@/store";
-import { boxClasses } from "..";
+import { editorFrameClasses } from "../../shared-styles";
 
 function ActionProps() {
     return (
@@ -16,7 +16,7 @@ export function PanelProps() {
                 <div className="">Action properties</div>
             </div>
 
-            <div className={boxClasses}>
+            <div className={editorFrameClasses}>
                 {scriptItems.map((item, idx) => {
                     if (!item) {
                         return null;

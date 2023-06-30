@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { useSnapshot } from "valtio";
 import { clientState, editorState, moveScriptCursor, removeScriptItem, ScriptItem, swapScriptItems } from "@/store";
 import { classNames } from "@/utils";
-import { boxClasses } from "..";
+import { editorFrameClasses, focusClasses } from "../../shared-styles";
 import { Title } from "./title";
 import { ScrollList } from "./scroll-list";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
@@ -49,31 +49,33 @@ export function PanelList() {
     const { scriptItems } = useSnapshot(clientState);
     const { itemMeta } = useSnapshot(editorState);
     return (
-        <div className="h-full min-h-[20rem] flex flex-col space-y-1 select-none   ouline-red-500 focus-within:outline-dotted">
+        <div className="h-full min-h-[20rem] flex flex-col space-y-1 select-none">
             <Title />
 
             {/* <ScrollList> */}
-            <div
-                className={classNames("", boxClasses)}
-                tabIndex={0}
-                onKeyDown={(event) => moveScriptCursor(event.key)}
+                <div
+                    className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)}
+                    tabIndex={0}
+                    onKeyDown={(event) => moveScriptCursor(event.key)}
                 >
-                {scriptItems.map((item, idx) => {
-                    if (!item) {
-                        return null;
-                    }
+                    {/* <ScrollList> */}
+                    {scriptItems.map((item, idx) => {
+                        if (!item) {
+                            return null;
+                        }
 
-                    const menuState: MenuState = {
-                        onDelete: () => { removeScriptItem(idx); },
-                        onUp: () => { idx > 0 && swapScriptItems(idx, idx - 1); },
-                        onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
-                        hasUp: idx > 0,
-                        hasDn: idx < scriptItems.length - 1,
-                    };
+                        const menuState: MenuState = {
+                            onDelete: () => { removeScriptItem(idx); },
+                            onUp: () => { idx > 0 && swapScriptItems(idx, idx - 1); },
+                            onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
+                            hasUp: idx > 0,
+                            hasDn: idx < scriptItems.length - 1,
+                        };
 
-                    return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={itemMeta[idx].uuid} />;
-                })}
-            </div>
+                        return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={itemMeta[idx].uuid} />;
+                    })}
+                    {/* </ScrollList> */}
+                </div>
             {/* </ScrollList> */}
         </div>
     );
