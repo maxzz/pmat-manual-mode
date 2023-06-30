@@ -1,25 +1,25 @@
-import { ScriptItemType, ItemField, ItemKey, ItemPos, ItemDelay, ScriptItem } from "@/store/editor-script-types";
+import { ScriptItemType, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "@/store/editor-script-types";
 import { clientState, editorState } from ".";
 import { swap, uuid } from "@/utils";
 
 function createScriptItem(type: ScriptItemType): ScriptItem {
     switch (type) {
         case "field": {
-            const newItem: ItemField = {
+            const newItem: SrcriptItemField = {
                 type: 'field',
                 id: '444',
             };
             return newItem;
         }
         case "key": {
-            const newItem: ItemKey = {
+            const newItem: SrcriptItemKey = {
                 type: 'key',
                 char: 'Tab',
             };
             return newItem;
         }
         case "pos": {
-            const newItem: ItemPos = {
+            const newItem: SrcriptItemPos = {
                 type: 'pos',
                 x: 10,
                 y: 20,
@@ -27,7 +27,7 @@ function createScriptItem(type: ScriptItemType): ScriptItem {
             return newItem;
         }
         case "delay": {
-            const newItem: ItemDelay = {
+            const newItem: SrcriptItemDelay = {
                 type: 'delay',
                 n: 1000,
             };

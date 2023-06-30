@@ -1,30 +1,30 @@
-export type ItemField = {
+export type SrcriptItemField = {
     type: 'field',
     id: string;
 };
 
-export type ItemKey = {
+export type SrcriptItemKey = {
     type: 'key',
     char: string;
 };
 
-export type ItemPos = {
+export type SrcriptItemPos = {
     type: 'pos',
     x: number;
     y: number;
 };
 
-export type ItemDelay = {
+export type SrcriptItemDelay = {
     type: 'delay',
     n: number;
 };
 
-export type ScriptItem = ItemField | ItemKey | ItemPos | ItemDelay;
+export type ScriptItem = SrcriptItemField | SrcriptItemKey | SrcriptItemPos | SrcriptItemDelay;
 
 export type ScriptItemType = {
     [K in keyof ScriptItem]: ScriptItem[K]
 }['type'];
 
-export type ItemUnsaved = {
+export type SrcriptItemUnsaved = {
     uuid: number;
 };

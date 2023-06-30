@@ -1,5 +1,5 @@
 import { proxy } from 'valtio';
-import { ItemUnsaved, ScriptItem } from '@/store/editor-script-types';
+import { SrcriptItemUnsaved, ScriptItem } from '@/store/editor-script-types';
 import { loadUiInitialState, watchClientStateCnages } from './storage-client-data';
 import { uuid } from '@/utils';
 
@@ -23,7 +23,7 @@ export const clientState = proxy<ClientState>(loadUiInitialState());
 
 export const editorState = proxy<EditorState>({
     selectedIdx: 0,
-    itemMeta: clientState.scriptItems.map<ItemUnsaved>((item) => ({ uuid: uuid.asRelativeNumber() })),
+    itemMeta: clientState.scriptItems.map<SrcriptItemUnsaved>((_item) => ({ uuid: uuid.asRelativeNumber() })),
 });
 
 if (editorState.selectedIdx > clientState.scriptItems.length) {
