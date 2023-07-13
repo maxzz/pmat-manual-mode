@@ -1,8 +1,6 @@
-import { InputHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
-import { SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "@/store";
-import { classNames } from "@/utils";
-import { focusClasses } from "@/components/shared-styles";
+import { SrcriptItemKey } from "@/store";
 import { propsBoxClasses, InputField } from "./ui";
 
 export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttributes<HTMLElement>) {
