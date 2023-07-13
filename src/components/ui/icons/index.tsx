@@ -1,2 +1,2 @@
-export * from './editor-icons';
 export * from './normal';
+export * from './editor-fields';
