@@ -1,9 +1,8 @@
-import { InputHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
-import { SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "@/store";
-import { classNames } from "@/utils";
-import { focusClasses } from "@/components/shared-styles";
+import { SrcriptItemPos } from "@/store";
 import { propsBoxClasses, InputField } from "./ui";
+import { IconTarget } from "@/components/ui/icons";
 
 export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
@@ -19,7 +18,10 @@ export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttr
                 <div className="aspect-auto h-28 bg-primary-700 border-primary-400 border grid place-items-center cursor-pointer">
                     {/* TODO: zoom in/out buttons */}
                     {/* TODO: button: select the click point */}
-                    <div className="text-[.65rem]">app preview</div>
+                    <div className="text-[.65rem]">
+                        app preview
+                        <IconTarget className="w-12 h-12" />
+                    </div>
                 </div>
             </div>
         </div>
