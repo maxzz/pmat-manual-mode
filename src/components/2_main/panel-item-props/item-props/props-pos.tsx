@@ -14,12 +14,15 @@ export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttr
             </div>
 
             <div className="!mt-6 space-y-2">
-                <div className="">Click on the preview window below to select the click point.</div>
+                <div className="">
+                    Click on the preview window below to select the click point.
+                </div>
+
                 <div className="aspect-auto h-28 bg-primary-700 border-primary-400 border grid place-items-center cursor-pointer">
                     {/* TODO: zoom in/out buttons */}
                     {/* TODO: button: select the click point */}
+                    {/* app preview or drag with client rects recalculation */}
                     <div className="text-[.65rem]">
-                        app preview
                         <IconTarget className="w-12 h-12" />
                     </div>
                 </div>
