@@ -2,7 +2,7 @@ import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
 import { SrcriptItemPos } from "@/store";
 import { propsBoxClasses, InputField } from "./ui";
-import { IconTarget } from "@/components/ui/icons";
+import { IconTarget, IconTarget2 } from "@/components/ui/icons";
 
 export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
@@ -20,7 +20,7 @@ export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttr
                     {/* TODO: button: select the click point */}
                     <div className="text-[.65rem]">
                         app preview
-                        <IconTarget className="w-12 h-12" />
+                        <IconTarget2 className="w-12 h-12" />
                     </div>
                 </div>
             </div>
