@@ -39,7 +39,12 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
     return (
         <div className={propsBoxClasses} {...rest}>
             <InputField label="Key" value={`${snap.char}`} onChange={(e) => item.char = e.target.value} />
-            <InputField label="Repeat" />
+            
+            <div className="flex items-end space-x-2">
+                <InputField label="Repeat" />
+                <div className="pb-1">times</div>
+            </div>
+
             <InputField label="Shift" />
             <InputField label="Control" />
             <InputField label="Alt" />
