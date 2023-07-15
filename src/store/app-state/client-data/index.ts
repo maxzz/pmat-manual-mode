@@ -3,7 +3,7 @@ import { SrcriptItemUnsaved, ScriptItem } from '@/store/editor-script-types';
 import { loadUiInitialState, watchClientStateCnages } from './storage-client-data';
 import { uuid } from '@/utils';
 
-export * from './item-access';
+export * from './script-items-access';
 export * from './initial-items';
 
 export type ClientState = { // stored data
