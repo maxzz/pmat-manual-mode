@@ -9,8 +9,8 @@ export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttr
     return (
         <div className={propsBoxClasses} {...rest}>
             <div className="flex items-center space-x-2">
-                <InputField className="w-12" label="x" value={`${snap.x}`} onChange={(e) => item.x = parseInt(e.target.value)} />
-                <InputField className="w-12" label="y" value={`${snap.y}`} onChange={(e) => item.y = parseInt(e.target.value)} />
+                <InputField className="w-12" label="x" horizontal={true} value={`${snap.x}`} onChange={(e) => item.x = parseInt(e.target.value)} />
+                <InputField className="w-12" label="y" horizontal={true} value={`${snap.y}`} onChange={(e) => item.y = parseInt(e.target.value)} />
             </div>
 
             <div className="!mt-6 space-y-2">
