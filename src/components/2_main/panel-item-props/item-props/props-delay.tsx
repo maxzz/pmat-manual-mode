@@ -7,7 +7,7 @@ export function PropsDelay({ item, ...rest }: { item: SrcriptItemDelay; } & HTML
     const snap = useSnapshot(item);
     return (
         <div className={propsBoxClasses} {...rest}>
-            <InputField label="Delay in ms" value={`${snap.n}`} onChange={(e) => item.n = parseInt(e.target.value)} />
+            <InputField className="w-12" horizontal={true} label="Delay in ms" value={`${snap.n}`} onChange={(e) => item.n = parseInt(e.target.value)} />
         </div>
     );
 }

@@ -2,7 +2,7 @@ import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
 import { SrcriptItemPos } from "@/store";
 import { propsBoxClasses, InputField } from "./ui";
-import { IconTargetFill, IconTarget } from "@/components/ui/icons";
+import { IconTarget } from "@/components/ui/icons";
 
 export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
