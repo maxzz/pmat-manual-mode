@@ -15,6 +15,7 @@ function createScriptItem(type: ScriptItemType): ScriptItem {
             const newItem: SrcriptItemKey = {
                 type: 'key',
                 char: 'Tab',
+                repeat: 1,
             };
             return newItem;
         }

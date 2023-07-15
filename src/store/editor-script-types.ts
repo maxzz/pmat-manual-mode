@@ -6,6 +6,7 @@ export type SrcriptItemField = {
 export type SrcriptItemKey = {
     type: 'key',
     char: string;
+    repeat: number;
 };
 
 export type SrcriptItemPos = {
