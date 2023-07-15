@@ -3,6 +3,7 @@ import { useSnapshot } from "valtio";
 import { SrcriptItemKey } from "@/store";
 import { propsBoxClasses, InputField } from "../ui";
 import { plural } from "@/utils";
+import { SelectOne } from "./select";
 
 const actionKeys: string[] = [
     'Tab',
@@ -54,6 +55,8 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
                 />
                 <div className="pb-1">{`${plural(item.repeat, 'time')}`}</div>
             </div>
+
+            <SelectOne items={actionKeys} />
 
             <InputField label="Shift" />
             <InputField label="Control" />
