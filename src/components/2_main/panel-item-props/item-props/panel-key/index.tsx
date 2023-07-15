@@ -2,6 +2,7 @@ import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
 import { SrcriptItemKey } from "@/store";
 import { propsBoxClasses, InputField } from "../ui";
+import { plural } from "@/utils";
 
 const actionKeys: string[] = [
     'Tab',
@@ -40,9 +41,9 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
         <div className={propsBoxClasses} {...rest}>
             <InputField label="Key" value={`${snap.char}`} onChange={(e) => item.char = e.target.value} />
 
-            <div className="flex items-end space-x-1">
-                <InputField className="w-12" horizontal label="Repeat" value={`${snap.repeat}`} onChange={(e) => item.repeat = parseInt(e.target.value)} />
-                <div className="pb-1">times</div>
+            <div className="flex items-end space-x-2">
+                <InputField className="w-10" horizontal label="Repeat" value={`${snap.repeat}`} onChange={(e) => item.repeat = parseInt(e.target.value)} />
+                <div className="pb-1">{`${plural(item.repeat, 'time')}`}</div>
             </div>
 
             <InputField label="Shift" />

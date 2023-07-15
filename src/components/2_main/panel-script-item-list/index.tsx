@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useSnapshot } from "valtio";
 import { clientState, editorState, moveScriptCursor, removeScriptItem, ScriptItem, swapScriptItems } from "@/store";
-import { classNames } from "@/utils";
+import { classNames, plural } from "@/utils";
 import { editorFrameClasses, focusClasses } from "../../shared-styles";
 import { Title } from "./title";
 import { ScrollList } from "./scroll-list";
@@ -12,7 +12,7 @@ import { MenuState, RowMenuButton } from "./row-popup-menu";
 function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: string; } {
     switch (item.type) {
         case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 w-4 h-4" />, details: `${item.id}` };
-        case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 w-4 h-4" />, details: `${item.char}` };
+        case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 w-4 h-4" />, details: `${item.char} ${item.repeat} ${plural(item.repeat, 'time')}` };
         case 'pos':   /**/ return { /**/ name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 mt-1 w-4 h-4" />, details: `${`x: ${item.x}, y: ${item.y}`}` };
         case 'delay': /**/ return { /**/ name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 w-4 h-4" />, details: `${item.n}` };
         default: {
@@ -53,29 +53,29 @@ export function PanelList() {
             <Title />
 
             {/* <ScrollList> */}
-                <div
-                    className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)}
-                    tabIndex={0}
-                    onKeyDown={(event) => moveScriptCursor(event.key)}
-                >
-                    {/* <ScrollList> */}
-                    {scriptItems.map((item, idx) => {
-                        if (!item) {
-                            return null;
-                        }
+            <div
+                className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)}
+                tabIndex={0}
+                onKeyDown={(event) => moveScriptCursor(event.key)}
+            >
+                {/* <ScrollList> */}
+                {scriptItems.map((item, idx) => {
+                    if (!item) {
+                        return null;
+                    }
 
-                        const menuState: MenuState = {
-                            onDelete: () => { removeScriptItem(idx); },
-                            onUp: () => { idx > 0 && swapScriptItems(idx, idx - 1); },
-                            onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
-                            hasUp: idx > 0,
-                            hasDn: idx < scriptItems.length - 1,
-                        };
+                    const menuState: MenuState = {
+                        onDelete: () => { removeScriptItem(idx); },
+                        onUp: () => { idx > 0 && swapScriptItems(idx, idx - 1); },
+                        onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
+                        hasUp: idx > 0,
+                        hasDn: idx < scriptItems.length - 1,
+                    };
 
-                        return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={itemMeta[idx].uuid} />;
-                    })}
-                    {/* </ScrollList> */}
-                </div>
+                    return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={itemMeta[idx].uuid} />;
+                })}
+                {/* </ScrollList> */}
+            </div>
             {/* </ScrollList> */}
         </div>
     );
