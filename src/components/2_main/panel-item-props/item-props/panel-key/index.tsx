@@ -42,7 +42,16 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
             <InputField label="Key" value={`${snap.char}`} onChange={(e) => item.char = e.target.value} />
 
             <div className="flex items-end space-x-2">
-                <InputField className="w-10" horizontal label="Repeat" value={`${snap.repeat}`} onChange={(e) => item.repeat = parseInt(e.target.value)} />
+                <InputField className="w-10" horizontal label="Repeat"
+                    value={`${snap.repeat}`}
+                    onChange={(e) => {
+                        let n = parseInt(e.target.value);
+                        if (Number.isNaN(n)) {
+                            n = 1;
+                        }
+                        item.repeat = n;
+                    }}
+                />
                 <div className="pb-1">{`${plural(item.repeat, 'time')}`}</div>
             </div>
 
