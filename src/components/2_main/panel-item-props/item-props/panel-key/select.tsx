@@ -1,19 +1,19 @@
+import { ForwardedRef, ReactNode, forwardRef } from 'react';
 import { IconChevronDown, IconDot } from '@/components/ui/icons';
 import * as S from '@radix-ui/react-select';
-import { ReactNode } from 'react';
 
-function Item({ value, children }: { value: string; children: ReactNode; }) {
+const Item = forwardRef(({ value, children }: { value: string; children: ReactNode; }, forwardRef: ForwardedRef<HTMLDivElement>) => {
     return (
-        <S.Item value="1">
-            <S.ItemText>
+        <S.Item className="relative h-8 bg-primary-400 flex items-center" value={value} ref={forwardRef}>
+            <S.ItemIndicator className="abosulte left-0 ">
+                <IconDot className="w-6 h-6" />
+            </S.ItemIndicator>
+            <S.ItemText className="pl-8">
                 {children}
             </S.ItemText>
-            <S.ItemIndicator>
-                <IconDot className="w-4 h-4" />
-            </S.ItemIndicator>
         </S.Item>
     );
-}
+});
 
 export function SelectOne({ items }: { items: string[]; }) {
     return (
@@ -24,11 +24,11 @@ export function SelectOne({ items }: { items: string[]; }) {
             </S.Trigger>
 
             <S.Portal>
-                <S.Content className="w-10 h-10">
+                <S.Content className="">
                     <S.Viewport>
-                        <Item value="1">1</Item>
-                        <Item value="2">2</Item>
-                        <Item value="3">3</Item>
+                        {items.map((item) => (
+                            <Item value={item} key={item}>{item}</Item>
+                        ))}
                     </S.Viewport>
                 </S.Content>
             </S.Portal>
