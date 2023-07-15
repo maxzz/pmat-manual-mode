@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 import { SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "@/store";
-import { PropsDelay } from "./props-delay";
-import { PropsField } from "./props-field";
-import { PropsKey } from "./props-key";
-import { PropsPos } from "./props-pos";
+import { PropsDelay } from "./panel-delay";
+import { PropsField } from "./panel-field";
+import { PropsKey } from "./panel-key";
+import { PropsPos } from "./panel-pos";
 
 export function getPropsView({ snap, item }: { snap: ScriptItem; item: ScriptItem; }): ReactNode {
     let rv: ReactNode | null = null;
