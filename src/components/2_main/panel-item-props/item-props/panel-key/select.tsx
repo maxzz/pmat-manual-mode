@@ -2,6 +2,7 @@ import { ForwardedRef, ReactNode, forwardRef } from 'react';
 import { IconCheck, IconChevronDown, IconChevronUp, IconDot } from '@/components/ui/icons';
 import * as S from '@radix-ui/react-select';
 import { focusClasses } from '@/components/shared-styles';
+import { classNames } from '@/utils';
 
 const item1Classes = 'text-[13px] \
 leading-none \
@@ -40,7 +41,7 @@ const scrollButtonClasses = "h-4 text-primary-200 bg-primary-800 flex items-cent
 export function SelectOne({ items }: { items: string[]; }) {
     return (
         <S.Root>
-            <S.Trigger className="w-full px-2 py-1 border-primary-500 border rounded flex items-center justify-between">
+            <S.Trigger className={classNames("w-full px-2 py-1 border-primary-500 border rounded flex items-center justify-between", focusClasses)}>
                 <S.Value placeholder="select" />
                 <S.Icon><IconChevronDown className="w-4 h-4" /> </S.Icon>
             </S.Trigger>
