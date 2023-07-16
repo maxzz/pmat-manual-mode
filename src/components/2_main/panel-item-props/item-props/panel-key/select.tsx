@@ -20,22 +20,22 @@ data-[highlighted]:outline-none \
 data-[highlighted]:bg-violet9 \
 data-[highlighted]:text-violet1';
 
-const itemClasses = "data-[highlighted]:text-red-300 data-[highlighted]:bg-green-200 data-[highlighted]:outline-none";
+const itemClasses = "data-[highlighted]:text-primary-200 data-[highlighted]:bg-primary-700 data-[highlighted]:outline-none";
 
 const Item = forwardRef(({ value, children }: { value: string; children: ReactNode; }, forwardRef: ForwardedRef<HTMLDivElement>) => {
     return (
-        <S.Item className={`relative h-7 pr-8 pl-6 bg-primary-800 flex items-center ${itemClasses}`} value={value} ref={forwardRef}>
+        <S.Item className={`relative h-7 pr-8 pl-6 bg-primary-800 rounded flex items-center ${itemClasses}`} value={value} ref={forwardRef}>
             <S.ItemText className="">
                 {children}
             </S.ItemText>
-            <S.ItemIndicator className="absolute left-0 ">
+            <S.ItemIndicator className="absolute left-1 ">
                 <IconCheck className="w-4 h-4" />
             </S.ItemIndicator>
         </S.Item>
     );
 });
 
-const scrollButtonClasses = "h-4 text-primary-200 bg-primary-700 flex items-center justify-center";
+const scrollButtonClasses = "h-4 text-primary-200 bg-primary-800 flex items-center justify-center";
 
 export function SelectOne({ items }: { items: string[]; }) {
     return (
@@ -52,7 +52,7 @@ export function SelectOne({ items }: { items: string[]; }) {
                         <IconChevronUp className="w-3 h-3" />
                     </S.ScrollUpButton>
 
-                    <S.Viewport className="px-4 bg-primary-800">
+                    <S.Viewport className="px-2 bg-primary-800">
                         {items.map((item) => (
                             <Item value={item} key={item}>{item}</Item>
                         ))}
