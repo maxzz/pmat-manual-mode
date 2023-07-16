@@ -1,5 +1,5 @@
 import { ForwardedRef, ReactNode, forwardRef } from 'react';
-import { IconChevronDown, IconDot } from '@/components/ui/icons';
+import { IconCheck, IconChevronDown, IconChevronUp, IconDot } from '@/components/ui/icons';
 import * as S from '@radix-ui/react-select';
 
 const item1Classes = 'text-[13px] \
@@ -24,12 +24,12 @@ const itemClasses = "data-[highlighted]:text-red-300 data-[highlighted]:bg-green
 const Item = forwardRef(({ value, children }: { value: string; children: ReactNode; }, forwardRef: ForwardedRef<HTMLDivElement>) => {
     return (
         <S.Item className={`relative h-8 pr-8 pl-6 bg-primary-400 flex items-center ${itemClasses}`} value={value} ref={forwardRef}>
-            <S.ItemIndicator className="abosulte left-0 ">
-                <IconDot className="w-6 h-6" />
-            </S.ItemIndicator>
-            <S.ItemText className="pl-8">
+            <S.ItemText className="">
                 {children}
             </S.ItemText>
+            <S.ItemIndicator className="absolute left-0 ">
+                <IconCheck className="w-4 h-4" />
+            </S.ItemIndicator>
         </S.Item>
     );
 });
@@ -40,15 +40,22 @@ export function SelectOne({ items }: { items: string[]; }) {
             <S.Trigger className="flex items-center space-x-2">
                 <S.Value placeholder="select" />
                 <S.Icon><IconChevronDown className="w-4 h-4" /> </S.Icon>
+                <IconCheck className="w-4 h-4" />
             </S.Trigger>
 
             <S.Portal>
-                <S.Content className="select-none">
-                    <S.Viewport>
+                <S.Content className="overflow-hidden select-none">
+                    <S.ScrollUpButton className="h-8 flex items-center justify-center">
+                        <IconChevronUp className="w-4 h-4" />
+                    </S.ScrollUpButton>
+                    <S.Viewport className="px-4">
                         {items.map((item) => (
                             <Item value={item} key={item}>{item}</Item>
                         ))}
                     </S.Viewport>
+                    <S.ScrollDownButton className="h-8 flex items-center justify-center">
+                        <IconChevronUp className="w-4 h-4" />
+                    </S.ScrollDownButton>
                 </S.Content>
             </S.Portal>
         </S.Root>
