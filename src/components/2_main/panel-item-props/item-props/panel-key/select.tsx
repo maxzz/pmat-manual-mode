@@ -24,13 +24,14 @@ data-[highlighted]:text-violet1';
 const itemClasses = "\
 data-[highlighted]:text-primary-50 \
 data-[highlighted]:bg-primary-700 \
-data-[highlighted]:border-red-500 \
-data-[highlighted]:border \
-data-[highlighted]:outline-none";
+data-[highlighted]:outline \
+data-[highlighted]:outline-1 \
+data-[highlighted]:outline-primary-500 \
+";
 
 const Item = forwardRef(({ value, children }: { value: string; children: ReactNode; }, forwardRef: ForwardedRef<HTMLDivElement>) => {
     return (
-        <S.Item className={`relative h-7 pr-8 pl-6 bg-primary-800 rounded flex items-center ${itemClasses}`} value={value} ref={forwardRef}>
+        <S.Item className={`relative h-7 pr-8 pl-6 py-1 bg-primary-800 rounded flex items-center ${itemClasses}`} value={value} ref={forwardRef}>
             <S.ItemText className="">
                 {children}
             </S.ItemText>
