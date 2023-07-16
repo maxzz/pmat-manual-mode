@@ -31,11 +31,11 @@ data-[highlighted]:outline-primary-500 \
 
 const Item = forwardRef(({ value, children }: { value: string; children: ReactNode; }, forwardRef: ForwardedRef<HTMLDivElement>) => {
     return (
-        <S.Item className={`relative h-7 pr-8 pl-6 py-1 bg-primary-800 rounded flex items-center ${itemClasses}`} value={value} ref={forwardRef}>
-            <S.ItemText className="">
+        <S.Item className={`relative h-7 pr-8 pl-6 py-2 bg-primary-800 rounded flex items-center ${itemClasses}`} value={value} ref={forwardRef}>
+            <S.ItemText className="text-[.55rem] h-6">
                 {children}
             </S.ItemText>
-            <S.ItemIndicator className="absolute left-1 ">
+            <S.ItemIndicator className="absolute left-1">
                 <IconCheck className="w-4 h-4" />
             </S.ItemIndicator>
         </S.Item>
@@ -53,13 +53,13 @@ export function SelectOne({ items }: { items: string[]; }) {
             </S.Trigger>
 
             <S.Portal>
-                <S.Content className="text-xs text-primary-300 border-primary-500 border rounded-md overflow-hidden select-none">
+                <S.Content className="text-xs text-primary-300 border-primary-500 border rounded-md shadow shadow-primary-500 overflow-hidden select-none">
 
                     <S.ScrollUpButton className={scrollButtonClasses}>
                         <IconChevronUp className="w-3 h-3" />
                     </S.ScrollUpButton>
 
-                    <S.Viewport className="px-2 bg-primary-800">
+                    <S.Viewport className="p-2 bg-primary-800">
                         {items.map((item) => (
                             <Item value={item} key={item}>{item}</Item>
                         ))}
