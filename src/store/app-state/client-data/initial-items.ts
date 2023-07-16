@@ -14,6 +14,6 @@ export const initialScriptItems: ScriptItem[] = [
         type: 'field', id: '456',
     },
     {
-        type: 'key', char: 'Enter',
+        type: 'key', char: 'Enter', repeat: 1,
     },
 ];
