@@ -21,7 +21,12 @@ data-[highlighted]:outline-none \
 data-[highlighted]:bg-violet9 \
 data-[highlighted]:text-violet1';
 
-const itemClasses = "data-[highlighted]:text-primary-200 data-[highlighted]:bg-primary-700 data-[highlighted]:outline-none";
+const itemClasses = "\
+data-[highlighted]:text-primary-50 \
+data-[highlighted]:bg-primary-700 \
+data-[highlighted]:border-red-500 \
+data-[highlighted]:border \
+data-[highlighted]:outline-none";
 
 const Item = forwardRef(({ value, children }: { value: string; children: ReactNode; }, forwardRef: ForwardedRef<HTMLDivElement>) => {
     return (
@@ -47,7 +52,7 @@ export function SelectOne({ items }: { items: string[]; }) {
             </S.Trigger>
 
             <S.Portal>
-                <S.Content className="text-xs text-primary-200 border-primary-500 border rounded-md overflow-hidden select-none">
+                <S.Content className="text-xs text-primary-300 border-primary-500 border rounded-md overflow-hidden select-none">
 
                     <S.ScrollUpButton className={scrollButtonClasses}>
                         <IconChevronUp className="w-3 h-3" />
