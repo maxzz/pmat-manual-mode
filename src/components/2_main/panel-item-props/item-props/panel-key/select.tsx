@@ -1,6 +1,7 @@
 import { ForwardedRef, ReactNode, forwardRef } from 'react';
 import { IconCheck, IconChevronDown, IconChevronUp, IconDot } from '@/components/ui/icons';
 import * as S from '@radix-ui/react-select';
+import { focusClasses } from '@/components/shared-styles';
 
 const item1Classes = 'text-[13px] \
 leading-none \
@@ -19,11 +20,13 @@ data-[highlighted]:outline-none \
 data-[highlighted]:bg-violet9 \
 data-[highlighted]:text-violet1';
 
+//focusClasses
 const itemClasses = "data-[highlighted]:text-red-300 data-[highlighted]:bg-green-200";
+const item2Classes = "border-transparent focus:border-transparent focus:ring-0";
 
 const Item = forwardRef(({ value, children }: { value: string; children: ReactNode; }, forwardRef: ForwardedRef<HTMLDivElement>) => {
     return (
-        <S.Item className={`relative h-8 pr-8 pl-6 bg-primary-400 flex items-center ${itemClasses}`} value={value} ref={forwardRef}>
+        <S.Item className={`relative h-7 pr-8 pl-6 bg-primary-700 flex items-center ${itemClasses} ${focusClasses}`} value={value} ref={forwardRef}>
             <S.ItemText className="">
                 {children}
             </S.ItemText>
@@ -37,25 +40,28 @@ const Item = forwardRef(({ value, children }: { value: string; children: ReactNo
 export function SelectOne({ items }: { items: string[]; }) {
     return (
         <S.Root>
-            <S.Trigger className="flex items-center space-x-2">
+            <S.Trigger className="w-full px-2 py-1 border-primary-500 border rounded flex items-center justify-between">
                 <S.Value placeholder="select" />
                 <S.Icon><IconChevronDown className="w-4 h-4" /> </S.Icon>
-                <IconCheck className="w-4 h-4" />
             </S.Trigger>
 
             <S.Portal>
-                <S.Content className="overflow-hidden select-none">
+                <S.Content className="text-xs border-red-500 border overflow-hidden select-none">
+
                     <S.ScrollUpButton className="h-8 flex items-center justify-center">
                         <IconChevronUp className="w-4 h-4" />
                     </S.ScrollUpButton>
-                    <S.Viewport className="px-4">
+
+                    <S.Viewport className="px-12 bg-red-500">
                         {items.map((item) => (
                             <Item value={item} key={item}>{item}</Item>
                         ))}
                     </S.Viewport>
+
                     <S.ScrollDownButton className="h-8 flex items-center justify-center">
                         <IconChevronUp className="w-4 h-4" />
                     </S.ScrollDownButton>
+
                 </S.Content>
             </S.Portal>
         </S.Root>
