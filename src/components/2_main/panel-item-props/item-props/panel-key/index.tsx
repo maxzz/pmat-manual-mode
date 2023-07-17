@@ -75,9 +75,9 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
 
             <SelectOne items={actionKeys} value={snap.char} onValueChange={(value) => item.char = value} />
 
-            <Modifier label="Shift" name="" item={item}/>
-            <Modifier label="Control" name="" item={item}/>
-            <Modifier label="Alt" name="" item={item}/>
+            <Modifier label="Shift" name="shift" item={item}/>
+            <Modifier label="Control" name="ctrl" item={item}/>
+            <Modifier label="Alt" name="alt" item={item}/>
         </div>
     );
 }
