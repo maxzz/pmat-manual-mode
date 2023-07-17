@@ -7,6 +7,9 @@ export type SrcriptItemKey = {
     type: 'key',
     char: string;
     repeat: number;
+    shift: number;
+    ctrl: number;
+    alt: number;
 };
 
 export type SrcriptItemPos = {
