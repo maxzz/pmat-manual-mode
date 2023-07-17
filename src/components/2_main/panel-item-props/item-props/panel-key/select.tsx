@@ -49,9 +49,9 @@ const triggerClasses = "w-full px-2 py-1 border-primary-500 border rounded flex 
 const contentClasses = "text-xs text-primary-300 bg-primary-900 border-primary-500 border rounded-md shadow shadow-primary-500 overflow-hidden select-none";
 const scrollButtonClasses = "h-4 text-primary-200 bg-primary-900 flex items-center justify-center";
 
-export function SelectOne({ items }: { items: string[]; }) {
+export function SelectOne({ items, value, onValueChange }: { items: string[]; value: string; onValueChange: (value: string) => void; }) {
     return (
-        <S.Root>
+        <S.Root value={value} onValueChange={onValueChange}>
             <S.Trigger className={classNames(triggerClasses, focusClasses)}>
                 <S.Value placeholder="select" />
                 <S.Icon><IconChevronDown className="w-3 h-3" /> </S.Icon>

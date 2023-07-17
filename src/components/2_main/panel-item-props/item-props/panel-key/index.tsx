@@ -56,7 +56,7 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
                 <div className="pb-1">{`${plural(item.repeat, 'time')}`}</div>
             </div>
 
-            <SelectOne items={actionKeys} />
+            <SelectOne items={actionKeys} value={snap.char} onValueChange={(value) => item.char = value} />
 
             <InputField label="Shift" />
             <InputField label="Control" />
