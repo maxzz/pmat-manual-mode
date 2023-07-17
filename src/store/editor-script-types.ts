@@ -12,8 +12,7 @@ export type SrcriptItemKey = {
     alt: number;
 };
 
-// type keys = keyof SrcriptItemKey
-// export type SrcriptItemModifiers = Omit<keys, 'type'>;
+export type SrcriptItemModifiers = Exclude<keyof SrcriptItemKey, 'type' | 'char' | 'repeat'>;
 
 export type SrcriptItemPos = {
     type: 'pos',
