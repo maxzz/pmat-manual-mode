@@ -49,7 +49,9 @@ const triggerClasses = "w-full px-2 py-1 border-primary-500 border rounded flex 
 const contentClasses = "text-xs text-primary-300 bg-primary-900 border-primary-500 border rounded-md shadow shadow-primary-500 overflow-hidden select-none";
 const scrollButtonClasses = "h-4 text-primary-200 bg-primary-900 flex items-center justify-center";
 
-export function SelectOne({ items, value, onValueChange }: { items: string[]; value: string; onValueChange: (value: string) => void; }) {
+export type SelectItem = string | readonly [label: string, value: string];
+
+export function SelectOne({ items, value, onValueChange }: { items: SelectItem[]; value: string; onValueChange: (value: string) => void; }) {
     return (
         <S.Root value={value} onValueChange={onValueChange}>
             <S.Trigger className={classNames(triggerClasses, focusClasses)}>
@@ -65,9 +67,11 @@ export function SelectOne({ items, value, onValueChange }: { items: string[]; va
                     </S.ScrollUpButton>
 
                     <S.Viewport className="p-2">
-                        {items.map((item) => (
-                            <Item value={item} key={item}>{item}</Item>
-                        ))}
+                        {items.map((item) => {
+                            const label = typeof item === 'string' ? item : item[0];
+                            const value = typeof item === 'string' ? item : item[1];
+                            return <Item value={value} key={value}>{label}</Item>;
+                        })}
                     </S.Viewport>
 
                     <S.ScrollDownButton className={scrollButtonClasses}>
