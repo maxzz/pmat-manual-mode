@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
-import { SrcriptItemKey } from "@/store";
+import { SrcriptItemKey, SrcriptItemModifiers } from "@/store";
 import { propsBoxClasses, InputField } from "../ui";
 import { classNames, plural } from "@/utils";
 import { SelectOne } from "./select";
@@ -44,7 +44,7 @@ const modifierKeys: string[] = [
     'Right',
 ];
 
-function Modifier({ label, name, item }: { label: string; name: string; item: SrcriptItemKey; }) {
+function Modifier({ label, name, item }: { label: string; name: SrcriptItemModifiers; item: SrcriptItemKey; }) {
     return (
         <div className={classNames("flex", "items-center space-x-2")}>
             <div className="text-xs">{label}</div>
