@@ -36,6 +36,19 @@ const actionKeys: string[] = [
     'F12',
 ];
 
+const modifierKeys: string[] = [
+    'None',
+    'Any',
+    'Left',
+    'Right',
+];
+
+function Modifier({label}: {label: string}) {
+    return(
+        <InputField label={label} />
+    )
+}
+
 export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
     return (
@@ -58,9 +71,9 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
 
             <SelectOne items={actionKeys} value={snap.char} onValueChange={(value) => item.char = value} />
 
-            <InputField label="Shift" />
-            <InputField label="Control" />
-            <InputField label="Alt" />
+            <Modifier label="Shift" />
+            <Modifier label="Control" />
+            <Modifier label="Alt" />
         </div>
     );
 }
