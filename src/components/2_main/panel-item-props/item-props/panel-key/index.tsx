@@ -2,8 +2,9 @@ import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
 import { SrcriptItemKey } from "@/store";
 import { propsBoxClasses, InputField } from "../ui";
-import { plural } from "@/utils";
+import { classNames, plural } from "@/utils";
 import { SelectOne } from "./select";
+import { focusClasses } from "@/components/shared-styles";
 
 const actionKeys: string[] = [
     'Tab',
@@ -43,10 +44,13 @@ const modifierKeys: string[] = [
     'Right',
 ];
 
-function Modifier({label}: {label: string}) {
-    return(
-        <InputField label={label} />
-    )
+function Modifier({ label, name, item }: { label: string; name: string; item: SrcriptItemKey; }) {
+    return (
+        <div className={classNames("flex", "items-center space-x-2")}>
+            <div className="text-xs">{label}</div>
+            <input className={classNames("px-2 py-1 bg-primary-700/50 rounded", focusClasses)} />
+        </div>
+    );
 }
 
 export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttributes<HTMLElement>) {
@@ -71,9 +75,9 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
 
             <SelectOne items={actionKeys} value={snap.char} onValueChange={(value) => item.char = value} />
 
-            <Modifier label="Shift" />
-            <Modifier label="Control" />
-            <Modifier label="Alt" />
+            <Modifier label="Shift" name="" item={item}/>
+            <Modifier label="Control" name="" item={item}/>
+            <Modifier label="Alt" name="" item={item}/>
         </div>
     );
 }

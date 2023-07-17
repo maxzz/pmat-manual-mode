@@ -16,6 +16,9 @@ function createScriptItem(type: ScriptItemType): ScriptItem {
                 type: 'key',
                 char: 'Tab',
                 repeat: 1,
+                shift: 0,
+                ctrl: 0,
+                alt: 0,
             };
             return newItem;
         }
