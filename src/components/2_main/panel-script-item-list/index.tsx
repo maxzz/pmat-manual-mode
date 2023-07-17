@@ -9,10 +9,10 @@ import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";
 import { MenuState, RowMenuButton } from "./row-popup-menu";
 
-function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: string; } {
+function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: ReactNode; } {
     switch (item.type) {
         case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 w-4 h-4" />, details: `${item.id}` };
-        case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 w-4 h-4" />, details: `${item.char} ${item.repeat} ${plural(item.repeat, 'time')}` };
+        case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 w-4 h-4" />, details: `<${item.char}> ${item.repeat} ${plural(item.repeat, 'time')}` };
         case 'pos':   /**/ return { /**/ name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 mt-1 w-4 h-4" />, details: `${`x: ${item.x}, y: ${item.y}`}` };
         case 'delay': /**/ return { /**/ name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 w-4 h-4" />, details: `${item.n}` };
         default: {
@@ -36,7 +36,7 @@ function RowFieldCompound({ item, idx, menuState }: { item: ScriptItem; idx: num
                 {name}
             </div>
 
-            <div className="px-4 text-xs">
+            <div className="px-4 text-[.65rem]">
                 {details}
             </div>
 
