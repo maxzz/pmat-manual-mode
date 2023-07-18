@@ -1,40 +1,9 @@
 import { HTMLAttributes, InputHTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
-import { SrcriptItemKey, SrcriptItemModifiers } from "@/store";
+import { SrcriptItemKey, SrcriptItemModifiers, actionKeys, modifierKeys } from "@/store";
 import { propsBoxClasses, InputField, InputSelect } from "../../ui";
 import { classNames, plural } from "@/utils";
-import { SelectItemText, SelectOne } from "../../ui";
-
-const actionKeys: string[] = [
-    'Tab',
-    'Enter',
-    'Esc',
-    'Left arrow',
-    'Right arrow',
-    'Up arrow',
-    'Down arrow',
-    'Page Up',
-    'Page Down',
-    'Home',
-    'End',
-    'Ins',
-    'Del',
-    'Backspace',
-    'Spacebar',
-    'Shift / Control / Alt',
-    'F1',
-    'F2',
-    'F3',
-    'F4',
-    'F5',
-    'F6',
-    'F7',
-    'F8',
-    'F9',
-    'F10',
-    'F11',
-    'F12',
-];
+import { SelectOne } from "../../ui";
 
 export function InputRepeat({ item }: { item: SrcriptItemKey; }) {
     const snap = useSnapshot(item);
@@ -54,13 +23,6 @@ export function InputRepeat({ item }: { item: SrcriptItemKey; }) {
         </div>
     );
 }
-
-const modifierKeys: SelectItemText[] = [
-    ['None', '0'],
-    ['Any', '3'],
-    ['Left', '1'],
-    ['Right', '2'],
-];
 
 function Modifier({ label, name, item }: { label: string; name: SrcriptItemModifiers; item: SrcriptItemKey; }) {
     const snap = useSnapshot(item);

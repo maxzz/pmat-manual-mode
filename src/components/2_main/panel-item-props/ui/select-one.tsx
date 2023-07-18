@@ -3,6 +3,7 @@ import { IconCheck, IconChevronDown, IconChevronUp, IconDot } from '@/components
 import * as S from '@radix-ui/react-select';
 import { focusClasses } from '@/components/shared-styles';
 import { classNames } from '@/utils';
+import { SelectItemText } from '@/store';
 
 const item1Classes = 'text-[13px] \
 leading-none \
@@ -48,8 +49,6 @@ const Item = forwardRef(({ value, children }: { value: string; children: ReactNo
 const triggerClasses = "w-full px-2 py-1 border-primary-500 border rounded flex items-center justify-between";
 const contentClasses = "text-xs text-primary-300 bg-primary-900 border-primary-500 border rounded-md shadow shadow-primary-500 overflow-hidden select-none";
 const scrollButtonClasses = "h-4 text-primary-200 bg-primary-900 flex items-center justify-center";
-
-export type SelectItemText = string | readonly [label: string, value: string];
 
 export type StringValueChange = {
     value: string;
