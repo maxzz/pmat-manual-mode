@@ -1,10 +1,9 @@
 import { HTMLAttributes, InputHTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
 import { SrcriptItemKey, SrcriptItemModifiers } from "@/store";
-import { propsBoxClasses, InputField } from "../ui";
+import { propsBoxClasses, InputField } from "../../ui";
 import { classNames, plural } from "@/utils";
-import { SelectItemText, SelectOne, StringValueChange } from "./select";
-import { focusClasses } from "@/components/shared-styles";
+import { SelectItemText, SelectOne, StringValueChange } from "../../ui";
 
 const actionKeys: string[] = [
     'Tab',

@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
 import { SrcriptItemField } from "@/store";
-import { propsBoxClasses, InputField } from "../ui";
+import { propsBoxClasses, InputField } from "../../ui";
 
 export function PropsField({ item, ...rest }: { item: SrcriptItemField; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);

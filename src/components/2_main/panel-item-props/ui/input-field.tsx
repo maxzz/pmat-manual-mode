@@ -10,5 +10,3 @@ export function InputField({ label, horizontal = false, className, ...rest }: { 
         </label>
     );
 }
-
-export const propsBoxClasses = "px-4 space-y-4";
