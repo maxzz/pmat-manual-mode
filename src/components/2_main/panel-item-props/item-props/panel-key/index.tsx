@@ -37,6 +37,34 @@ const actionKeys: string[] = [
     'F12',
 ];
 
+export function InputSelect({ label, horizontal = false, className, ...rest }: { label: string; horizontal?: boolean; } & StringValueChange & InputHTMLAttributes<HTMLInputElement>) {
+    return (
+        <div className={classNames("flex", horizontal ? "items-center space-x-2" : "flex-col space-y-1")}>
+            <div className="text-xs">{label}</div>
+            <SelectOne items={actionKeys} {...rest} />
+        </div>
+    );
+}
+
+export function InputRepeat({ item }: { item: SrcriptItemKey; }) {
+    const snap = useSnapshot(item);
+    return (
+        <div className="flex items-end space-x-1">
+            <InputField className="w-10" horizontal label="Repeat"
+                value={`${snap.repeat}`}
+                onChange={(e) => {
+                    let n = parseInt(e.target.value);
+                    if (Number.isNaN(n)) {
+                        n = 1;
+                    }
+                    item.repeat = n;
+                }}
+            />
+            <div className="pb-1">{`${plural(item.repeat, 'time')}`}</div>
+        </div>
+    );
+}
+
 const modifierKeys: SelectItemText[] = [
     ['None', '0'],
     ['Any', '3'],
@@ -55,39 +83,12 @@ function Modifier({ label, name, item }: { label: string; name: SrcriptItemModif
     );
 }
 
-export function InputSelect({ label, horizontal = false, className, ...rest }: { label: string; horizontal?: boolean; } & StringValueChange & InputHTMLAttributes<HTMLInputElement>) {
-    return (
-        <div className={classNames("flex", horizontal ? "items-center space-x-2" : "flex-col space-y-1")}>
-            <div className="text-xs">{label}</div>
-            {/* <input className={classNames("px-2 py-1 bg-primary-700/50 rounded", focusClasses, className)} {...rest} /> */}
-            <SelectOne items={actionKeys} {...rest} />
-        </div>
-    );
-}
-
-
 export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
     return (
         <div className={propsBoxClasses} {...rest}>
-            {/* <InputField label="Key" value={`${snap.char}`} onChange={(e) => item.char = e.target.value} />
-            <SelectOne items={actionKeys} value={snap.char} onValueChange={(value) => item.char = value} /> */}
             <InputSelect label="Key" value={snap.char} onValueChange={(value) => item.char = value} />
-
-            <div className="flex items-end space-x-2">
-                <InputField className="w-10" horizontal label="Repeat"
-                    value={`${snap.repeat}`}
-                    onChange={(e) => {
-                        let n = parseInt(e.target.value);
-                        if (Number.isNaN(n)) {
-                            n = 1;
-                        }
-                        item.repeat = n;
-                    }}
-                />
-                <div className="pb-1">{`${plural(item.repeat, 'time')}`}</div>
-            </div>
-
+            <InputRepeat item={item} />
             <Modifier label="Shift" name="shift" item={item} />
             <Modifier label="Control" name="ctrl" item={item} />
             <Modifier label="Alt" name="alt" item={item} />
