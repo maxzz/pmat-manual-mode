@@ -51,7 +51,12 @@ const scrollButtonClasses = "h-4 text-primary-200 bg-primary-900 flex items-cent
 
 export type SelectItemText = string | readonly [label: string, value: string];
 
-export function SelectOne({ items, value, onValueChange }: { items: SelectItemText[]; value: string; onValueChange: (value: string) => void; }) {
+export type StringValueChange = {
+    value: string;
+    onValueChange: (value: string) => void;
+}
+
+export function SelectOne({ items, value, onValueChange }: { items: SelectItemText[]; } & StringValueChange) {
     return (
         <S.Root value={value} onValueChange={onValueChange}>
             <S.Trigger className={classNames(triggerClasses, focusClasses)}>
