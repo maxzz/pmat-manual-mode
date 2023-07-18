@@ -49,7 +49,7 @@ export function InputRepeat({ item }: { item: SrcriptItemKey; }) {
     const snap = useSnapshot(item);
     return (
         <div className="flex items-end space-x-1">
-            <InputField className="w-10" labelClasses="min-w-[8ch]" label="Repeat" horizontal
+            <InputField className="w-10" labelClasses="min-w-[9ch]" label="Repeat" horizontal
                 value={`${snap.repeat}`}
                 onChange={(e) => {
                     let n = parseInt(e.target.value);
@@ -87,8 +87,10 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
     return (
         <div className={propsBoxClasses} {...rest}>
             <InputSelect label="Key" value={snap.char} onValueChange={(value) => item.char = value} />
+
             <InputRepeat item={item} />
-            <div className="relative p-2 border-primary-500 border rounded flex flex-col space-y-1">
+
+            <div className="relative p-2 border-primary-700 border rounded flex flex-col space-y-1">
                 <div className="absolute left-1 -top-2.5 px-1 bg-primary-800">Key modifiers</div>
                 <Modifier label="Shift" name="shift" item={item} />
                 <Modifier label="Control" name="ctrl" item={item} />
