@@ -43,7 +43,7 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
 
             <InputRepeat item={item} />
 
-            <div className="pt-4">
+            <div className="-mx-2 pt-3">
                 <div className="p-2 border-primary-700 border rounded flex flex-col space-y-1 relative">
                     <div className="absolute left-1 -top-2.5 px-1 bg-primary-800">Key modifiers</div>
                     <Modifier label="Shift" name="shift" item={item} />
