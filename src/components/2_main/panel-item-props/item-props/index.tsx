@@ -6,16 +6,14 @@ import { PropsKey } from "./panel-key";
 import { PropsPos } from "./panel-pos";
 
 export function getPropsView({ snap, item }: { snap: ScriptItem; item: ScriptItem; }): ReactNode {
-    let rv: ReactNode | null = null;
     switch (snap.type) {
-        case 'field': /**/ { rv = <PropsField item={item as SrcriptItemField} />; break; }
-        case 'key':   /**/ { rv = <PropsKey item={item as SrcriptItemKey} />; break; }
-        case 'pos':   /**/ { rv = <PropsPos item={item as SrcriptItemPos} />; break; }
-        case 'delay': /**/ { rv = <PropsDelay item={item as SrcriptItemDelay} />; break; }
+        case 'field': /**/ return <PropsField item={item as SrcriptItemField} />;
+        case 'key':   /**/ return <PropsKey item={item as SrcriptItemKey} />;
+        case 'pos':   /**/ return <PropsPos item={item as SrcriptItemPos} />;
+        case 'delay': /**/ return <PropsDelay item={item as SrcriptItemDelay} />;
         default: {
             const really: never = snap;
-            rv = null;
+            return  null;
         }
     }
-    return rv;
 }

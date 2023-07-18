@@ -3,7 +3,7 @@ import { useSnapshot } from "valtio";
 import { clientState, editorState, moveScriptCursor, removeScriptItem, ScriptItem, swapScriptItems } from "@/store";
 import { classNames, plural } from "@/utils";
 import { editorFrameClasses, focusClasses } from "../../shared-styles";
-import { Title } from "./title";
+import { Title } from "./panel-title";
 import { ScrollList } from "./scroll-list";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";

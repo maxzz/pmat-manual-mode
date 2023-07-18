@@ -4,7 +4,7 @@ import { ScriptItem, clientState, editorState } from "@/store";
 import { editorFrameClasses, focusClasses } from "../../shared-styles";
 import { classNames } from "@/utils";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
-import { Title } from "./title";
+import { Title } from "./panel-title";
 import { getPropsView } from "./item-props";
 
 function itemNameAndIcon(item: ScriptItem): { name: string; icon: ReactNode; } {
@@ -15,7 +15,7 @@ function itemNameAndIcon(item: ScriptItem): { name: string; icon: ReactNode; } {
         case 'delay': /**/ return { /**/ name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 w-4 h-4" />, };
         default: {
             const really: never = item;
-            return { icon: null, name: '', };
+            return { name: '', icon: null };
         }
     }
 }
