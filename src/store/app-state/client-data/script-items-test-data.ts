@@ -1,4 +1,4 @@
-import { SrcriptItemUnsaved, ScriptItem } from "@/store/editor-script-types";
+import { SrcriptItemUnsaved, ScriptItem } from "@/store/app-state/client-data/script-items-types";
 
 export const initialScriptItems: ScriptItem[] = [
     {
@@ -14,6 +14,6 @@ export const initialScriptItems: ScriptItem[] = [
         type: 'field', id: '456',
     },
     {
-        type: 'key', char: 'Enter', repeat: 1,
+        type: 'key', char: 'Enter', repeat: 1, shift: 0, ctrl: 0, alt: 0,
     },
 ];

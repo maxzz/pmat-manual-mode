@@ -1,10 +1,10 @@
 import { proxy } from 'valtio';
-import { SrcriptItemUnsaved, ScriptItem } from '@/store/editor-script-types';
+import { SrcriptItemUnsaved, ScriptItem } from '@/store/app-state/client-data/script-items-types';
 import { loadUiInitialState, watchClientStateCnages } from './storage-client-data';
 import { uuid } from '@/utils';
 
 export * from './script-items-access';
-export * from './initial-items';
+export * from './script-items-test-data';
 
 export type ClientState = { // stored data
     scriptItems: ScriptItem[];

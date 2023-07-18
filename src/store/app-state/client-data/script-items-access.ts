@@ -1,4 +1,4 @@
-import { ScriptItemType, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "@/store/editor-script-types";
+import { ScriptItemType, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "@/store/app-state/client-data/script-items-types";
 import { clientState, editorState } from ".";
 import { swap, uuid } from "@/utils";
 
