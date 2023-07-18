@@ -3,6 +3,7 @@ import { useSnapshot } from "valtio";
 import { SrcriptItemPos } from "@/store";
 import { propsBoxClasses, InputField } from "../../ui";
 import { IconTarget } from "@/components/ui/icons";
+import { TargetPositionIcon } from "./target-pos";
 
 export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
@@ -22,6 +23,9 @@ export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttr
                     {/* TODO: zoom in/out buttons */}
                     {/* TODO: button: select the click point */}
                     {/* app preview or drag with client rects recalculation */}
+
+                    <TargetPositionIcon />
+
                     <div className="text-[.65rem]">
                         <IconTarget className="w-12 h-12" />
                     </div>
