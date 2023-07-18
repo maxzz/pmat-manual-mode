@@ -36,10 +36,10 @@ const actionKeys: string[] = [
     'F12',
 ];
 
-export function InputSelect({ label, horizontal = false, className, ...rest }: { label: string; horizontal?: boolean; } & StringValueChange & InputHTMLAttributes<HTMLInputElement>) {
+export function InputSelect({ label, labelClasses, title, horizontal = false, className, ...rest }: { label: string; labelClasses?: string; horizontal?: boolean; } & StringValueChange & InputHTMLAttributes<HTMLInputElement>) {
     return (
-        <div className={classNames("flex", horizontal ? "items-center space-x-2" : "flex-col space-y-1")}>
-            <div className="text-xs">{label}</div>
+        <div className={classNames("flex", horizontal ? "items-center space-x-2" : "flex-col space-y-1")} title={title}>
+            <div className={classNames("text-xs", labelClasses)}>{label}</div>
             <SelectOne items={actionKeys} {...rest} />
         </div>
     );
@@ -86,15 +86,17 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
     const snap = useSnapshot(item);
     return (
         <div className={propsBoxClasses} {...rest}>
-            <InputSelect label="Key" value={snap.char} onValueChange={(value) => item.char = value} />
+            <InputSelect label="Key" labelClasses="min-w-[9ch]" horizontal value={snap.char} onValueChange={(value) => item.char = value} title="Key for this action" />
 
             <InputRepeat item={item} />
 
-            <div className="relative p-2 border-primary-700 border rounded flex flex-col space-y-1">
-                <div className="absolute left-1 -top-2.5 px-1 bg-primary-800">Key modifiers</div>
-                <Modifier label="Shift" name="shift" item={item} />
-                <Modifier label="Control" name="ctrl" item={item} />
-                <Modifier label="Alt" name="alt" item={item} />
+            <div className="pt-4">
+                <div className="p-2 border-primary-700 border rounded flex flex-col space-y-1 relative">
+                    <div className="absolute left-1 -top-2.5 px-1 bg-primary-800">Key modifiers</div>
+                    <Modifier label="Shift" name="shift" item={item} />
+                    <Modifier label="Control" name="ctrl" item={item} />
+                    <Modifier label="Alt" name="alt" item={item} />
+                </div>
             </div>
         </div>
     );

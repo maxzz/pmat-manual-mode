@@ -6,7 +6,7 @@ import { propsBoxClasses, InputField } from "../../ui";
 export function InputDelay({ item }: { item: SrcriptItemDelay; }) {
     const snap = useSnapshot(item);
     return (
-        <div className="flex items-end space-x-1">
+        <div className="flex items-end space-x-1" title="Delay in ms before performing the next action">
             <InputField className="w-12" label="Delay" horizontal
                 value={`${snap.n}`}
                 onChange={(e) => {
@@ -26,8 +26,7 @@ export function PropsDelay({ item, ...rest }: { item: SrcriptItemDelay; } & HTML
     const snap = useSnapshot(item);
     return (
         <div className={propsBoxClasses} {...rest}>
-            {/* <InputField className="w-12" horizontal={true} label="Delay in ms" value={`${snap.n}`} onChange={(e) => item.n = parseInt(e.target.value)} /> */}
-            <InputDelay item={item}/>
+            <InputDelay item={item} />
         </div>
     );
 }
