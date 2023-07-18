@@ -1,9 +1,9 @@
 import { HTMLAttributes, InputHTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
 import { SrcriptItemKey, SrcriptItemModifiers } from "@/store";
-import { propsBoxClasses, InputField } from "../../ui";
+import { propsBoxClasses, InputField, InputSelect } from "../../ui";
 import { classNames, plural } from "@/utils";
-import { SelectItemText, SelectOne, StringValueChange } from "../../ui";
+import { SelectItemText, SelectOne } from "../../ui";
 
 const actionKeys: string[] = [
     'Tab',
@@ -35,15 +35,6 @@ const actionKeys: string[] = [
     'F11',
     'F12',
 ];
-
-export function InputSelect({ label, labelClasses, title, horizontal = false, className, ...rest }: { label: string; labelClasses?: string; horizontal?: boolean; } & StringValueChange & InputHTMLAttributes<HTMLInputElement>) {
-    return (
-        <div className={classNames("flex", horizontal ? "items-center space-x-2" : "flex-col space-y-1")} title={title}>
-            <div className={classNames("text-xs", labelClasses)}>{label}</div>
-            <SelectOne items={actionKeys} {...rest} />
-        </div>
-    );
-}
 
 export function InputRepeat({ item }: { item: SrcriptItemKey; }) {
     const snap = useSnapshot(item);
@@ -86,7 +77,7 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
     const snap = useSnapshot(item);
     return (
         <div className={propsBoxClasses} {...rest}>
-            <InputSelect label="Key" labelClasses="min-w-[9ch]" horizontal value={snap.char} onValueChange={(value) => item.char = value} title="Key for this action" />
+            <InputSelect items={actionKeys} label="Key" labelClasses="min-w-[9ch]" horizontal value={snap.char} onValueChange={(value) => item.char = value} title="Key for this action" />
 
             <InputRepeat item={item} />
 
