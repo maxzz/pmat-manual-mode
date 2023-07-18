@@ -49,7 +49,7 @@ export function InputRepeat({ item }: { item: SrcriptItemKey; }) {
     const snap = useSnapshot(item);
     return (
         <div className="flex items-end space-x-1">
-            <InputField className="w-10" horizontal label="Repeat"
+            <InputField className="w-10" labelClasses="min-w-[8ch]" label="Repeat" horizontal
                 value={`${snap.repeat}`}
                 onChange={(e) => {
                     let n = parseInt(e.target.value);
