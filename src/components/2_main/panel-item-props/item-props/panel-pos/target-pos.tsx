@@ -4,10 +4,8 @@ import { buildState, PointXY } from "@/store";
 import { classNames } from "@/utils";
 import { IconTarget } from "@/components/ui/icons";
 
-export function TargetPositionIcon() {
+function PositionIcon() {
     const [iconVisible, setIconVisible] = useState(true);
-
-    const { getPosProgress } = useSnapshot(buildState);
 
     function startDragging(event: React.PointerEvent<HTMLDivElement>) {
         const elm = event.target as HTMLDivElement;
@@ -33,23 +31,16 @@ export function TargetPositionIcon() {
     }
 
     return (
-        <div className="flex items-end space-x-2">
-            <div className="">Test get target position:</div>
-
-            <div
-                className="w-12 h-12 bg-primary-900 rounded cursor-pointer"
-                onPointerDown={startDragging}
-                onPointerUp={stopDragging}
-                onPointerMove={dragging}
-                onPointerCancel={stopDragCanceled}
-            >
-                <IconTarget className={classNames("text-primary-200", !iconVisible && "invisible")} />
-            </div>
-
-            {getPosProgress &&
-                <div className="">{getPosProgress.point?.x}, {getPosProgress.point?.y}</div>
-            }
+        <div
+            className="w-12 h-12 bg-primary-900 rounded cursor-pointer"
+            onPointerDown={startDragging}
+            onPointerUp={stopDragging}
+            onPointerMove={dragging}
+            onPointerCancel={stopDragCanceled}
+        >
+            <IconTarget className={classNames("text-primary-200", !iconVisible && "invisible")} />
         </div>
+
     );
 }
 
@@ -58,4 +49,19 @@ function round2(num: number) {
 }
 function roundInt(num: number) {
     return Math.round(num);
+}
+
+export function TargetPositionIcon() {
+    const { getPosProgress } = useSnapshot(buildState);
+    return (
+        <div className="flex items-end space-x-2">
+            <div className="">Test get target position:</div>
+
+            <PositionIcon />
+
+            {getPosProgress &&
+                <div className="">{getPosProgress.point?.x}, {getPosProgress.point?.y}</div>
+            }
+        </div>
+    );
 }
