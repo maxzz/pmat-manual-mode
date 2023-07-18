@@ -88,9 +88,12 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
         <div className={propsBoxClasses} {...rest}>
             <InputSelect label="Key" value={snap.char} onValueChange={(value) => item.char = value} />
             <InputRepeat item={item} />
-            <Modifier label="Shift" name="shift" item={item} />
-            <Modifier label="Control" name="ctrl" item={item} />
-            <Modifier label="Alt" name="alt" item={item} />
+            <div className="relative p-2 border-primary-500 border rounded flex flex-col space-y-1">
+                <div className="absolute left-1 -top-2.5 px-1 bg-primary-800">Key modifiers</div>
+                <Modifier label="Shift" name="shift" item={item} />
+                <Modifier label="Control" name="ctrl" item={item} />
+                <Modifier label="Alt" name="alt" item={item} />
+            </div>
         </div>
     );
 }
