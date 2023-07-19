@@ -32,7 +32,7 @@ function PositionIcon() {
 
     return (
         <div
-            className="w-12 h-12 bg-primary-900 rounded cursor-tm-target"
+            className={classNames("w-12 h-12 bg-primary-900 rounded", !iconVisible ? "cursor-pointer" : "cursor-tm-target")}
             onPointerDown={startDragging}
             onPointerUp={stopDragging}
             onPointerMove={dragging}
