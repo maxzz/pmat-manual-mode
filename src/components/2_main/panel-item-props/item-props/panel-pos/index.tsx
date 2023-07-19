@@ -24,12 +24,12 @@ export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttr
                     {/* TODO: button: select the click point */}
                     {/* app preview or drag with client rects recalculation */}
 
-                    <TargetPositionIcon />
-
                     <div className="text-[.65rem]">
                         <IconTarget className="w-12 h-12" />
                     </div>
                 </div>
+
+                <TargetPositionIcon />
             </div>
         </div>
     );
