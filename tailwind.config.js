@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').colors} */
 import twColors from 'tailwindcss/colors';
-// const twColors = require('tailwindcss/colors');
+import cursors from './tailwind/cursors';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -36,8 +36,10 @@ export default {
                 slideUpAndFade: 'slideUpAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
                 slideRightAndFade: 'slideRightAndFade 400ms cubic-bezier(0.16, 1, 0.3, 1)',
             },
+            cursor: {
+                'tm-target': cursors.cursorTarget,
+            },
         },
     },
     plugins: [],
 }
-
