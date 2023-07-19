@@ -33,16 +33,16 @@ function PositionIcon() {
     function onPointerCancel(event: React.PointerEvent<HTMLDivElement>) {
         setIconVisible(true);
     }
-//, iconVisible ? "cursor-pointer" : "cursor-tm-target"
+//iconVisible ? "cursor-pointer" : "cursor-tm-target"
     return (
         <div
-            className={classNames("w-12 h-12 bg-primary-900 rounded")}
+            className={classNames("w-16 h-16 bg-primary-900 rounded cursor-tm-target")}
             onPointerDown={onPointerDown}
             onPointerUp={onPointerUp}
             onPointerMove={onPointerMove}
             onPointerCancel={onPointerCancel}
         >
-            <IconTarget className={classNames("text-primary-200", !iconVisible && "invisible")} />
+            <IconTarget className={classNames("text-primary-200 cursor-pointer pointer-events-none", !iconVisible && "invisible")} />
         </div>
 
     );
@@ -71,3 +71,4 @@ export function TargetPositionIcon() {
 }
 //TODO: add center dot to cursor icon
 //TODO: add contrast outline to cursor icon
+//TODO: scroll pos as part of panel-pos (how to implement runtime?)
