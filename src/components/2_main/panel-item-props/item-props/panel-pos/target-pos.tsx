@@ -9,6 +9,10 @@ function PositionIcon() {
 
     function startDragging(event: React.PointerEvent<HTMLDivElement>) {
         const elm = event.target as HTMLDivElement;
+
+        event.preventDefault();
+        elm.classList.add("cursor-tm-target")
+
         elm.setPointerCapture(event.pointerId);
         setIconVisible(false);
     }
@@ -32,7 +36,7 @@ function PositionIcon() {
 
     return (
         <div
-            className={classNames("w-12 h-12 bg-primary-900 rounded", !iconVisible ? "cursor-pointer" : "cursor-tm-target")}
+            className={classNames("w-12 h-12 bg-primary-900 rounded", iconVisible ? "cursor-pointer" : "cursor-tm-target")}
             onPointerDown={startDragging}
             onPointerUp={stopDragging}
             onPointerMove={dragging}
@@ -65,3 +69,5 @@ export function TargetPositionIcon() {
         </div>
     );
 }
+//TODO: add center dot to cursor icon
+//TODO: add contrast outline to cursor icon
