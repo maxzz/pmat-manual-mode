@@ -7,21 +7,21 @@ import { IconTarget } from "@/components/ui/icons";
 function PositionIcon() {
     const [iconVisible, setIconVisible] = useState(true);
 
-    function startDragging(event: React.PointerEvent<HTMLDivElement>) {
+    function onDown(event: React.PointerEvent<HTMLDivElement>) {
         const elm = event.target as HTMLDivElement;
 
-        event.preventDefault();
-        elm.classList.add("cursor-tm-target")
+        // event.preventDefault();
+        // elm.classList.add("cursor-tm-target")
 
         elm.setPointerCapture(event.pointerId);
         setIconVisible(false);
     }
 
-    function stopDragging(event: React.PointerEvent<HTMLDivElement>) {
+    function onUp(event: React.PointerEvent<HTMLDivElement>) {
         setIconVisible(true);
     }
 
-    function dragging(event: React.PointerEvent<HTMLDivElement>) {
+    function onMove(event: React.PointerEvent<HTMLDivElement>) {
         if (iconVisible) {
             return;
         }
@@ -30,17 +30,17 @@ function PositionIcon() {
         buildState.getPosProgress.point = point;
     }
 
-    function stopDragCanceled(event: React.PointerEvent<HTMLDivElement>) {
+    function onCancel(event: React.PointerEvent<HTMLDivElement>) {
         setIconVisible(true);
     }
 
     return (
         <div
             className={classNames("w-12 h-12 bg-primary-900 rounded", iconVisible ? "cursor-pointer" : "cursor-tm-target")}
-            onPointerDown={startDragging}
-            onPointerUp={stopDragging}
-            onPointerMove={dragging}
-            onPointerCancel={stopDragCanceled}
+            onPointerDown={onDown}
+            onPointerUp={onUp}
+            onPointerMove={onMove}
+            onPointerCancel={onCancel}
         >
             <IconTarget className={classNames("text-primary-200", !iconVisible && "invisible")} />
         </div>
