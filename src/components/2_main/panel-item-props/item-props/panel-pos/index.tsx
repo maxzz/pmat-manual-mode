@@ -1,5 +1,5 @@
-import { HTMLAttributes } from "react";
-import { useSnapshot } from "valtio";
+import { HTMLAttributes, useEffect } from "react";
+import { subscribe, useSnapshot } from "valtio";
 import { SrcriptItemPos, buildState } from "@/store";
 import { propsBoxClasses, InputField } from "../../ui";
 import { IconTarget } from "@/components/ui/icons";
@@ -30,6 +30,13 @@ function eventNumber(e: React.ChangeEvent<HTMLInputElement>, defValue: number = 
 
 export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
+    useEffect(() => {
+        const unsubscribe = subscribe(buildState.getPosProgress, () => {
+            item.x = buildState.getPosProgress.point?.x || 0;
+            item.y = buildState.getPosProgress.point?.y || 0;
+        });
+        return unsubscribe;
+    }, []);
     return (
         <div className={propsBoxClasses} {...rest}>
             <div className="flex items-center space-x-2">
