@@ -20,13 +20,21 @@ export function TargetPositionDisplay() {
     );
 }
 
+function eventNumber(e: React.ChangeEvent<HTMLInputElement>, defValue: number = 0) {
+    let n = parseInt(e.target.value);
+    if (Number.isNaN(n)) {
+        n = defValue;
+    }
+    return n;
+}
+
 export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
     return (
         <div className={propsBoxClasses} {...rest}>
             <div className="flex items-center space-x-2">
-                <InputField className="w-12" label="x" horizontal={true} value={`${snap.x}`} onChange={(e) => item.x = parseInt(e.target.value)} />
-                <InputField className="w-12" label="y" horizontal={true} value={`${snap.y}`} onChange={(e) => item.y = parseInt(e.target.value)} />
+                <InputField className="w-12" label="x" horizontal={true} value={`${snap.x}`} onChange={(e) => item.x = eventNumber(e)} />
+                <InputField className="w-12" label="y" horizontal={true} value={`${snap.y}`} onChange={(e) => item.y = eventNumber(e)} />
             </div>
 
             <div className="!mt-6 space-y-2">
