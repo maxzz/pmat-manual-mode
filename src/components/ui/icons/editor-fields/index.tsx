@@ -7,4 +7,5 @@ export * from './icon04-field';
 export * from './icon05-code';
 export * from './icon06-target';
 export * from './icon06-target-fill';
+export * from './icon07-color-picker-fill';
 export * from './icon07-color-picker';
