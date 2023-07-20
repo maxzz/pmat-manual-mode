@@ -5,20 +5,20 @@ import { propsBoxClasses, InputField } from "../../ui";
 import { IconColorPicker, IconColorPickerChrome, IconTarget } from "@/components/ui/icons";
 import { PositionIcon } from "./target-pos";
 
-export function TargetPositionDisplay() {
-    const { getPosProgress } = useSnapshot(buildState);
-    return (
-        <div className="flex items-end space-x-2">
-            <PositionIcon />
+// export function TargetPositionDisplay() {
+//     const { getPosProgress } = useSnapshot(buildState);
+//     return (
+//         <div className="flex items-end space-x-2">
+//             <PositionIcon />
 
-            <div className="">Test get target position:</div>
+//             <div className="">Test get target position:</div>
 
-            {getPosProgress &&
-                <div className="">{getPosProgress.point?.x}, {getPosProgress.point?.y}</div>
-            }
-        </div>
-    );
-}
+//             {getPosProgress &&
+//                 <div className="">{getPosProgress.point?.x}, {getPosProgress.point?.y}</div>
+//             }
+//         </div>
+//     );
+// }
 
 function eventNumber(e: React.ChangeEvent<HTMLInputElement>, defValue: number = 0) {
     let n = parseInt(e.target.value);
@@ -49,20 +49,25 @@ export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttr
                     Click on the preview window below to select the click point.
                 </div>
 
-                <div className="aspect-auto h-28 bg-primary-700 border-primary-400 border grid place-items-center cursor-pointer">
-                    {/* TODO: zoom in/out buttons */}
-                    {/* TODO: button: select the click point */}
-                    {/* app preview or drag with client rects recalculation */}
-
+                {/* <div className="aspect-auto h-28 bg-primary-700 border-primary-400 border grid place-items-center cursor-pointer">
                     <div className="text-[.65rem]">
                         <IconTarget className="w-12 h-12" />
                     </div>
+                </div> */}
+
+                <div className="flex space-x-2">
+                    <IconColorPickerChrome className="w-8 h-8" />
+                    <IconColorPicker className="w-7 h-7 stroke-[1.5]" />
+
+                    {/* <TargetPositionDisplay /> */}
+                    <PositionIcon />
                 </div>
 
-                <IconColorPickerChrome className="w-8 h-8" />
-                <IconColorPicker className="w-6 h-6 stroke-[1.5]" />
-                <TargetPositionDisplay />
             </div>
         </div>
     );
 }
+
+// TODO: zoom in/out buttons
+// TODO: button: select the click point
+// app preview or drag with client rects recalculation
