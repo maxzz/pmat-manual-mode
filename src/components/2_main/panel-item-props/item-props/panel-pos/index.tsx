@@ -2,7 +2,7 @@ import { HTMLAttributes, useEffect } from "react";
 import { subscribe, useSnapshot } from "valtio";
 import { SrcriptItemPos, buildState } from "@/store";
 import { propsBoxClasses, InputField } from "../../ui";
-import { IconTarget } from "@/components/ui/icons";
+import { IconColorPicker, IconTarget } from "@/components/ui/icons";
 import { PositionIcon } from "./target-pos";
 
 export function TargetPositionDisplay() {
@@ -59,6 +59,7 @@ export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttr
                     </div>
                 </div>
 
+<IconColorPicker className="w-8 h-8" />
                 <TargetPositionDisplay />
             </div>
         </div>
