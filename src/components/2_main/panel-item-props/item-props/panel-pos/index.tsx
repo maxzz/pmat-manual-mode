@@ -1,9 +1,24 @@
 import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
-import { SrcriptItemPos } from "@/store";
+import { SrcriptItemPos, buildState } from "@/store";
 import { propsBoxClasses, InputField } from "../../ui";
 import { IconTarget } from "@/components/ui/icons";
-import { TargetPositionIcon } from "./target-pos";
+import { PositionIcon } from "./target-pos";
+
+export function TargetPositionDisplay() {
+    const { getPosProgress } = useSnapshot(buildState);
+    return (
+        <div className="flex items-end space-x-2">
+            <PositionIcon />
+
+            <div className="">Test get target position:</div>
+
+            {getPosProgress &&
+                <div className="">{getPosProgress.point?.x}, {getPosProgress.point?.y}</div>
+            }
+        </div>
+    );
+}
 
 export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
@@ -29,7 +44,7 @@ export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttr
                     </div>
                 </div>
 
-                <TargetPositionIcon />
+                <TargetPositionDisplay />
             </div>
         </div>
     );

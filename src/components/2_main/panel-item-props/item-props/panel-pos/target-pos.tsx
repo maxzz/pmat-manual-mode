@@ -4,7 +4,7 @@ import { buildState, PointXY } from "@/store";
 import { classNames } from "@/utils";
 import { IconTarget } from "@/components/ui/icons";
 
-function PositionIcon() {
+export function PositionIcon() {
     const [iconVisible, setIconVisible] = useState(true);
 
     function onPointerDown(event: React.PointerEvent<HTMLDivElement>) {
@@ -66,20 +66,6 @@ function roundInt(num: number) {
     return Math.round(num);
 }
 
-export function TargetPositionIcon() {
-    const { getPosProgress } = useSnapshot(buildState);
-    return (
-        <div className="flex items-end space-x-2">
-            <div className="">Test get target position:</div>
-
-            <PositionIcon />
-
-            {getPosProgress &&
-                <div className="">{getPosProgress.point?.x}, {getPosProgress.point?.y}</div>
-            }
-        </div>
-    );
-}
 //TODO: add center dot to cursor icon
 //TODO: add contrast outline to cursor icon
 //TODO: scroll pos as part of panel-pos (how to implement runtime?)
