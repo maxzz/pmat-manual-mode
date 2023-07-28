@@ -2,8 +2,9 @@ import { HTMLAttributes, useEffect } from "react";
 import { subscribe, useSnapshot } from "valtio";
 import { SrcriptItemPos, buildState } from "@/store";
 import { propsBoxClasses, InputField } from "../../ui";
-import { IconColorPicker, IconColorPickerChrome, IconTarget } from "@/components/ui/icons";
+import { IconColorPicker, IconColorPickerChrome, IconLibra, IconTarget } from "@/components/ui/icons";
 import { PositionIcon } from "./target-pos";
+import { IconSearch } from "@/components/ui/icons/normal/icon31-search";
 
 // export function TargetPositionDisplay() {
 //     const { getPosProgress } = useSnapshot(buildState);
@@ -30,13 +31,18 @@ function eventNumber(e: React.ChangeEvent<HTMLInputElement>, defValue: number = 
 
 export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
+
     useEffect(() => {
         const unsubscribe = subscribe(buildState.getPosProgress, () => {
+            console.log('buildState.getPosProgress.point', buildState.getPosProgress.point);
+            //TODO: use debounce
+            
             item.x = buildState.getPosProgress.point?.x || 0;
             item.y = buildState.getPosProgress.point?.y || 0;
         });
         return unsubscribe;
     }, []);
+
     return (
         <div className={propsBoxClasses} {...rest}>
             <div className="flex items-center space-x-2">
@@ -55,12 +61,17 @@ export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttr
                     </div>
                 </div> */}
 
-                <div className="flex space-x-2">
+                <div className="flex items-center space-x-2">
                     <IconColorPickerChrome className="w-8 h-8" />
-                    <IconColorPicker className="w-7 h-7 stroke-[1.5]" />
+                    <div className="p-2 bg-primary-950 border-primary-700 border rounded shadow-inner shadow-primary-100/10">
+                        <IconColorPicker className="w-7 h-7 stroke-[1.5]" />
+                    </div>
 
                     {/* <TargetPositionDisplay /> */}
                     <PositionIcon />
+
+                    {/* <IconLibra className="w-6 h-6 stroke-[1]" />
+                    <IconSearch className="w-5 h-5 stroke-[1]" /> */}
                 </div>
 
             </div>

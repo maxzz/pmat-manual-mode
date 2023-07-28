@@ -12,3 +12,4 @@ export * from './icon20-chevron-down';
 export * from './icon21-chevron-up';
 export * from './icon22-chevron-right';
 export * from './icon30-sunnyvale';
+export * from './icon31-libra';
