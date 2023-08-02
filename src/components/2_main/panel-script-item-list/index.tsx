@@ -9,11 +9,12 @@ import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";
 import { MenuState, RowMenuButton } from "./row-popup-menu";
 
+const fieldDetails = (item: SrcriptItemField) => `${item.id}`;
+const keyDetails = (item: SrcriptItemKey) => `<${item.char}> ${item.repeat} ${plural(item.repeat, 'time')}`;
+const posDetails = (item: SrcriptItemPos) => `${`x: ${item.x}, y: ${item.y}`}`;
+const delayDetails = (item: SrcriptItemDelay) => `${item.n}`;
+
 function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: ReactNode; } {
-    const fieldDetails = (item: SrcriptItemField) => `${item.id}`;
-    const keyDetails = (item: SrcriptItemKey) => `<${item.char}> ${item.repeat} ${plural(item.repeat, 'time')}`;
-    const posDetails = (item: SrcriptItemPos) => `${`x: ${item.x}, y: ${item.y}`}`;
-    const delayDetails = (item: SrcriptItemDelay) => `${item.n}`;
     switch (item.type) {
         case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 w-4 h-4" />, details: fieldDetails(item) };
         case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 w-4 h-4" />, details: keyDetails(item) };
