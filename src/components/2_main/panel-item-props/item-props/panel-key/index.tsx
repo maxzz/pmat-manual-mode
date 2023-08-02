@@ -1,4 +1,4 @@
-import { HTMLAttributes, InputHTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
 import { SrcriptItemKey, SrcriptItemModifiers, actionKeys, modifierKeys } from "@/store";
 import { propsBoxClasses, InputField, InputSelect } from "../../ui";

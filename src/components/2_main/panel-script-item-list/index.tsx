@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { useSnapshot } from "valtio";
-import { clientState, editorState, moveScriptCursor, removeScriptItem, ScriptItem, swapScriptItems } from "@/store";
+import { clientState, editorState, moveScriptCursor, removeScriptItem, ScriptItem, SrcriptItemField, SrcriptItemKey, swapScriptItems } from "@/store";
 import { classNames, plural } from "@/utils";
 import { editorFrameClasses, focusClasses } from "../../shared-styles";
 import { Title } from "./panel-title";
@@ -10,8 +10,9 @@ import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";
 import { MenuState, RowMenuButton } from "./row-popup-menu";
 
 function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: ReactNode; } {
+    const fieldDetails = (item: SrcriptItemField) => `${item.id}`;
     switch (item.type) {
-        case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 w-4 h-4" />, details: `${item.id}` };
+        case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 w-4 h-4" />, details: fieldDetails(item) };
         case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 w-4 h-4" />, details: `<${item.char}> ${item.repeat} ${plural(item.repeat, 'time')}` };
         case 'pos':   /**/ return { /**/ name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 mt-1 w-4 h-4" />, details: `${`x: ${item.x}, y: ${item.y}`}` };
         case 'delay': /**/ return { /**/ name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 w-4 h-4" />, details: `${item.n}` };
