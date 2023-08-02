@@ -9,17 +9,20 @@ import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";
 import { MenuState, RowMenuButton } from "./row-popup-menu";
 
-const fieldDetails = (item: SrcriptItemField) => `${item.id}`;
-const keyDetails = (item: SrcriptItemKey) => `<${item.char}> ${item.repeat} ${plural(item.repeat, 'time')}`;
-const posDetails = (item: SrcriptItemPos) => `${`x: ${item.x}, y: ${item.y}`}`;
-const delayDetails = (item: SrcriptItemDelay) => `${item.n}`;
+const detailsFld = (item: SrcriptItemField) => `${item.id}`;
+// const detailsKey = (item: SrcriptItemKey) => `<${item.char}> ${item.repeat} ${plural(item.repeat, 'time')}`;
+const detailsKey = (item: SrcriptItemKey) => (<>
+    {item.char} {item.repeat} {plural(item.repeat, 'time')}
+</>);
+const detailsPos = (item: SrcriptItemPos) => `${`x: ${item.x}, y: ${item.y}`}`;
+const detailsDly = (item: SrcriptItemDelay) => `${item.n}`;
 
 function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: ReactNode; } {
     switch (item.type) {
-        case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 w-4 h-4" />, details: fieldDetails(item) };
-        case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 w-4 h-4" />, details: keyDetails(item) };
-        case 'pos':   /**/ return { /**/ name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 mt-1 w-4 h-4" />, details: posDetails(item) };
-        case 'delay': /**/ return { /**/ name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 w-4 h-4" />, details: delayDetails(item) };
+        case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 w-4 h-4" />, details: detailsFld(item) };
+        case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 w-4 h-4" />, details: detailsKey(item) };
+        case 'pos':   /**/ return { /**/ name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 mt-1 w-4 h-4" />, details: detailsPos(item) };
+        case 'delay': /**/ return { /**/ name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 w-4 h-4" />, details: detailsDly(item) };
         default: {
             const really: never = item;
             return { icon: null, name: '', details: '' };
