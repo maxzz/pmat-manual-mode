@@ -39,13 +39,24 @@ export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttr
     const snap = useSnapshot(item);
     return (
         <div className={propsBoxClasses} {...rest}>
-            <InputSelect items={actionKeys} label="Key" labelClasses="min-w-[9ch]" horizontal value={snap.char} onValueChange={(value) => item.char = value} title="Key for this action" />
+            <InputSelect
+                items={actionKeys}
+                label="Key"
+                labelClasses="min-w-[9ch]"
+                horizontal
+                value={snap.char}
+                onValueChange={(value) => item.char = value}
+                title="Key for this action"
+            />
 
             <InputRepeat item={item} />
 
             <div className="-mx-2 pt-3">
                 <div className="p-2 border-primary-700 border rounded flex flex-col space-y-1 relative">
-                    <div className="absolute left-1 -top-2.5 px-1 bg-primary-800">Key modifiers</div>
+                    <div className="absolute left-1 -top-2.5 px-1 bg-primary-100 dark:bg-primary-800">
+                        Key modifiers
+                    </div>
+
                     <Modifier label="Shift" name="shift" item={item} />
                     <Modifier label="Control" name="ctrl" item={item} />
                     <Modifier label="Alt" name="alt" item={item} />
