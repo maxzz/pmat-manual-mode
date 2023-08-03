@@ -1,6 +1,7 @@
 import { InputHTMLAttributes } from "react";
-import { StringValueChange, SelectOne, SelectItemText } from ".";
+import { StringValueChange, SelectOne } from ".";
 import { classNames } from "@/utils";
+import { SelectItemText } from "@/store";
 
 export function InputSelect({ items, label, labelClasses, title, horizontal = false, className, ...rest }: { items: SelectItemText[]; label: string; labelClasses?: string; horizontal?: boolean; } & StringValueChange & InputHTMLAttributes<HTMLInputElement>) {
     return (
