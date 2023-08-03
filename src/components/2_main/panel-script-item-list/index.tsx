@@ -9,8 +9,8 @@ import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";
 import { MenuState, RowMenuButton } from "./row-popup-menu";
 
-const detailKeyClasses = "px-1 py-px min-w-[1.5rem] text-[.55rem] leading-4 text-center border-primary-500 border rounded-sm \
-bg-gradient-to-b from-primary-500 to-primary-600 shadow-inner shadow-primary-300/20 \
+const detailKeyClasses = "px-1 py-px min-w-[1.5rem] text-[.55rem] leading-4 text-center border-primary-800 border rounded-sm \
+bg-gradient-to-b from-primary-600 to-primary-700 shadow-inner shadow-primary-300/20 \
 ";
 
 const detailsFld = (item: SrcriptItemField) => `${item.id}`;
