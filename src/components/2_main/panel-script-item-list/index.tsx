@@ -9,13 +9,14 @@ import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";
 import { MenuState, RowMenuButton } from "./row-popup-menu";
 
+const detailKeyClasses = "px-1 py-0.5 min-w-[2rem] text-[.55rem] leading-4 border-primary-500 border rounded-sm";
+
 const detailsFld = (item: SrcriptItemField) => `${item.id}`;
-// const detailsKey = (item: SrcriptItemKey) => `<${item.char}> ${item.repeat} ${plural(item.repeat, 'time')}`;
-const detailsKey = (item: SrcriptItemKey) => (<>
-    {item.char} {item.repeat} {plural(item.repeat, 'time')}
-</>);
 const detailsPos = (item: SrcriptItemPos) => `${`x: ${item.x}, y: ${item.y}`}`;
 const detailsDly = (item: SrcriptItemDelay) => `${item.n}`;
+const detailsKey = (item: SrcriptItemKey) => (<div className="flex items-center">
+    <div className={detailKeyClasses}>{item.char}</div> {item.repeat} {plural(item.repeat, 'time')}
+</div>);
 
 function rowText(item: ScriptItem): { name: string; icon: ReactNode; details: ReactNode; } {
     switch (item.type) {
