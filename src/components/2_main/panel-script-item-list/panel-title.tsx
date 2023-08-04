@@ -48,10 +48,12 @@ function ButtonAdd() {
     );
 }
 
+const titleClasses = "font-semibold text-yellow-700 dark:text-yellow-300";
+
 export function Title() {
     return (
         <div className="h-7 flex items-end justify-between">
-            <div className="pl-2">Fill in actions</div>
+            <div className={classNames("pl-2", titleClasses)}>Fill in actions</div>
             <ButtonAdd />
         </div>
     );
