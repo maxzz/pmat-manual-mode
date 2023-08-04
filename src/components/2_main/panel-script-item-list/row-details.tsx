@@ -5,9 +5,9 @@ import { plural } from "@/utils";
 
 const detailKeyClasses = "px-1 py-px min-w-[1.5rem] text-[.55rem] leading-4 text-center \
 bg-gradient-to-b \
-from-primary-200 to-primary-300/20 \
+from-primary-200/70 to-primary-300/20 \
 dark:from-primary-700/70 dark:to-primary-600 dark:shadow-primary-300/20 \
-shadow \
+shadow-sm \
 dark:shadow-inner \
 border-primary-400 \
 dark:border-primary-800 \
