@@ -56,3 +56,5 @@ dark:bg-primary-400/20 \
 outline-primary-400 \
 \
 outline-1 outline rounded-sm cursor-default";
+
+export const gropuTitleClasses = "font-semibold text-yellow-800 dark:text-yellow-300";

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { ScriptItemType, addScriptItem } from "@/store";
-import { focusClasses, menuContentClasses, menuItemClasses } from "@/components/shared-styles";
+import { focusClasses, gropuTitleClasses, menuContentClasses, menuItemClasses } from "@/components/shared-styles";
 import { IconAdd, IconDelay, IconField, IconKey, IconPos } from "@/components/ui/icons";
 import { classNames } from "@/utils";
 import * as Menu from '@radix-ui/react-dropdown-menu';
@@ -48,12 +48,10 @@ function ButtonAdd() {
     );
 }
 
-const titleClasses = "font-semibold text-yellow-700 dark:text-yellow-300";
-
 export function Title() {
     return (
         <div className="h-7 flex items-end justify-between">
-            <div className={classNames("pl-2", titleClasses)}>Fill in actions</div>
+            <div className={classNames("pl-2", gropuTitleClasses)}>Fill in actions</div>
             <ButtonAdd />
         </div>
     );
