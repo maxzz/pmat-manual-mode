@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { ScriptItemType, addScriptItem } from "@/store";
-import { focusClasses, gropuTitleClasses, menuContentClasses, menuItemClasses } from "@/components/shared-styles";
+import { focusClasses, gropuTitleClasses, menuContentClasses, menuItemClasses } from "@/components/ui/shared-styles";
 import { IconAdd, IconDelay, IconField, IconKey, IconPos } from "@/components/ui/icons";
 import { classNames } from "@/utils";
 import * as Menu from '@radix-ui/react-dropdown-menu';

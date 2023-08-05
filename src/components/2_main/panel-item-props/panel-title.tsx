@@ -1,4 +1,4 @@
-import { gropuTitleClasses } from "@/components/shared-styles";
+import { gropuTitleClasses } from "@/components/ui/shared-styles";
 import { classNames } from "@/utils";
 
 export function Title() {

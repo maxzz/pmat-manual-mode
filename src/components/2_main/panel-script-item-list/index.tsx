@@ -1,10 +1,10 @@
 import { useSnapshot } from "valtio";
 import { clientState, editorState, moveScriptCursor, removeScriptItem, ScriptItem, swapScriptItems } from "@/store";
 import { classNames } from "@/utils";
-import { editorFrameClasses, focusClasses } from "../../shared-styles";
+import { editorFrameClasses, focusClasses } from "../../ui/shared-styles";
 import { Title } from "./panel-title";
 import { ScrollList } from "./scroll-list";
-import { rowClasses, rowSelectedClasses } from "@/components/shared-styles";
+import { rowClasses, rowSelectedClasses } from "@/components/ui/shared-styles";
 import { MenuState, RowMenuButton } from "./row-popup-menu";
 import { rowDetails } from "./row-details";
 
