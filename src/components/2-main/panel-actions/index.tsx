@@ -31,38 +31,43 @@ function RowFieldCompound({ item, idx, menuState }: { item: ScriptItem; idx: num
     );
 }
 
-export function PanelList() {
+function PanellItems() {
     const { scriptItems } = useSnapshot(clientState);
     const { itemMeta } = useSnapshot(editorState);
+    return (<>
+        {/* <ScrollList> */}
+        <div
+            className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)}
+            tabIndex={0}
+            onKeyDown={(event) => moveScriptCursor(event.key)}
+        >
+            {/* <ScrollList> */}
+            {scriptItems.map((item, idx) => {
+                if (!item) {
+                    return null;
+                }
+
+                const menuState: MenuState = {
+                    onDelete: () => { removeScriptItem(idx); },
+                    onUp: () => { idx > 0 && swapScriptItems(idx, idx - 1); },
+                    onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
+                    hasUp: idx > 0,
+                    hasDn: idx < scriptItems.length - 1,
+                };
+
+                return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={itemMeta[idx].uuid} />;
+            })}
+            {/* </ScrollList> */}
+        </div>
+        {/* </ScrollList> */}
+    </>);
+}
+
+export function PanelActions() {
     return (
         <div className="h-full min-h-[20rem] flex flex-col space-y-1 select-none">
             <Title />
-
-            {/* <ScrollList> */}
-            <div
-                className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)}
-                tabIndex={0}
-                onKeyDown={(event) => moveScriptCursor(event.key)}
-            >
-                {/* <ScrollList> */}
-                {scriptItems.map((item, idx) => {
-                    if (!item) {
-                        return null;
-                    }
-
-                    const menuState: MenuState = {
-                        onDelete: () => { removeScriptItem(idx); },
-                        onUp: () => { idx > 0 && swapScriptItems(idx, idx - 1); },
-                        onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
-                        hasUp: idx > 0,
-                        hasDn: idx < scriptItems.length - 1,
-                    };
-
-                    return <RowFieldCompound item={item} idx={idx} menuState={menuState} key={itemMeta[idx].uuid} />;
-                })}
-                {/* </ScrollList> */}
-            </div>
-            {/* </ScrollList> */}
+            <PanellItems />
         </div>
     );
 }
