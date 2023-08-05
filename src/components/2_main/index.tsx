@@ -1,5 +1,5 @@
 import { PanelList } from './panel-actions';
-import { PanelProps } from './panel-item-props';
+import { PanelProps } from './panel-props';
 
 export function SectionMain() {
     return (
