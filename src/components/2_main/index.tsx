@@ -1,4 +1,4 @@
-import { PanelList } from './panel-script-item-list';
+import { PanelList } from './panel-actions';
 import { PanelProps } from './panel-item-props';
 
 export function SectionMain() {

@@ -5,7 +5,7 @@ import { editorFrameClasses, focusClasses } from "../../ui/shared-styles";
 import { classNames } from "@/utils";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { Title } from "./panel-title";
-import { getPropsView } from "./item-props";
+import { getPropsView } from "../panel-props/props";
 
 function itemNameAndIcon(item: ScriptItem): { name: string; icon: ReactNode; } {
     switch (item.type) {
