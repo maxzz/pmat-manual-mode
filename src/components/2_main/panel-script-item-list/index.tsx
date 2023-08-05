@@ -18,7 +18,7 @@ function RowFieldCompound({ item, idx, menuState }: { item: ScriptItem; idx: num
         >
             {icon}
 
-            <div className="px-2 font-semibold">
+            <div className="pl-3 pr-2 text-xs">
                 {name}
             </div>
 
