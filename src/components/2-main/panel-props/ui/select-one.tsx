@@ -5,22 +5,22 @@ import { focusClasses } from '@/components/ui/shared-styles';
 import { classNames } from '@/utils';
 import { SelectItemText } from '@/store';
 
-const item1Classes = 'text-[13px] \
-leading-none \
-text-violet11 \
-rounded-[3px] \
-flex \
-items-center \
-h-[25px] \
-pr-[35px] \
-pl-[25px] \
-relative \
-select-none \
-data-[disabled]:text-mauve8 \
-data-[disabled]:pointer-events-none \
-data-[highlighted]:outline-none \
-data-[highlighted]:bg-violet9 \
-data-[highlighted]:text-violet1';
+// const item1Classes = 'text-[13px] \
+// leading-none \
+// text-violet11 \
+// rounded-[3px] \
+// flex \
+// items-center \
+// h-[25px] \
+// pr-[35px] \
+// pl-[25px] \
+// relative \
+// select-none \
+// data-[disabled]:text-mauve8 \
+// data-[disabled]:pointer-events-none \
+// data-[highlighted]:outline-none \
+// data-[highlighted]:bg-violet9 \
+// data-[highlighted]:text-violet1';
 
 const popupColorClasses = "\
 bg-primary-100 \
@@ -30,6 +30,11 @@ dark:text-primary-300 \
 ";
 
 const itemClasses = "\
+select-none \
+ \
+data-[disabled]:opacity-50 \
+data-[disabled]:pointer-events-none \
+ \
 data-[highlighted]:text-primary-50 \
 data-[highlighted]:bg-primary-700 \
 data-[highlighted]:outline \
