@@ -35,11 +35,17 @@ select-none \
 data-[disabled]:opacity-50 \
 data-[disabled]:pointer-events-none \
  \
-data-[highlighted]:text-primary-50 \
-data-[highlighted]:bg-primary-700 \
+data-[highlighted]:text-primary-700 \
+data-[highlighted]:bg-primary-200 \
 data-[highlighted]:outline \
 data-[highlighted]:outline-1 \
 data-[highlighted]:outline-primary-500 \
+ \
+dark:data-[highlighted]:text-primary-50 \
+dark:data-[highlighted]:bg-primary-700 \
+dark:data-[highlighted]:outline \
+dark:data-[highlighted]:outline-1 \
+dark:data-[highlighted]:outline-primary-500 \
 ";
 
 const Item = forwardRef(({ value, children }: { value: string; children: ReactNode; }, forwardRef: ForwardedRef<HTMLDivElement>) => {
