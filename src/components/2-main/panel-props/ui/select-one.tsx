@@ -39,7 +39,7 @@ data-[highlighted]:text-primary-700 \
 data-[highlighted]:bg-primary-200 \
 data-[highlighted]:outline \
 data-[highlighted]:outline-1 \
-data-[highlighted]:outline-primary-500 \
+data-[highlighted]:outline-primary-300 \
  \
 dark:data-[highlighted]:text-primary-50 \
 dark:data-[highlighted]:bg-primary-700 \
