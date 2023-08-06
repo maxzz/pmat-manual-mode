@@ -12,4 +12,4 @@ dark:bg-primary-400/20 \
 \
 outline-primary-400 \
 \
-outline-1 outline rounded-sm cursor-default";
+outline-1 outline rounded-[3px] cursor-default";
