@@ -87,7 +87,7 @@ export function SelectOne({ items, value, onValueChange }: { items: SelectItemTe
                         <IconChevronUp className="w-3 h-3" />
                     </S.ScrollUpButton>
 
-                    <S.Viewport className="p-2">
+                    <S.Viewport className="px-1 py-2">
                         {items.map((item) => {
                             const label = typeof item === 'string' ? item : item[0];
                             const value = typeof item === 'string' ? item : item[1];
