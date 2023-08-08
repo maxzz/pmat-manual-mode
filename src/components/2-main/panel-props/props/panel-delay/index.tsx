@@ -4,7 +4,7 @@ import { SrcriptItemDelay } from "@/store";
 import { propsBoxClasses, InputField } from "../../ui";
 
 export function InputDelay({ item }: { item: SrcriptItemDelay; }) {
-    const snap = useSnapshot(item);
+    const snap = useSnapshot(item, { sync: true });
     return (
         <div className="flex items-end space-x-1" title="Delay in ms before performing the next action">
             <InputField className="w-12" label="Delay" horizontal
