@@ -23,7 +23,6 @@ export function InputDelay({ item }: { item: SrcriptItemDelay; }) {
 }
 
 export function PropsDelay({ item, ...rest }: { item: SrcriptItemDelay; } & HTMLAttributes<HTMLElement>) {
-    const snap = useSnapshot(item);
     return (
         <div className={propsBoxClasses} {...rest}>
             <InputDelay item={item} />
