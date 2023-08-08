@@ -6,7 +6,7 @@ import { classNames, plural } from "@/utils";
 import { SelectOne } from "../../ui";
 
 export function InputRepeat({ item }: { item: SrcriptItemKey; }) {
-    const snap = useSnapshot(item);
+    const snap = useSnapshot(item, { sync: true });
     return (
         <div className="flex items-end space-x-1">
             <InputField className="w-10" labelClasses="min-w-[9ch]" label="Repeat" horizontal
