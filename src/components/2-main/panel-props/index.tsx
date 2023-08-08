@@ -5,7 +5,7 @@ import { editorFrameClasses, focusClasses } from "../../ui/shared-styles";
 import { classNames } from "@/utils";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { Title } from "./panel-title";
-import { getPropsView } from "./props";
+import { getPropsViewComponent } from "./props";
 
 function itemNameAndIcon(item: ScriptItem): { name: string; icon: ReactNode; } {
     switch (item.type) {
@@ -27,7 +27,7 @@ function ItemProps({ idx }: { idx: number; }) {
         return null;
     }
     const item = clientState.scriptItems[idx];
-    const Comp: ReactNode = getPropsView({ snap, item });
+    const Comp: ReactNode = getPropsViewComponent({ snap, item });
     const { name, icon } = itemNameAndIcon(snap);
     return (
         <div className="text-xs">
