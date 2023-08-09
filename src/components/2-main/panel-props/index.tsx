@@ -20,6 +20,15 @@ function itemNameAndIcon(item: ScriptItem): { name: string; icon: ReactNode; } {
     }
 }
 
+function PropsTitle({ name, icon }: { name: string; icon: ReactNode; }) {
+    return (
+        <div className="mt-1 mb-4 px-2 text-sm font-semibold flex items-center justify-between">
+            <div className="">{name}</div>
+            {icon}
+        </div>
+    );
+}
+
 function ItemProps({ idx }: { idx: number; }) {
     const { scriptItems } = useSnapshot(clientState);
     const snap = scriptItems[idx];
@@ -31,11 +40,7 @@ function ItemProps({ idx }: { idx: number; }) {
     const { name, icon } = itemNameAndIcon(snap);
     return (
         <div className="text-xs">
-            <div className="mt-1 mb-4 text-sm font-semibold flex items-center justify-between">
-                <div className="">{name}</div>
-                {icon}
-            </div>
-
+            <PropsTitle name={name} icon={icon} />
             {Comp && Comp}
         </div>
     );
