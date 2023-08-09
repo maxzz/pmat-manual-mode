@@ -28,11 +28,13 @@ function MenuRow({ type }: { type: ScriptItemType; }) {
     );
 }
 
+const buttonClasses = "p-0.5 w-9 border-primary-500 dark:shadow-primary-100/10 hover:bg-primary-200 dark:hover:bg-primary-700 shadow border rounded outline-none grid place-items-center";
+
 function ButtonAdd() {
     return (
         <Menu.Root>
             <Menu.Trigger asChild>
-                <button className={classNames("p-1 border-primary-500 dark:shadow-primary-500/50 border rounded shadow outline-none", focusClasses)}>
+                <button className={classNames(buttonClasses, focusClasses)}>
                     <IconAdd className="w-3 h-3" />
                 </button>
             </Menu.Trigger>
