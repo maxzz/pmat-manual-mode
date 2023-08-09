@@ -20,11 +20,13 @@ function itemNameAndIcon(item: ScriptItem): { name: string; icon: ReactNode; } {
     }
 }
 
-function PropsTitle({ name, icon }: { name: string; icon: ReactNode; }) {
+function InPanelPropsTitle({ name, icon }: { name: string; icon: ReactNode; }) {
     return (
-        <div className="mt-1 mb-4 px-2 text-sm font-semibold flex items-center justify-between">
-            <div className="">{name}</div>
-            {icon}
+        <div className="-mx-1 -mt-1">
+            <div className="px-2 py-2 text-sm font-semibold bg-primary-200/50 dark:bg-primary-700/50 border-primary-500 border-b flex items-center justify-between">
+                <div className="">{name}</div>
+                {icon}
+            </div>
         </div>
     );
 }
@@ -39,8 +41,8 @@ function ItemProps({ idx }: { idx: number; }) {
     const Comp: ReactNode = getPropsViewComponent({ snap, item });
     const { name, icon } = itemNameAndIcon(snap);
     return (
-        <div className="text-xs">
-            <PropsTitle name={name} icon={icon} />
+        <div className="text-xs grid grid-rows-[auto,1fr] gap-2">
+            <InPanelPropsTitle name={name} icon={icon} />
             {Comp && Comp}
         </div>
     );
@@ -52,7 +54,7 @@ export function PanelProps() {
         <div className="space-y-1 select-none">
             <Title />
 
-            <div className={classNames("min-h-[20rem]", editorFrameClasses, focusClasses)}>
+            <div className={classNames("min-h-[20rem] overflow-hidden", editorFrameClasses, focusClasses)}>
                 <ItemProps idx={selectedIdx} />
             </div>
         </div>
