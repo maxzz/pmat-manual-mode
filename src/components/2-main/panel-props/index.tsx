@@ -4,7 +4,7 @@ import { ScriptItem, clientState, editorState } from "@/store";
 import { editorFrameClasses, focusClasses } from "../../ui/shared-styles";
 import { classNames } from "@/utils";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
-import { Title } from "./panel-title";
+import { PanelActionTitle } from "./panel-title";
 import { getPropsViewComponent } from "./props";
 
 function itemNameAndIcon(item: ScriptItem): { name: string; icon: ReactNode; } {
@@ -52,7 +52,7 @@ export function PanelProps() {
     const { selectedIdx } = useSnapshot(editorState);
     return (
         <div className="space-y-1 select-none">
-            <Title />
+            <PanelActionTitle />
 
             <div className={classNames("min-h-[20rem] overflow-hidden", editorFrameClasses, focusClasses)}>
                 <ItemProps idx={selectedIdx} />
