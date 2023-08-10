@@ -28,7 +28,7 @@ function MenuRow({ type }: { type: ScriptItemType; }) {
     );
 }
 
-const buttonClasses = "p-0.5 w-9 border-primary-500 dark:shadow-primary-100/10 hover:bg-primary-200 dark:hover:bg-primary-700 shadow border rounded outline-none grid place-items-center";
+const buttonClasses = "p-2 w-9 border-primary-500 dark:shadow-primary-100/10 hover:bg-primary-200 dark:hover:bg-primary-700 shadow border rounded outline-none grid place-items-center";
 
 function ButtonAdd() {
     return (
@@ -53,7 +53,10 @@ function ButtonAdd() {
 export function Title() {
     return (
         <div className="h-7 flex items-end justify-between">
-            <div className={classNames("pl-2", gropuTitleClasses)}>Fill in actions</div>
+            <div className={classNames("pl-2", gropuTitleClasses)}>
+                Fill in actions
+            </div>
+
             <ButtonAdd />
         </div>
     );
