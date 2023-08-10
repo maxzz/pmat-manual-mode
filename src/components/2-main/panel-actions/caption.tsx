@@ -50,7 +50,7 @@ function ButtonAdd() {
     );
 }
 
-export function Title() {
+export function PanelActionsTitle() {
     return (
         <div className="h-7 flex items-end justify-between">
             <div className={classNames("pl-2", gropuTitleClasses)}>

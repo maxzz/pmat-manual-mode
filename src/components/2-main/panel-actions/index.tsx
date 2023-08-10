@@ -2,7 +2,7 @@ import { useSnapshot } from "valtio";
 import { clientState, editorState, moveScriptCursor, removeScriptItem, ScriptItem, swapScriptItems } from "@/store";
 import { classNames } from "@/utils";
 import { editorFrameClasses, focusClasses } from "../../ui/shared-styles";
-import { Title } from "./caption";
+import { PanelActionsTitle } from "./caption";
 import { ScrollList } from "./scroll-list";
 import { rowClasses, rowSelectedClasses } from "@/components/ui/shared-styles";
 import { MenuState, RowMenuButton } from "./row-popup-menu";
@@ -66,7 +66,7 @@ function PanellItems() {
 export function PanelActions() {
     return (
         <div className="h-full min-h-[20rem] flex flex-col space-y-1 select-none">
-            <Title />
+            <PanelActionsTitle />
             <PanellItems />
         </div>
     );
