@@ -1,7 +1,7 @@
 import { useSnapshot } from "valtio";
 import { clientState, editorState, moveScriptCursor, removeScriptItem, ScriptItem, swapScriptItems } from "@/store";
 import { classNames } from "@/utils";
-import { editorFrameClasses, focusClasses } from "../../ui/shared-styles";
+import { editorFrameClasses, focusClasses } from "../../../../ui/shared-styles";
 import { PanelActionsTitle } from "./caption";
 import { ScrollList } from "./scroll-list";
 import { rowClasses, rowSelectedClasses } from "@/components/ui/shared-styles";

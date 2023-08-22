@@ -1,5 +1,5 @@
-import { PanelActions } from './panel-actions';
-import { PanelProps } from './panel-props';
+import { PanelActions } from './editors/02-script/panel-actions';
+import { PanelProps } from './editors/02-script/panel-props';
 
 export function SectionMain() {
     return (

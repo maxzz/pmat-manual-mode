@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { useSnapshot } from "valtio";
 import { ScriptItem, clientState, editorState } from "@/store";
-import { editorFrameClasses, focusClasses } from "../../ui/shared-styles";
+import { editorFrameClasses, focusClasses } from "../../../../ui/shared-styles";
 import { classNames } from "@/utils";
 import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
 import { PanelActionTitle } from "./panel-title";
