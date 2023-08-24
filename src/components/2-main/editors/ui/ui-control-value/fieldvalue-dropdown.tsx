@@ -1,5 +1,5 @@
 import * as menu from '@radix-ui/react-dropdown-menu';
-import { IconChevronDown, IconDot } from '@/components/ui';
+import { IconChevronDown, IconDot } from '@/components/ui/icons';
 import { classNames } from '@/utils';
 
 export function isKeyToClearDefault(key: string) {
