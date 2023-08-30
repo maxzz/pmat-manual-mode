@@ -16,7 +16,7 @@
         "@radix-ui/react-select": "^1.2.2",
         "jotai": "2.4.0",
         "jotai-valtio": "^0.3.0",
-        "pm-manifest": "1.0.15",
+        "pm-manifest": "latest",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-use": "^17.4.0",

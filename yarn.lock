@@ -1422,7 +1422,7 @@ pirates@^4.0.1:
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.6.tgz#3018ae32ecfcff6c29ba2267cbf21166ac1f36b9"
   integrity sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==
 
-pm-manifest@1.0.15:
+pm-manifest@latest:
   version "1.0.15"
   resolved "https://registry.yarnpkg.com/pm-manifest/-/pm-manifest-1.0.15.tgz#a1b4cc6f810bb74351dd49cb687e7c037a0e2566"
   integrity sha512-WChEyi4maWhVvwo91cm8lQS4GdlQvkIqotl6D8h/uD4VstD66cKBFn1dNpZhsB1VD+zT7p38c2eXb9VO4H20+Q==
