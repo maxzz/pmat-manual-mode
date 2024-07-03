@@ -29,7 +29,7 @@ function eventNumber(e: React.ChangeEvent<HTMLInputElement>, defValue: number = 
     return n;
 }
 
-export function PropsPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
+export function PropsEditorPos({ item, ...rest }: { item: SrcriptItemPos; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
 
     useEffect(() => {

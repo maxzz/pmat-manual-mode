@@ -3,7 +3,7 @@ import { useSnapshot } from "valtio";
 import { SrcriptItemField } from "@/store";
 import { propsBoxClasses, InputField } from "../../ui";
 
-export function PropsField({ item, ...rest }: { item: SrcriptItemField; } & HTMLAttributes<HTMLElement>) {
+export function PropsEditorField({ item, ...rest }: { item: SrcriptItemField; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item, { sync: true });
     return (
         <div className={propsBoxClasses} {...rest}>

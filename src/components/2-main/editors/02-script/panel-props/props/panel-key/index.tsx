@@ -35,7 +35,7 @@ function Modifier({ label, name, item }: { label: string; name: SrcriptItemModif
     );
 }
 
-export function PropsKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttributes<HTMLElement>) {
+export function PropsEditorKey({ item, ...rest }: { item: SrcriptItemKey; } & HTMLAttributes<HTMLElement>) {
     const snap = useSnapshot(item);
     return (
         <div className={propsBoxClasses} {...rest}>

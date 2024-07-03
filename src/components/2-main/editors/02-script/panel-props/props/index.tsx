@@ -1,16 +1,16 @@
 import { ReactNode } from "react";
 import { SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "@/store";
-import { PropsDelay } from "./panel-delay";
-import { PropsField } from "./panel-field";
-import { PropsKey } from "./panel-key";
-import { PropsPos } from "./panel-pos";
+import { PropsEditorDelay } from "./panel-delay";
+import { PropsEditorField } from "./panel-field";
+import { PropsEditorKey } from "./panel-key";
+import { PropsEditorPos } from "./panel-pos";
 
 export function getPropsEditor({ snap, item }: { snap: ScriptItem; item: ScriptItem; }): ReactNode {
     switch (snap.type) {
-        case 'field': /**/ return <PropsField item={item as SrcriptItemField} />;
-        case 'key':   /**/ return <PropsKey item={item as SrcriptItemKey} />;
-        case 'pos':   /**/ return <PropsPos item={item as SrcriptItemPos} />;
-        case 'delay': /**/ return <PropsDelay item={item as SrcriptItemDelay} />;
+        case 'field': /**/ return <PropsEditorField item={item as SrcriptItemField} />;
+        case 'key':   /**/ return <PropsEditorKey item={item as SrcriptItemKey} />;
+        case 'pos':   /**/ return <PropsEditorPos item={item as SrcriptItemPos} />;
+        case 'delay': /**/ return <PropsEditorDelay item={item as SrcriptItemDelay} />;
         default: {
             const really: never = snap;
             return  null;
