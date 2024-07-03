@@ -7,11 +7,13 @@ export function ScrollList({ children }: { children: ReactNode; }) {
             <Scroll.Viewport className="h-full min-h-0">
                 {children}
             </Scroll.Viewport>
+
             <Scroll.Scrollbar>
-                <Scroll.Thumb></Scroll.Thumb>
+                <Scroll.Thumb />
             </Scroll.Scrollbar>
+
             <Scroll.Scrollbar>
-                <Scroll.Thumb></Scroll.Thumb>
+                <Scroll.Thumb />
             </Scroll.Scrollbar>
         </Scroll.Root>
     );

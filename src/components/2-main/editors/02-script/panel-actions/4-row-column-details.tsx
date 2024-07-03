@@ -17,16 +17,18 @@ border rounded-sm \
 const detailsFld = (item: SrcriptItemField) => `${item.id}`;
 const detailsPos = (item: SrcriptItemPos) => `${`x: ${item.x}, y: ${item.y}`}`;
 const detailsDly = (item: SrcriptItemDelay) => `${item.n}`;
-const detailsKey = (item: SrcriptItemKey) => (<div className="flex items-center space-x-1">
-    <div className={detailKeyClasses}>{item.char}</div> <div>{item.repeat} {plural(item.repeat, 'time')}</div>
-</div>);
+const detailsKey = (item: SrcriptItemKey) => (
+    <div className="flex items-center space-x-1">
+        <div className={detailKeyClasses}>{item.char}</div> <div>{item.repeat} {plural(item.repeat, 'time')}</div>
+    </div>
+);
 
-export function rowDetails(item: ScriptItem): { name: string; icon: ReactNode; details: ReactNode; } {
+export function rowColumnDetails(item: ScriptItem): { name: string; icon: ReactNode; details: ReactNode; } {
     switch (item.type) {
-        case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 w-4 h-4" />, details: detailsFld(item) };
-        case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 w-4 h-4" />, details: detailsKey(item) };
-        case 'pos':   /**/ return { /**/ name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 mt-1 w-4 h-4" />, details: detailsPos(item) };
-        case 'delay': /**/ return { /**/ name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 w-4 h-4" />, details: detailsDly(item) };
+        case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 size-4" />, details: detailsFld(item) };
+        case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 size-4" />, details: detailsKey(item) };
+        case 'pos':   /**/ return { /**/ name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 mt-1 size-4" />, details: detailsPos(item) };
+        case 'delay': /**/ return { /**/ name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 size-4" />, details: detailsDly(item) };
         default: {
             const really: never = item;
             return { icon: null, name: '', details: '' };
