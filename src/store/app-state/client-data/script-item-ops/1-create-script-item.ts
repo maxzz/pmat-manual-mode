@@ -1,4 +1,4 @@
-import { ScriptItemType, ScriptItem, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay } from "../script-items-types";
+import type { ScriptItemType, ScriptItem, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay } from "../script-items-types";
 
 export function createScriptItem(type: ScriptItemType): ScriptItem {
     switch (type) {

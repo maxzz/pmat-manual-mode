@@ -24,9 +24,9 @@ export function PanellItems() {
                         return null;
                     }
                     const menuState: MenuState = {
-                        onDelete: () => { removeScriptItem(idx); },
-                        onUp: () => { idx > 0 && swapScriptItems(idx, idx - 1); },
-                        onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(idx, idx + 1); },
+                        onDelete: () => { removeScriptItem(gClientState, gEditorState, idx); },
+                        onUp: () => { idx > 0 && swapScriptItems(gClientState, gEditorState, idx, idx - 1); },
+                        onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(gClientState, gEditorState, idx, idx + 1); },
                         hasUp: idx > 0,
                         hasDn: idx < scriptItems.length - 1,
                     };
