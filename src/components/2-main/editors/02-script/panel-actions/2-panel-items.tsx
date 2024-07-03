@@ -1,14 +1,14 @@
 import { useSnapshot } from "valtio";
 import { gClientState, gEditorState, moveScriptCursor, removeScriptItem, swapScriptItems } from "@/store";
-import { classNames } from "@/utils";
-import { editorFrameClasses, focusClasses } from "../../../../ui/shared-styles";
-// import { ScrollList } from "./scroll-list";
-import { MenuState } from "./5-row-popup-menu";
+import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { SingleRow } from "./3-single-row";
+import { MenuState } from "./5-row-popup-menu";
+import { classNames } from "@/utils";
+// import { ScrollList } from "./scroll-list";
 
 export function PanellItems() {
     const { scriptItems } = useSnapshot(gClientState);
-    const { itemMetas: itemMeta } = useSnapshot(gEditorState);
+    const { itemMetas } = useSnapshot(gEditorState);
     return (<>
         {/* <ScrollList> */}
 
@@ -31,7 +31,7 @@ export function PanellItems() {
                         hasDn: idx < scriptItems.length - 1,
                     };
 
-                    return <SingleRow item={item} idx={idx} menuState={menuState} key={itemMeta[idx].uuid} />;
+                    return <SingleRow item={item} idx={idx} menuState={menuState} key={itemMetas[idx].uuid} />;
                 })
             }
             {/* </ScrollList> */}
