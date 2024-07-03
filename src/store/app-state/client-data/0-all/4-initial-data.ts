@@ -1,4 +1,4 @@
-import { SrcriptItemUnsaved, ScriptItem } from "@/store/app-state/client-data/script-items-types";
+import { SrcriptItemUnsaved, ScriptItem } from "../script-items-types";
 
 export const initialScriptItems: ScriptItem[] = [
     {

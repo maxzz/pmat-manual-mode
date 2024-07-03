@@ -1,7 +1,8 @@
 import { subscribe } from "valtio";
-import { ClientState, initialScriptItems, clientState } from ".";
+import type { ScriptItem } from "@/store";
+import { ClientState, clientState } from "./2-client-state";
+import { initialScriptItems } from "./4-initial-data";
 import { mergeDefaultAndLoaded } from "@/utils";
-import { ScriptItem } from "@/store";
 
 // Local storage
 
@@ -27,7 +28,7 @@ export function loadUiInitialState(): ClientState {
     return ready;
 }
 
-export function watchClientStateCnages() {
+export function watchClientStateChanges() {
     subscribe(clientState, () => {
         //console.log('store ui  ', appUi.uiState);
         const data = { ...clientState };
