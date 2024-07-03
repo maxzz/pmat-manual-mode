@@ -6,15 +6,6 @@ export type ClientState = { // stored data
     scriptItems: ScriptItem[];
 };
 
-export type ItemMeta = {
-    uuid: number;
-};
-
-export type EditorState = { // in mem data
-    selectedIdx: number;
-    itemMeta: ItemMeta[];
-};
-
 export const clientState = proxy<ClientState>(loadUiInitialState());
 
 watchClientStateChanges();
