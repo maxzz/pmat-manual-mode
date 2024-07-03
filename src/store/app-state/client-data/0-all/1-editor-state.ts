@@ -1,6 +1,6 @@
 import { proxy } from 'valtio';
 import type { ScriptItem, SrcriptItemUnsaved } from '../script-items-types';
-import { clientState } from './2-client-state';
+import { gClientState } from './2-client-state';
 import { uuid } from '@/utils';
 
 export type ItemMeta = {
@@ -9,20 +9,15 @@ export type ItemMeta = {
 
 export type EditorState = { // in mem data
     selectedIdx: number;
-    itemMeta: ItemMeta[];
+    itemMetas: ItemMeta[];
 };
 
-function initEditorState(scriptItems: ScriptItem[]) {
+function initEditorState(scriptItems: ScriptItem[]): EditorState {
     const items = scriptItems.map<SrcriptItemUnsaved>((_item) => ({ uuid: uuid.asRelativeNumber() }));
-    
     return {
         selectedIdx: 0,
-        itemMeta: items,
+        itemMetas: items,
     };
 }
 
-export const editorState = proxy<EditorState>(initEditorState(clientState.scriptItems));
-
-// if (editorState.selectedIdx > clientState.scriptItems.length) {
-//     editorState.selectedIdx = 0;
-// }
+export const gEditorState = proxy<EditorState>(initEditorState(gClientState.scriptItems));

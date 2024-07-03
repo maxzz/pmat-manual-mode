@@ -1,6 +1,6 @@
 import { subscribe } from "valtio";
 import type { ScriptItem } from "@/store";
-import { ClientState, clientState } from "./2-client-state";
+import { ClientState, gClientState } from "./2-client-state";
 import { initialScriptItems } from "./4-initial-data";
 import { mergeDefaultAndLoaded } from "@/utils";
 
@@ -29,11 +29,11 @@ export function loadUiInitialState(): ClientState {
 }
 
 export function watchClientStateChanges() {
-    subscribe(clientState, () => {
+    subscribe(gClientState, () => {
         //console.log('store ui  ', appUi.uiState);
-        const data = { ...clientState };
+        const data = { ...gClientState };
 
-        (data as any).scriptItems = clientState.scriptItems.map((item) => {
+        (data as any).scriptItems = gClientState.scriptItems.map((item) => {
             const newItem: Omit<ScriptItem, 'unsaved'> = { ...item };
             delete (newItem as any).unsaved;
             return newItem;

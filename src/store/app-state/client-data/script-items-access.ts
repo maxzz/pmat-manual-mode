@@ -1,5 +1,5 @@
 import { ScriptItemType, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "./script-items-types";
-import { clientState, editorState } from "./0-all";
+import { gClientState, gEditorState } from "./0-all";
 import { swap, uuid } from "@/utils";
 
 function createScriptItem(type: ScriptItemType): ScriptItem {
@@ -46,40 +46,40 @@ function createScriptItem(type: ScriptItemType): ScriptItem {
 
 export function addScriptItem(type: ScriptItemType) {
     let item = createScriptItem(type);
-    clientState.scriptItems.push(item);
-    editorState.itemMeta.push({ uuid: uuid.asRelativeNumber() });
+    gClientState.scriptItems.push(item);
+    gEditorState.itemMetas.push({ uuid: uuid.asRelativeNumber() });
 }
 
 export function removeScriptItem(idx: number) {
-    clientState.scriptItems.splice(idx, 1);
-    editorState.itemMeta.splice(idx, 1);
+    gClientState.scriptItems.splice(idx, 1);
+    gEditorState.itemMetas.splice(idx, 1);
 }
 
 export function swapScriptItems(idxCurrent: number, idxNew: number) {
-    if (editorState.selectedIdx === idxCurrent) {
-        editorState.selectedIdx = idxNew;
+    if (gEditorState.selectedIdx === idxCurrent) {
+        gEditorState.selectedIdx = idxNew;
     }
-    swap(clientState.scriptItems, idxCurrent, idxNew);
-    swap(editorState.itemMeta, idxCurrent, idxNew);
+    swap(gClientState.scriptItems, idxCurrent, idxNew);
+    swap(gEditorState.itemMetas, idxCurrent, idxNew);
 }
 
 export function moveScriptCursor(key: string) {
-    if (editorState.itemMeta.length) {
+    if (gEditorState.itemMetas.length) {
         switch (key) {
             case 'ArrowUp': {
-                (editorState.selectedIdx > 0) && editorState.selectedIdx--;
+                (gEditorState.selectedIdx > 0) && gEditorState.selectedIdx--;
                 break;
             }
             case 'ArrowDown': {
-                (editorState.selectedIdx < editorState.itemMeta.length - 1) && editorState.selectedIdx++;
+                (gEditorState.selectedIdx < gEditorState.itemMetas.length - 1) && gEditorState.selectedIdx++;
                 break;
             }
             case 'Home': {
-                editorState.selectedIdx = 0;
+                gEditorState.selectedIdx = 0;
                 break;
             }
             case 'End': {
-                editorState.selectedIdx = editorState.itemMeta.length - 1;
+                gEditorState.selectedIdx = gEditorState.itemMetas.length - 1;
                 break;
             }
         }

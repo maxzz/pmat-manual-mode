@@ -1,20 +1,20 @@
 import { useSnapshot } from "valtio";
-import { clientState, editorState } from "@/store";
+import { gClientState, gEditorState } from "@/store";
 import { InPanelPropsTitle } from "./3-panel-editor-title";
 import { getPropsEditor } from "../props";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { classNames } from "@/utils";
 
 export function ItemPropsEditor() {
-    const { scriptItems } = useSnapshot(clientState);
-    const { selectedIdx } = useSnapshot(editorState);
+    const { scriptItems } = useSnapshot(gClientState);
+    const { selectedIdx } = useSnapshot(gEditorState);
 
     const snap = scriptItems[selectedIdx];
     if (!snap) {
         return null;
     }
 
-    const item = clientState.scriptItems[selectedIdx];
+    const item = gClientState.scriptItems[selectedIdx];
     const propsEditor = getPropsEditor({ snap, item });
 
     return (

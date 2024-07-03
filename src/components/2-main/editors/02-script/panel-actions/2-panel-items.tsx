@@ -1,5 +1,5 @@
 import { useSnapshot } from "valtio";
-import { clientState, editorState, moveScriptCursor, removeScriptItem, swapScriptItems } from "@/store";
+import { gClientState, gEditorState, moveScriptCursor, removeScriptItem, swapScriptItems } from "@/store";
 import { classNames } from "@/utils";
 import { editorFrameClasses, focusClasses } from "../../../../ui/shared-styles";
 // import { ScrollList } from "./scroll-list";
@@ -7,8 +7,8 @@ import { MenuState } from "./5-row-popup-menu";
 import { SingleRow } from "./3-single-row";
 
 export function PanellItems() {
-    const { scriptItems } = useSnapshot(clientState);
-    const { itemMeta } = useSnapshot(editorState);
+    const { scriptItems } = useSnapshot(gClientState);
+    const { itemMetas: itemMeta } = useSnapshot(gEditorState);
     return (<>
         {/* <ScrollList> */}
 
