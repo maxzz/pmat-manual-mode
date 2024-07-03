@@ -1,22 +1,27 @@
-import React, { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, KeyboardEvent } from "react";
 import { PrimitiveAtom as PA, useAtom } from "jotai";
 import { ValueAs, ValueLife } from "@/store/manifest";
 import { getValueUiState, mapIndexToValueLife } from "./select-uitils";
-import { Dropdown, isKeyToClearDefault } from "./fieldvalue-dropdown";
+import { Dropdown, isKeyToClearDefault } from "./3-fieldvalue-dropdown";
 import { classNames } from "@/utils";
 
 const containerClasses = "\
-grid grid-cols-[minmax(0,1fr)_auto] rounded-sm overflow-hidden \
-ring-primary-600 focus-within:ring-primary-600 dark:focus-within:ring-primary-400 focus-within:ring-offset-primary-200 dark:focus-within:ring-offset-primary-800 \
-focus-within:ring-1 focus-within:ring-offset-1";
+ring-primary-600 \
+\
+focus-within:ring-primary-600 dark:focus-within:ring-primary-400 \
+focus-within:ring-offset-primary-200 dark:focus-within:ring-offset-primary-800 \
+\
+focus-within:ring-1 focus-within:ring-offset-1 \
+\
+grid grid-cols-[minmax(0,1fr)_auto] rounded-sm overflow-hidden";
 
-type FieldValueProps = {
+type FieldValueUiProps = InputHTMLAttributes<HTMLInputElement> & {
     useIt: boolean;
     valueLifeAtom: PA<ValueLife>;
     choosevalue: string | undefined;
-} & InputHTMLAttributes<HTMLInputElement>;
+};
 
-export function FieldValueUi({ useIt, valueLifeAtom, choosevalue, className, ...rest }: FieldValueProps) {
+export function FieldValueUi({ useIt, valueLifeAtom, choosevalue, className, ...rest }: FieldValueUiProps) {
     const [valueLife, setValueLife] = useAtom(valueLifeAtom);
 
     const {
@@ -39,7 +44,7 @@ export function FieldValueUi({ useIt, valueLifeAtom, choosevalue, className, ...
         setValueLife((v) => ({ ...v, value, isRef: false, valueAs: ValueAs.askReuse, isNon: false, }));
     }
 
-    function onSetKey(event: React.KeyboardEvent) {
+    function onSetKey(event: KeyboardEvent) {
         showAsRef && isKeyToClearDefault(event.key) &&
             setValueLife((v) => ({ ...v, value: '', isRef: false, valueAs: ValueAs.askReuse, isNon: true, }));
     }
