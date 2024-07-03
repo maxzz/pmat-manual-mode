@@ -1,5 +1,5 @@
-import { ScriptItemType, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "./script-items-types";
-import { gClientState, gEditorState } from "./0-all";
+import { ScriptItemType, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "../script-items-types";
+import { gClientState, gEditorState } from "../0-all";
 import { swap, uuid } from "@/utils";
 
 function createScriptItem(type: ScriptItemType): ScriptItem {
