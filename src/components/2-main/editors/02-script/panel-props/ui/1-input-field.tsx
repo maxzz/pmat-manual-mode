@@ -2,21 +2,25 @@ import { InputHTMLAttributes } from "react";
 import { classNames } from "@/utils";
 import { focusClasses } from "@/components/ui/shared-styles";
 
-const inputTextClasses = "px-2 py-1 \
+const inputTextClasses = "\
+px-2 py-1 \
+bg-primary-100 dark:bg-primary-700/50 \
 border-primary-400 border dark:border-none \
-bg-primary-100 dark:bg-primary-700/50 rounded \
-";
+rounded";
 
-type InputFieldProps = {
+type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
     label: string;
-    horizontal?: boolean;
     labelClasses?: string;
+    horizontal?: boolean;
 };
 
-export function InputField({ label, horizontal = false, className, labelClasses, ...rest }: InputFieldProps & InputHTMLAttributes<HTMLInputElement>) {
+export function InputField({ label, labelClasses, horizontal, className, ...rest }: InputFieldProps) {
     return (
         <label className={classNames("flex", horizontal ? "items-center space-x-2" : "flex-col space-y-1")}>
-            <div className={classNames("text-xs", labelClasses)}>{label}</div>
+            <div className={classNames("text-xs", labelClasses)}>
+                {label}
+            </div>
+
             <input className={classNames(inputTextClasses, focusClasses, className)} {...rest} />
         </label>
     );

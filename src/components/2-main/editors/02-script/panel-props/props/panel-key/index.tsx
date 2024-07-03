@@ -3,7 +3,7 @@ import { useSnapshot } from "valtio";
 import { SrcriptItemKey, SrcriptItemModifiers, actionKeys, modifierKeys } from "@/store";
 import { propsBoxClasses, InputField, InputSelect } from "../../ui";
 import { classNames, plural } from "@/utils";
-import { SelectOne } from "../../ui";
+import { InputSelectUi } from "../../ui";
 
 export function InputRepeat({ item }: { item: SrcriptItemKey; }) {
     const snap = useSnapshot(item, { sync: true });
@@ -29,7 +29,7 @@ function Modifier({ label, name, item }: { label: string; name: SrcriptItemModif
     return (
         <div className={classNames("max-w-[10rem] flex items-center space-x-2")}>
             <div className="min-w-[8ch] text-xs">{label}</div>
-            <SelectOne items={modifierKeys} value={`${snap[name]}`} onValueChange={(value) => item[name] = +value} />
+            <InputSelectUi items={modifierKeys} value={`${snap[name]}`} onValueChange={(value) => item[name] = +value} />
             {/* <input className={classNames("px-2 py-1 bg-primary-700/50 rounded", focusClasses)} /> */}
         </div>
     );

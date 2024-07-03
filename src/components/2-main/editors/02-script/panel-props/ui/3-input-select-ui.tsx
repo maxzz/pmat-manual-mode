@@ -23,30 +23,26 @@ import { SelectItemText } from '@/store';
 // data-[highlighted]:text-violet1';
 
 const popupColorClasses = "\
-bg-primary-100 \
-dark:bg-primary-900 \
-text-primary-900 \
-dark:text-primary-300 \
-";
+bg-primary-100 dark:bg-primary-900 \
+text-primary-900 dark:text-primary-300";
 
 const itemClasses = "\
-select-none \
- \
 data-[disabled]:opacity-50 \
 data-[disabled]:pointer-events-none \
  \
 data-[highlighted]:text-primary-700 \
 data-[highlighted]:bg-primary-200 \
+data-[highlighted]:outline-primary-300 \
 data-[highlighted]:outline \
 data-[highlighted]:outline-1 \
-data-[highlighted]:outline-primary-300 \
  \
 dark:data-[highlighted]:text-primary-50 \
 dark:data-[highlighted]:bg-primary-700 \
+dark:data-[highlighted]:outline-primary-600 \
 dark:data-[highlighted]:outline \
 dark:data-[highlighted]:outline-1 \
-dark:data-[highlighted]:outline-primary-600 \
-";
+\
+select-none";
 
 const Item = forwardRef(({ value, children }: { value: string; children: ReactNode; }, forwardRef: ForwardedRef<HTMLDivElement>) => {
     return (
@@ -55,8 +51,9 @@ const Item = forwardRef(({ value, children }: { value: string; children: ReactNo
                 <S.ItemText className="text-[.55rem] h-6">
                     {children}
                 </S.ItemText>
+
                 <S.ItemIndicator className="absolute left-1">
-                    <IconCheck className="w-3 h-3" />
+                    <IconCheck className="size-3" />
                 </S.ItemIndicator>
             </div>
         </S.Item>
@@ -67,36 +64,42 @@ const triggerClasses = "w-full px-2 py-1 border-primary-400 dark:border-primary-
 const contentClasses = `text-xs ${popupColorClasses} border-primary-500 border rounded-md shadow shadow-primary-500 overflow-hidden select-none`;
 const scrollButtonClasses = `h-4 ${popupColorClasses} flex items-center justify-center`;
 
-export type StringValueChange = {
+export type StringValueChangeProps = {
     value: string;
     onValueChange: (value: string) => void;
-}
+};
 
-export function SelectOne({ items, value, onValueChange }: { items: SelectItemText[]; } & StringValueChange) {
+type InputSelectUiProps = StringValueChangeProps & {
+    items: SelectItemText[];
+};
+
+export function InputSelectUi({ items, value, onValueChange }: InputSelectUiProps) {
     return (
         <S.Root value={value} onValueChange={onValueChange}>
             <S.Trigger className={classNames(triggerClasses, focusClasses)}>
                 <S.Value placeholder="select" />
-                <S.Icon><IconChevronDown className="w-3 h-3" /> </S.Icon>
+                <S.Icon><IconChevronDown className="size-3" /> </S.Icon>
             </S.Trigger>
 
             <S.Portal>
                 <S.Content className={contentClasses}>
 
                     <S.ScrollUpButton className={scrollButtonClasses}>
-                        <IconChevronUp className="w-3 h-3" />
+                        <IconChevronUp className="size-3" />
                     </S.ScrollUpButton>
 
                     <S.Viewport className="px-1 py-2">
-                        {items.map((item) => {
-                            const label = typeof item === 'string' ? item : item[0];
-                            const value = typeof item === 'string' ? item : item[1];
-                            return <Item value={value} key={value}>{label}</Item>;
-                        })}
+                        {items.map(
+                            (item) => {
+                                const label = typeof item === 'string' ? item : item[0];
+                                const value = typeof item === 'string' ? item : item[1];
+                                return <Item value={value} key={value}>{label}</Item>;
+                            })
+                        }
                     </S.Viewport>
 
                     <S.ScrollDownButton className={scrollButtonClasses}>
-                        <IconChevronDown className="w-3 h-3" />
+                        <IconChevronDown className="size-3" />
                     </S.ScrollDownButton>
 
                 </S.Content>
