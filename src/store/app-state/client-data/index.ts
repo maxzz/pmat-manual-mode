@@ -1,5 +1,5 @@
 import { proxy } from 'valtio';
-import { SrcriptItemUnsaved, ScriptItem } from '@/store/app-state/client-data/script-items-types';
+import { SrcriptItemUnsaved, ScriptItem } from './script-items-types';
 import { loadUiInitialState, watchClientStateCnages } from './storage-client-data';
 import { uuid } from '@/utils';
 

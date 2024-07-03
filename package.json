@@ -1,15 +1,8 @@
 {
     "name": "pmat-manual-mode",
     "private": true,
-    "version": "0.0.0",
+    "version": "0.1.0",
     "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "tsc && vite build",
-        "preview": "vite preview",
-        "predeploy": "yarn build",
-        "deploy": "gh-pages -d dist"
-    },
     "dependencies": {
         "@radix-ui/react-dropdown-menu": "^2.0.5",
         "@radix-ui/react-scroll-area": "^1.0.4",
@@ -33,5 +26,12 @@
         "tailwindcss": "3.4.4",
         "typescript": "5.5.3",
         "vite": "5.3.2"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "predeploy": "pnpm build",
+        "deploy": "gh-pages -d dist"
     }
 }
