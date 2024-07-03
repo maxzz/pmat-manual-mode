@@ -15,7 +15,14 @@ export function PanellItems() {
         <div
             className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)}
             tabIndex={0}
-            onKeyDown={(event) => moveScriptCursor(event.key)}
+            onKeyDown={
+                (event) => {
+                    const newIdx = moveScriptCursor(gEditorState.selectedIdx, gEditorState.itemMetas.length, event.key);
+                    if (newIdx !== undefined) {
+                        gEditorState.selectedIdx = newIdx;
+                    }
+                }
+            }
         >
             {/* <ScrollList> */}
             {scriptItems.map(
