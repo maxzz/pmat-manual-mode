@@ -14,7 +14,9 @@ export function setSelectedIdx(editorState: EditorState, idxNew: number, idxCurr
 export function addScriptItem(clientState: ScriptState, editorState: EditorState, type: ScriptItemKey) {
     let item: ScriptItem = {
         ...createScriptItem(type),
-        uuid: uuid.asRelativeNumber(),
+        unsaved: {
+            uuid: uuid.asRelativeNumber(),
+        },
     };
     clientState.scriptItems.push(item);
     editorState.metaItems.push({ uuid: uuid.asRelativeNumber(), isSelected: false });

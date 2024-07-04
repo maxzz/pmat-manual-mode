@@ -28,7 +28,7 @@ export function loadUiInitialStateFromStorage(): ScriptState {
 
     const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData });
 
-    ready.scriptItems.forEach((item) => item.uuid = uuid.asRelativeNumber());
+    ready.scriptItems.forEach((item) => item.unsaved = { uuid: uuid.asRelativeNumber() });
 
     return ready;
 }
