@@ -1,21 +1,14 @@
-import { proxy, subscribe } from 'valtio';
-import { initializeUiState } from './3-ui-state-set';
-import { mergeDefaultAndLoaded } from '@/utils';
-import { AppUi, appUi } from '.';
+import type { AppUi } from "./1-ui-state";
+import { mergeDefaultAndLoaded } from "@/utils";
 
 const STORAGE_UI_KEY = 'pmat-manual-mode:ui';
 const STORAGE_UI_VER = 'v1';
 
-const initialAppUi: AppUi = {
-    uiState: {
-        darkMode: true,
-    },
-};
-
 // Local storage
 
-export function loadUiInitialState(): AppUi {
+export function loadUiInitialState(initialAppUi: AppUi): AppUi {
     let storageUi;
+    
     let storageUiStr = localStorage.getItem(STORAGE_UI_KEY);
     if (storageUiStr) {
         try {
@@ -34,10 +27,6 @@ export function loadUiInitialState(): AppUi {
     return ready;
 }
 
-export function watchUiStateCnages() {
-    subscribe(appUi.uiState, () => {
-        //console.log('store ui  ', appUi.uiState);
-
-        localStorage.setItem(STORAGE_UI_KEY, JSON.stringify({ [STORAGE_UI_VER]: appUi.uiState }));
-    });
+export function saveUiState(appUi: AppUi) {
+    localStorage.setItem(STORAGE_UI_KEY, JSON.stringify({ [STORAGE_UI_VER]: appUi.uiState }));
 }
