@@ -1,9 +1,9 @@
-import type { ScriptItemType } from "../script-items-types";
+import type { ScriptItemKey } from "../script-items-types";
 import type { ScriptState, EditorState } from "../0-all";
 import { createScriptItem } from "./1-create-script-item";
 import { swap, uuid } from "@/utils";
 
-export function addScriptItem(clientState: ScriptState, editorState: EditorState, type: ScriptItemType) {
+export function addScriptItem(clientState: ScriptState, editorState: EditorState, type: ScriptItemKey) {
     let item = createScriptItem(type);
     clientState.scriptItems.push(item);
     editorState.metaItems.push({ uuid: uuid.asRelativeNumber() });

@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
-import { ScriptItemType, addScriptItem, gScriptState, gEditorState } from "@/store";
+import { ScriptItemKey, addScriptItem, gScriptState, gEditorState } from "@/store";
 import * as Menu from '@radix-ui/react-dropdown-menu';
 import { focusClasses, gropuTitleClasses, menuContentClasses, menuItemClasses } from "@/components/ui/shared-styles";
 import { IconAdd, IconDelay, IconField, IconKey, IconPos } from "@/components/ui/icons";
 import { classNames } from "@/utils";
 
-function rowText(type: ScriptItemType): { name: string; icon: ReactNode; } {
+function rowText(type: ScriptItemKey): { name: string; icon: ReactNode; } {
     switch (type) {
         case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 size-4" /> };
         case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 size-4" /> };
@@ -18,7 +18,7 @@ function rowText(type: ScriptItemType): { name: string; icon: ReactNode; } {
     }
 }
 
-function MenuRow({ type }: { type: ScriptItemType; }) {
+function MenuRow({ type }: { type: ScriptItemKey; }) {
     const { name, icon } = rowText(type);
     return (
         <Menu.Item
@@ -26,7 +26,10 @@ function MenuRow({ type }: { type: ScriptItemType; }) {
             onClick={() => addScriptItem(gScriptState, gEditorState, type)}
         >
             {icon}
-            <div className="">{name}</div>
+            
+            <div>
+                {name}
+            </div>
         </Menu.Item>
     );
 }

@@ -7,7 +7,7 @@ import { SrcriptItemDelay } from "./4-item-delay";
 
 export type ScriptItem = SrcriptItemField | SrcriptItemKey | SrcriptItemPos | SrcriptItemDelay;
 
-export type ScriptItemType = { //  "field" | "key" | "pos" | "delay"
+export type ScriptItemKey = { //  "field" | "key" | "pos" | "delay"
     [K in keyof ScriptItem]: ScriptItem[K];
 }['type'];
 
