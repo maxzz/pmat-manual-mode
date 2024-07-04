@@ -7,15 +7,20 @@ import { rowColumnDetails } from "./4-row-column-details";
 
 const singleRowClasses = "py-0.5 grid grid-cols-[min-content,5rem,1fr,min-content] items-center";
 
-export function SingleRow({ scriptItem, idx, menuState }: { scriptItem: ScriptItem; idx: number; menuState: MenuState; }) {
+export function SingleRow({ scriptItemSnap, idx, menuState }: { scriptItemSnap: ScriptItem; idx: number; menuState: MenuState; }) {
 
-    const { selectedIdx } = useSnapshot(gEditorState);
-    const setSelectedIdx = () => gEditorState.selectedIdx = idx;
+    const isSelected = useSnapshot(gEditorState).selectedIdxRef === idx;
+    const setSelectedIdx = () => {
+        gEditorState.metaItems[gEditorState.selectedIdxRef].isSelected = false;
+        gEditorState.metaItems[idx].isSelected = true;
+        gEditorState.selectedIdxRef = idx;
 
-    const { icon, name, details } = rowColumnDetails(scriptItem);
+    };
+
+    const { icon, name, details } = rowColumnDetails(scriptItemSnap);
 
     return (
-        <div className={classNames(singleRowClasses, rowClasses, selectedIdx === idx && rowSelectedClasses)} onClick={setSelectedIdx}>
+        <div className={classNames(singleRowClasses, rowClasses, isSelected && rowSelectedClasses)} onClick={setSelectedIdx}>
             {icon}
 
             <div className="pl-3 pr-2 text-xs">
@@ -26,7 +31,7 @@ export function SingleRow({ scriptItem, idx, menuState }: { scriptItem: ScriptIt
                 {details}
             </div>
 
-            <RowMenuButton item={scriptItem} idx={idx} menuState={menuState} />
+            <RowMenuButton item={scriptItemSnap} idx={idx} menuState={menuState} />
         </div>
     );
 }

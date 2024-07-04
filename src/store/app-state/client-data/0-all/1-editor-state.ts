@@ -9,7 +9,7 @@ export type ItemMeta = {
 };
 
 export type EditorState = { // in mem data
-    selectedIdx: number;
+    selectedIdxRef: number;
     metaItems: ItemMeta[];
 };
 
@@ -19,7 +19,7 @@ function initEditorState(scriptItems: ScriptItem[]): EditorState {
         isSelected: false,
     }));
     return {
-        selectedIdx: 0,
+        selectedIdxRef: 0,
         metaItems: metaItems,
     };
 }

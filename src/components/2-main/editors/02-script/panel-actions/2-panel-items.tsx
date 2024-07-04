@@ -7,31 +7,30 @@ import { classNames } from "@/utils";
 // import { ScrollList } from "./scroll-list";
 
 export function PanelActionsList() {
-    const { scriptItems } = useSnapshot(gScriptState);
+    const { scriptItems: scriptItemsSnap } = useSnapshot(gScriptState);
     const { metaItems } = useSnapshot(gEditorState);
+
+    function onKeydown(event: React.KeyboardEvent<HTMLDivElement>) {
+        const newIdx = moveScriptCursor(gEditorState.selectedIdxRef, gEditorState.metaItems.length, event.key);
+        if (newIdx !== undefined) {
+            gEditorState.metaItems[gEditorState.selectedIdxRef].isSelected = false;
+            gEditorState.metaItems[newIdx].isSelected = true;
+            gEditorState.selectedIdxRef = newIdx;
+        }
+    }
+
     return (<>
         {/* <ScrollList> */}
+        <div className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)} tabIndex={0} onKeyDown={onKeydown}>
 
-        <div
-            className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)}
-            tabIndex={0}
-            onKeyDown={
-                (event) => {
-                    const newIdx = moveScriptCursor(gEditorState.selectedIdx, gEditorState.metaItems.length, event.key);
-                    if (newIdx !== undefined) {
-                        gEditorState.selectedIdx = newIdx;
-                    }
-                }
-            }
-        >
             {/* <ScrollList> */}
-            {scriptItems.map(
-                (scriptItem, idx) => {
-                    if (!scriptItem) {
+            {scriptItemsSnap.map(
+                (scriptItemSnap, idx) => {
+                    if (!scriptItemSnap) {
                         return null;
                     }
 
-                    const lastItemIdx = scriptItems.length - 1;
+                    const lastItemIdx = scriptItemsSnap.length - 1;
                     const menuState: MenuState = {
                         onDelete: () => { removeScriptItem(gScriptState, gEditorState, idx); },
                         onUp: () => { idx > 0 && swapScriptItems(gScriptState, gEditorState, idx, idx - 1); },
@@ -40,7 +39,7 @@ export function PanelActionsList() {
                         hasDn: idx < lastItemIdx,
                     };
 
-                    return <SingleRow scriptItem={scriptItem} idx={idx} menuState={menuState} key={metaItems[idx].uuid} />;
+                    return <SingleRow scriptItemSnap={scriptItemSnap} idx={idx} menuState={menuState} key={metaItems[idx].uuid} />;
                 })
             }
             {/* </ScrollList> */}

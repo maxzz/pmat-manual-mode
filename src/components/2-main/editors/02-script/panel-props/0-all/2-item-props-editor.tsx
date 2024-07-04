@@ -7,14 +7,14 @@ import { classNames } from "@/utils";
 
 export function ItemPropsEditor() {
     const { scriptItems } = useSnapshot(gScriptState);
-    const { selectedIdx } = useSnapshot(gEditorState);
+    const { selectedIdxRef } = useSnapshot(gEditorState);
 
-    const scriptItemSnap = scriptItems[selectedIdx];
+    const scriptItemSnap = scriptItems[selectedIdxRef];
     if (!scriptItemSnap) {
         return null;
     }
 
-    const scriptItem = gScriptState.scriptItems[selectedIdx];
+    const scriptItem = gScriptState.scriptItems[selectedIdxRef];
     const propsEditor = getPropsEditor({ scriptItemSnap, scriptItem });
 
     return (

@@ -6,7 +6,7 @@ import { swap, uuid } from "@/utils";
 export function addScriptItem(clientState: ScriptState, editorState: EditorState, type: ScriptItemKey) {
     let item = createScriptItem(type);
     clientState.scriptItems.push(item);
-    editorState.metaItems.push({ uuid: uuid.asRelativeNumber() });
+    editorState.metaItems.push({ uuid: uuid.asRelativeNumber(), isSelected: false });
 }
 
 export function removeScriptItem(clientState: ScriptState, editorState: EditorState, idx: number) {
@@ -15,8 +15,10 @@ export function removeScriptItem(clientState: ScriptState, editorState: EditorSt
 }
 
 export function swapScriptItems(clientState: ScriptState, editorState: EditorState, idxCurrent: number, idxNew: number) {
-    if (editorState.selectedIdx === idxCurrent) {
-        editorState.selectedIdx = idxNew;
+    if (editorState.selectedIdxRef === idxCurrent) {
+        editorState.metaItems[idxCurrent].isSelected = false;
+        editorState.metaItems[idxNew].isSelected = true;
+        editorState.selectedIdxRef = idxNew;
     }
     swap(clientState.scriptItems, idxCurrent, idxNew);
     swap(editorState.metaItems, idxCurrent, idxNew);
