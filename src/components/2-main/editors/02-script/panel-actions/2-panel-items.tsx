@@ -6,7 +6,7 @@ import { MenuState } from "./5-row-popup-menu";
 import { classNames } from "@/utils";
 // import { ScrollList } from "./scroll-list";
 
-export function PanellItems() {
+export function PanelActionsList() {
     const { scriptItems } = useSnapshot(gClientState);
     const { itemMetas } = useSnapshot(gEditorState);
     return (<>
