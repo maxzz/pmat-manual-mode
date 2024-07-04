@@ -19,7 +19,7 @@ export function addScriptItem(clientState: ScriptState, editorState: EditorState
         },
     };
     clientState.scriptItems.push(item);
-    editorState.metaItems.push({ uuid: uuid.asRelativeNumber(), isSelected: false });
+    editorState.metaItems.push({ uui5d: uuid.asRelativeNumber(), isSelected: false });
 }
 
 export function removeScriptItem(clientState: ScriptState, editorState: EditorState, idx: number) {

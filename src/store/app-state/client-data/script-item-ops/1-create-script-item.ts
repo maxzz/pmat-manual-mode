@@ -1,7 +1,6 @@
-import type { ScriptItemKey, ScriptItem, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay } from "../script-items-types";
+import type { ScriptItemKey, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItemData } from "../script-items-types";
 
-// export function createScriptItem(type: ScriptItemKey): Omit<ScriptItem, 'uuid'> {
-export function createScriptItem(type: ScriptItemKey): SrcriptItemField | SrcriptItemKey | SrcriptItemPos | SrcriptItemDelay {
+export function createScriptItem(type: ScriptItemKey): ScriptItemData {
     switch (type) {
         case "field": {
             const newItem: SrcriptItemField = {

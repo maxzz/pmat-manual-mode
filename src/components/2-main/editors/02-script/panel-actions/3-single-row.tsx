@@ -10,11 +10,11 @@ const singleRowClasses = "py-0.5 grid grid-cols-[min-content,5rem,1fr,min-conten
 export function SingleRow({ scriptItemSnap, idx, menuState }: { scriptItemSnap: ScriptItem; idx: number; menuState: MenuState; }) {
 
     const isSelected = useSnapshot(gEditorState).metaItems[idx].isSelected;
+    
     const setSelectedIdx = () => {
         gEditorState.metaItems[gEditorState.selectedIdxRef].isSelected = false;
         gEditorState.metaItems[idx].isSelected = true;
         gEditorState.selectedIdxRef = idx;
-
     };
 
     const { icon, name, details } = rowColumnDetails(scriptItemSnap);

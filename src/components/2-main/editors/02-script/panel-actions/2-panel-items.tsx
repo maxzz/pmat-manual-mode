@@ -8,7 +8,6 @@ import { classNames } from "@/utils";
 
 export function PanelActionsList() {
     const { scriptItems: scriptItemsSnap } = useSnapshot(gScriptState);
-    // const { metaItems } = useSnapshot(gEditorState);
 
     function onKeydown(event: React.KeyboardEvent<HTMLDivElement>) {
         const newIdx = moveScriptCursor(gEditorState.selectedIdxRef, gEditorState.metaItems.length, event.key);
@@ -31,6 +30,7 @@ export function PanelActionsList() {
                     }
 
                     const lastItemIdx = scriptItemsSnap.length - 1;
+                    
                     const menuState: MenuState = {
                         onDelete: () => { removeScriptItem(gScriptState, gEditorState, idx); },
                         onUp: () => { idx > 0 && swapScriptItems(gScriptState, gEditorState, idx, idx - 1); },
@@ -39,7 +39,7 @@ export function PanelActionsList() {
                         hasDn: idx < lastItemIdx,
                     };
 
-                    return <SingleRow scriptItemSnap={scriptItemSnap} idx={idx} menuState={menuState} key={gEditorState.metaItems[idx].uuid} />;
+                    return <SingleRow scriptItemSnap={scriptItemSnap} idx={idx} menuState={menuState} key={scriptItemSnap.unsaved.uuid} />;
                 })
             }
             {/* </ScrollList> */}

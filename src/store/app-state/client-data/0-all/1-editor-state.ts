@@ -4,7 +4,7 @@ import { gScriptState } from './2-script-state';
 import { uuid } from '@/utils';
 
 export type ItemMeta = {
-    uuid: number;
+    uui5d: number;
     isSelected: boolean;
 };
 
@@ -16,7 +16,7 @@ export type EditorState = { // in mem data
 function initEditorState(scriptItems: ScriptItem[]): EditorState {
     const metaItems = scriptItems.map<ItemMeta>(
         (_item) => ({
-            uuid: uuid.asRelativeNumber(),
+            uui5d: uuid.asRelativeNumber(),
             isSelected: false,
         })
     );
