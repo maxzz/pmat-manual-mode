@@ -9,8 +9,9 @@ import { mergeDefaultAndLoaded } from "@/utils";
 const STORAGE_UI_KEY = 'pmat-manual-mode:data';
 const STORAGE_UI_VER = 'v1';
 
-export function loadUiInitialState(): ScriptState {
+export function loadUiInitialStateFromStorage(): ScriptState {
     let storageData;
+    
     let storageDataStr = localStorage.getItem(STORAGE_UI_KEY);
     if (storageDataStr) {
         try {

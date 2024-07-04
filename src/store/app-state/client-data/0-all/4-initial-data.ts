@@ -1,4 +1,4 @@
-import { SrcriptItemUnsaved, ScriptItem } from "../script-items-types";
+import { ScriptItem } from "../script-items-types";
 
 export const initialScriptItems: ScriptItem[] = [
     {
