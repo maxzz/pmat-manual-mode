@@ -25,6 +25,7 @@ export function removeScriptItem(clientState: ScriptState, editorState: EditorSt
 export function swapScriptItems(clientState: ScriptState, editorState: EditorState, idxCurrent: number, idxNew: number) {
     if (editorState.selectedIdxRef === idxCurrent) {
         // setSelectedIdx(editorState, idxNew, idxCurrent);
+
         // editorState.metaItems[idxCurrent].isSelected = false;
         // editorState.metaItems[idxNew].isSelected = true;
         editorState.selectedIdxRef = idxNew;

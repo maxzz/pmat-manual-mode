@@ -14,10 +14,12 @@ export type EditorState = { // in mem data
 };
 
 function initEditorState(scriptItems: ScriptItem[]): EditorState {
-    const metaItems = scriptItems.map<ItemMeta>((_item) => ({
-        uuid: uuid.asRelativeNumber(),
-        isSelected: false,
-    }));
+    const metaItems = scriptItems.map<ItemMeta>(
+        (_item) => ({
+            uuid: uuid.asRelativeNumber(),
+            isSelected: false,
+        })
+    );
     return {
         selectedIdxRef: 0,
         metaItems: metaItems,
