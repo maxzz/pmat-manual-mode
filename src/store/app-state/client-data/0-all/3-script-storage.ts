@@ -3,6 +3,7 @@ import type { ScriptItem } from "@/store";
 import { ScriptState, gScriptState } from "./2-script-state";
 import { initialScriptItems } from "./4-initial-data";
 import { mergeDefaultAndLoaded } from "@/utils";
+import { uuid } from "pm-manifest";
 
 // Local storage
 
@@ -11,7 +12,7 @@ const STORAGE_UI_VER = 'v1';
 
 export function loadUiInitialStateFromStorage(): ScriptState {
     let storageData;
-    
+
     let storageDataStr = localStorage.getItem(STORAGE_UI_KEY);
     if (storageDataStr) {
         try {
@@ -26,6 +27,9 @@ export function loadUiInitialStateFromStorage(): ScriptState {
     };
 
     const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData });
+
+    ready.scriptItems.forEach((item) => item.uuid = uuid.asRelativeNumber());
+
     return ready;
 }
 
