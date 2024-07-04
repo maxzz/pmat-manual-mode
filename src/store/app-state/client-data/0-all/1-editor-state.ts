@@ -9,14 +9,14 @@ export type ItemMeta = {
 
 export type EditorState = { // in mem data
     selectedIdx: number;
-    itemMetas: ItemMeta[];
+    metaItems: ItemMeta[];
 };
 
 function initEditorState(scriptItems: ScriptItem[]): EditorState {
     const metaItems = scriptItems.map<SrcriptItemUnsaved>((_item) => ({ uuid: uuid.asRelativeNumber() }));
     return {
         selectedIdx: 0,
-        itemMetas: metaItems,
+        metaItems: metaItems,
     };
 }
 

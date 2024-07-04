@@ -8,7 +8,7 @@ import { classNames } from "@/utils";
 
 export function PanelActionsList() {
     const { scriptItems } = useSnapshot(gScriptState);
-    const { itemMetas } = useSnapshot(gEditorState);
+    const { metaItems } = useSnapshot(gEditorState);
     return (<>
         {/* <ScrollList> */}
 
@@ -17,7 +17,7 @@ export function PanelActionsList() {
             tabIndex={0}
             onKeyDown={
                 (event) => {
-                    const newIdx = moveScriptCursor(gEditorState.selectedIdx, gEditorState.itemMetas.length, event.key);
+                    const newIdx = moveScriptCursor(gEditorState.selectedIdx, gEditorState.metaItems.length, event.key);
                     if (newIdx !== undefined) {
                         gEditorState.selectedIdx = newIdx;
                     }
@@ -26,19 +26,21 @@ export function PanelActionsList() {
         >
             {/* <ScrollList> */}
             {scriptItems.map(
-                (item, idx) => {
-                    if (!item) {
+                (scriptItem, idx) => {
+                    if (!scriptItem) {
                         return null;
                     }
+
+                    const lastItemIdx = scriptItems.length - 1;
                     const menuState: MenuState = {
                         onDelete: () => { removeScriptItem(gScriptState, gEditorState, idx); },
                         onUp: () => { idx > 0 && swapScriptItems(gScriptState, gEditorState, idx, idx - 1); },
-                        onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(gScriptState, gEditorState, idx, idx + 1); },
+                        onDn: () => { idx < lastItemIdx && swapScriptItems(gScriptState, gEditorState, idx, idx + 1); },
                         hasUp: idx > 0,
-                        hasDn: idx < scriptItems.length - 1,
+                        hasDn: idx < lastItemIdx,
                     };
 
-                    return <SingleRow item={item} idx={idx} menuState={menuState} key={itemMetas[idx].uuid} />;
+                    return <SingleRow scriptItem={scriptItem} idx={idx} menuState={menuState} key={metaItems[idx].uuid} />;
                 })
             }
             {/* </ScrollList> */}
