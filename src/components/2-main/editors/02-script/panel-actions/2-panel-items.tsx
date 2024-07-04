@@ -1,5 +1,5 @@
 import { useSnapshot } from "valtio";
-import { gClientState, gEditorState, moveScriptCursor, removeScriptItem, swapScriptItems } from "@/store";
+import { gScriptState, gEditorState, moveScriptCursor, removeScriptItem, swapScriptItems } from "@/store";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { SingleRow } from "./3-single-row";
 import { MenuState } from "./5-row-popup-menu";
@@ -7,7 +7,7 @@ import { classNames } from "@/utils";
 // import { ScrollList } from "./scroll-list";
 
 export function PanelActionsList() {
-    const { scriptItems } = useSnapshot(gClientState);
+    const { scriptItems } = useSnapshot(gScriptState);
     const { itemMetas } = useSnapshot(gEditorState);
     return (<>
         {/* <ScrollList> */}
@@ -31,9 +31,9 @@ export function PanelActionsList() {
                         return null;
                     }
                     const menuState: MenuState = {
-                        onDelete: () => { removeScriptItem(gClientState, gEditorState, idx); },
-                        onUp: () => { idx > 0 && swapScriptItems(gClientState, gEditorState, idx, idx - 1); },
-                        onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(gClientState, gEditorState, idx, idx + 1); },
+                        onDelete: () => { removeScriptItem(gScriptState, gEditorState, idx); },
+                        onUp: () => { idx > 0 && swapScriptItems(gScriptState, gEditorState, idx, idx - 1); },
+                        onDn: () => { idx < scriptItems.length - 1 && swapScriptItems(gScriptState, gEditorState, idx, idx + 1); },
                         hasUp: idx > 0,
                         hasDn: idx < scriptItems.length - 1,
                     };

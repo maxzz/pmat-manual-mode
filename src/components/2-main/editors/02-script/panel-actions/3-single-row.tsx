@@ -9,7 +9,7 @@ const singleRowClasses = "py-0.5 grid grid-cols-[min-content,5rem,1fr,min-conten
 
 export function SingleRow({ item, idx, menuState }: { item: ScriptItem; idx: number; menuState: MenuState; }) {
     const { selectedIdx } = useSnapshot(gEditorState);
-    const setSelectedIdx = () => { gEditorState.selectedIdx = idx; };
+    const setSelectedIdx = () => gEditorState.selectedIdx = idx;
     const { icon, name, details } = rowColumnDetails(item);
     return (
         <div className={classNames(singleRowClasses, rowClasses, selectedIdx === idx && rowSelectedClasses)} onClick={setSelectedIdx}>

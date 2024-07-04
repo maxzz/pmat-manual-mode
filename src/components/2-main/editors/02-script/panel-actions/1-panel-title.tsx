@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ScriptItemType, addScriptItem, gClientState, gEditorState } from "@/store";
+import { ScriptItemType, addScriptItem, gScriptState, gEditorState } from "@/store";
 import * as Menu from '@radix-ui/react-dropdown-menu';
 import { focusClasses, gropuTitleClasses, menuContentClasses, menuItemClasses } from "@/components/ui/shared-styles";
 import { IconAdd, IconDelay, IconField, IconKey, IconPos } from "@/components/ui/icons";
@@ -21,7 +21,10 @@ function rowText(type: ScriptItemType): { name: string; icon: ReactNode; } {
 function MenuRow({ type }: { type: ScriptItemType; }) {
     const { name, icon } = rowText(type);
     return (
-        <Menu.Item className={classNames(menuItemClasses, "grid grid-cols-[auto,1fr] gap-x-2 items-center")} onClick={() => addScriptItem(gClientState, gEditorState, type)}>
+        <Menu.Item
+            className={classNames(menuItemClasses, "grid grid-cols-[auto,1fr] gap-x-2 items-center")}
+            onClick={() => addScriptItem(gScriptState, gEditorState, type)}
+        >
             {icon}
             <div className="">{name}</div>
         </Menu.Item>

@@ -5,14 +5,14 @@ import { PropsEditorField } from "./panel-field";
 import { PropsEditorKey } from "./panel-key";
 import { PropsEditorPos } from "./panel-pos";
 
-export function getPropsEditor({ snap, item }: { snap: ScriptItem; item: ScriptItem; }): ReactNode {
-    switch (snap.type) {
-        case 'field': /**/ return <PropsEditorField item={item as SrcriptItemField} />;
-        case 'key':   /**/ return <PropsEditorKey item={item as SrcriptItemKey} />;
-        case 'pos':   /**/ return <PropsEditorPos item={item as SrcriptItemPos} />;
-        case 'delay': /**/ return <PropsEditorDelay item={item as SrcriptItemDelay} />;
+export function getPropsEditor({ scriptItemSnap, scriptItem }: { scriptItemSnap: ScriptItem; scriptItem: ScriptItem; }): ReactNode {
+    switch (scriptItemSnap.type) {
+        case 'field': /**/ return <PropsEditorField item={scriptItem as SrcriptItemField} />;
+        case 'key':   /**/ return <PropsEditorKey item={scriptItem as SrcriptItemKey} />;
+        case 'pos':   /**/ return <PropsEditorPos item={scriptItem as SrcriptItemPos} />;
+        case 'delay': /**/ return <PropsEditorDelay item={scriptItem as SrcriptItemDelay} />;
         default: {
-            const really: never = snap;
+            const really: never = scriptItemSnap;
             return  null;
         }
     }

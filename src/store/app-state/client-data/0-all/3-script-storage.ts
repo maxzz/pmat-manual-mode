@@ -1,6 +1,6 @@
 import { subscribe } from "valtio";
 import type { ScriptItem } from "@/store";
-import { ClientState, gClientState } from "./2-client-state";
+import { ScriptState, gScriptState } from "./2-script-state";
 import { initialScriptItems } from "./4-initial-data";
 import { mergeDefaultAndLoaded } from "@/utils";
 
@@ -9,7 +9,7 @@ import { mergeDefaultAndLoaded } from "@/utils";
 const STORAGE_UI_KEY = 'pmat-manual-mode:data';
 const STORAGE_UI_VER = 'v1';
 
-export function loadUiInitialState(): ClientState {
+export function loadUiInitialState(): ScriptState {
     let storageData;
     let storageDataStr = localStorage.getItem(STORAGE_UI_KEY);
     if (storageDataStr) {
@@ -20,7 +20,7 @@ export function loadUiInitialState(): ClientState {
         }
     }
 
-    const initialState: ClientState = {
+    const initialState: ScriptState = {
         scriptItems: [...initialScriptItems],
     };
 
@@ -28,17 +28,20 @@ export function loadUiInitialState(): ClientState {
     return ready;
 }
 
-export function watchClientStateChanges() {
-    subscribe(gClientState, () => {
-        //console.log('store ui  ', appUi.uiState);
-        const data = { ...gClientState };
+export function watchScriptStateChanges() {
+    subscribe(gScriptState,
+        () => {
+            const data = { ...gScriptState };
 
-        (data as any).scriptItems = gClientState.scriptItems.map((item) => {
-            const newItem: Omit<ScriptItem, 'unsaved'> = { ...item };
-            delete (newItem as any).unsaved;
-            return newItem;
-        });
+            (data as any).scriptItems = gScriptState.scriptItems.map(
+                (item) => {
+                    const newItem: Omit<ScriptItem, 'unsaved'> = { ...item };
+                    delete (newItem as any).unsaved;
+                    return newItem;
+                }
+            );
 
-        localStorage.setItem(STORAGE_UI_KEY, JSON.stringify({ [STORAGE_UI_VER]: data }));
-    });
+            localStorage.setItem(STORAGE_UI_KEY, JSON.stringify({ [STORAGE_UI_VER]: data }));
+        }
+    );
 }
