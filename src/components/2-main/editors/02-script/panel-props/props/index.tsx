@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "@/store";
+import type { SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItem } from "@/store";
 import { PropsEditorDelay } from "./panel-delay";
 import { PropsEditorField } from "./panel-field";
 import { PropsEditorKey } from "./panel-key";
