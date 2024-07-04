@@ -18,6 +18,12 @@ export function PanelActionsList() {
         }
     }
 
+    const setSelectedIdx = (idx: number) => {
+        gEditorState.metaItems[gEditorState.selectedIdxRef].isSelected = false;
+        gEditorState.metaItems[idx].isSelected = true;
+        gEditorState.selectedIdxRef = idx;
+    };
+
     return (<>
         {/* <ScrollList> */}
         <div className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)} tabIndex={0} onKeyDown={onKeydown}>
@@ -30,7 +36,7 @@ export function PanelActionsList() {
                     }
 
                     const lastItemIdx = scriptItemsSnap.length - 1;
-                    
+
                     const menuState: MenuState = {
                         onDelete: () => { removeScriptItem(gScriptState, gEditorState, idx); },
                         onUp: () => { idx > 0 && swapScriptItems(gScriptState, gEditorState, idx, idx - 1); },
@@ -39,7 +45,15 @@ export function PanelActionsList() {
                         hasDn: idx < lastItemIdx,
                     };
 
-                    return <SingleRow scriptItemSnap={scriptItemSnap} idx={idx} menuState={menuState} key={scriptItemSnap.unsaved.uuid} />;
+                    return (
+                        <SingleRow
+                            scriptItemSnap={scriptItemSnap}
+                            menuState={menuState}
+                            idx={idx}
+                            onClick={() => setSelectedIdx(idx)}
+                            key={scriptItemSnap.unsaved.uuid}
+                        />
+                    );
                 })
             }
             {/* </ScrollList> */}

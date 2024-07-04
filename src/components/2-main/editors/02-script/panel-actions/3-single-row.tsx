@@ -4,23 +4,21 @@ import { classNames } from "@/utils";
 import { rowClasses, rowSelectedClasses } from "@/components/ui/shared-styles";
 import { MenuState, RowMenuButton } from "./5-row-popup-menu";
 import { rowColumnDetails } from "./4-row-column-details";
+import { HTMLAttributes } from "react";
+
+type SingleRowProps = HTMLAttributes<HTMLDivElement> & {
+    scriptItemSnap: ScriptItem;
+    menuState: MenuState;
+    idx: number;
+};
 
 const singleRowClasses = "py-0.5 grid grid-cols-[min-content,5rem,1fr,min-content] items-center";
 
-export function SingleRow({ scriptItemSnap, idx, menuState }: { scriptItemSnap: ScriptItem; idx: number; menuState: MenuState; }) {
-
-    const isSelected = useSnapshot(gEditorState).metaItems[idx].isSelected;
-    
-    const setSelectedIdx = () => {
-        gEditorState.metaItems[gEditorState.selectedIdxRef].isSelected = false;
-        gEditorState.metaItems[idx].isSelected = true;
-        gEditorState.selectedIdxRef = idx;
-    };
-
+export function SingleRow({ scriptItemSnap, menuState, idx, ...rest }: SingleRowProps) {
+    const isSelected = useSnapshot(gEditorState.metaItems)[idx].isSelected;
     const { icon, name, details } = rowColumnDetails(scriptItemSnap);
-
     return (
-        <div className={classNames(singleRowClasses, rowClasses, isSelected && rowSelectedClasses)} onClick={setSelectedIdx}>
+        <div className={classNames(singleRowClasses, rowClasses, isSelected && rowSelectedClasses)} {...rest}>
             {icon}
 
             <div className="pl-3 pr-2 text-xs">
