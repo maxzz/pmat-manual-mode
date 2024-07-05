@@ -1,6 +1,6 @@
 import { useSetAtom } from "jotai";
 import { useSnapshot } from "valtio";
-import { gScriptState, moveSelectedAtom, removeScriptItem, selectAtom, swapAtom, swapScriptItems } from "@/store";
+import { gScriptState, selectByKeyAtom, removeScriptItem, selectItemAtom, swapItemsAtom, swapScriptItems } from "@/store";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { SingleRow } from "./3-single-row";
 import { MenuState } from "./5-row-popup-menu";
@@ -10,13 +10,13 @@ import { classNames } from "@/utils";
 export function PanelActionsList() {
     const { scriptItems: scriptItemsSnap } = useSnapshot(gScriptState);
 
-    const moveSelected = useSetAtom(moveSelectedAtom);
-    const selectItem = useSetAtom(selectAtom);
-    const swap = useSetAtom(swapAtom);
+    const selectByKey = useSetAtom(selectByKeyAtom);
+    const selectItem = useSetAtom(selectItemAtom);
+    const swapItems = useSetAtom(swapItemsAtom);
 
     return (<>
         {/* <ScrollList> */}
-        <div className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)} tabIndex={0} onKeyDown={(e) => moveSelected(e.key)}>
+        <div className={classNames("min-h-[38px]", editorFrameClasses, focusClasses)} tabIndex={0} onKeyDown={(e) => selectByKey(e.key)}>
 
             {/* <ScrollList> */}
             {scriptItemsSnap.map(
@@ -29,14 +29,12 @@ export function PanelActionsList() {
                         },
                         onUp: () => {
                             if (idx > 0) {
-                                // swapScriptItems(gScriptState, idx, idx - 1);
-                                swap(idx, idx - 1);
+                                swapItems(idx, idx - 1);
                             }
                         },
                         onDn: () => {
                             if (idx < lastItemIdx) {
-                                // swapScriptItems(gScriptState, idx, idx + 1);
-                                swap(idx, idx + 1);
+                                swapItems(idx, idx + 1);
                             }
                         },
                         hasUp: idx > 0,

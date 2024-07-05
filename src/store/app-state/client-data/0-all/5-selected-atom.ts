@@ -7,14 +7,13 @@ import { swap } from "@/utils";
 
 function deselectCurrent(get: Getter, set: Setter) {
     const currentIdx = get(_selectedRefAtom);
-    if (currentIdx !== -1) {
-        set(gScriptState.scriptItems[currentIdx].unsaved.selectedAtom, false);
-    }
+    const current = gScriptState.scriptItems[currentIdx];
+    current && set(current.unsaved.selectedAtom, false);
 }
 
 const _selectedRefAtom = atom(-1);
 
-export const selectedRefAtom = atom(
+export const selectedIdxAtom = atom(
     (get) => get(_selectedRefAtom),
     (get, set, newIdx: number) => {
         deselectCurrent(get, set);
@@ -23,36 +22,28 @@ export const selectedRefAtom = atom(
     }
 );
 
-export const moveSelectedAtom = atom(
-    null,
-    (get, set, keyName: string) => {
-        const currentIdx = get(_selectedRefAtom);
-
-        const newIdx = moveScriptCursor(currentIdx, gScriptState.scriptItems.length, keyName);
-        if (newIdx !== undefined) {
-            set(selectedRefAtom, newIdx);
-        }
-    }
-);
-
-export const selectAtom = atom(
+export const selectItemAtom = atom(
     null,
     (get, set, itemSelectAtom: PrimitiveAtom<boolean>, value: boolean, newIdx: number) => {
         deselectCurrent(get, set);
         set(itemSelectAtom, value);
-        set(selectedRefAtom, newIdx);
+        set(selectedIdxAtom, newIdx);
     }
 );
 
-export const swapAtom = atom(
+export const selectByKeyAtom = atom(
+    null,
+    (get, set, keyName: string) => {
+        const currentIdx = get(_selectedRefAtom);
+        const newIdx = moveScriptCursor(currentIdx, gScriptState.scriptItems.length, keyName);
+        newIdx !== undefined && set(selectedIdxAtom, newIdx);
+    }
+);
+
+export const swapItemsAtom = atom(
     null,
     (get, set, idxCurrent: number, idxNew: number) => {
-        // const currentIdx = get(_selectedRefAtom);
-        // if (currentIdx === idxCurrent) {
-        //     set(_selectedRefAtom, idxNew);
-        // }
-
         swap(gScriptState.scriptItems, idxCurrent, idxNew);
-        set(selectAtom, gScriptState.scriptItems[idxNew].unsaved.selectedAtom, true, idxNew);
+        set(selectItemAtom, gScriptState.scriptItems[idxNew].unsaved.selectedAtom, true, idxNew);
     }
 );

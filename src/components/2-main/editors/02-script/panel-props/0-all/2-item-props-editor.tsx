@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
 import { useSnapshot } from "valtio";
-import { gScriptState, selectedRefAtom } from "@/store";
+import { gScriptState, selectedIdxAtom } from "@/store";
 import { InPanelPropsTitle } from "./3-panel-editor-title";
 import { getPropsEditor } from "../props";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
@@ -9,7 +9,7 @@ import { classNames } from "@/utils";
 export function ItemPropsEditor() {
     const { scriptItems: scriptItemsSnap } = useSnapshot(gScriptState);
 
-    const selectedRef = useAtomValue(selectedRefAtom);
+    const selectedRef = useAtomValue(selectedIdxAtom);
 
     const scriptItemSnap = scriptItemsSnap[selectedRef];
     if (!scriptItemSnap) {
