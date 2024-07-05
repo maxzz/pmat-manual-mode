@@ -5,7 +5,7 @@ import { SingleRow } from "./3-single-row";
 import { MenuState } from "./5-row-popup-menu";
 import { classNames } from "@/utils";
 
-import { moveSelectedAtom, selectedRefAtom } from "@/store/app-state/client-data/0-all/5-selected-atom";
+import { moveSelectedAtom, selectAtom, selectedRefAtom } from "@/store/app-state/client-data/0-all/5-selected-atom";
 import { useSetAtom } from "jotai";
 
 // import { ScrollList } from "./scroll-list";
@@ -14,9 +14,10 @@ export function PanelActionsList() {
     const { scriptItems: scriptItemsSnap } = useSnapshot(gScriptState);
 
     // const { selectedIdx } = useSnapshot(rightPanel);
-    
-    const setSelectedRef = useSetAtom(selectedRefAtom)
-    const moveSelected = useSetAtom(moveSelectedAtom)
+
+    const setSelectedRef = useSetAtom(selectedRefAtom);
+    const moveSelected = useSetAtom(moveSelectedAtom);
+    const selectItem = useSetAtom(selectAtom);
 
     function onKeydown(event: React.KeyboardEvent<HTMLDivElement>) {
         moveSelected(event.key);
@@ -64,7 +65,10 @@ export function PanelActionsList() {
                             scriptItemSnap={scriptItemSnap}
                             menuState={menuState}
                             idx={idx}
-                            onClick={() => setSelectedIdx(idx)}
+                            onClick={() => {
+                                setSelectedIdx(idx);
+                                selectItem(scriptItemSnap.unsaved.selectedAtom, true);
+                            }}
                             key={scriptItemSnap.unsaved.id4}
                         />
                     );

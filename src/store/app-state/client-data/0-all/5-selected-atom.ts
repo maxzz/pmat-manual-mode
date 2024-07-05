@@ -1,4 +1,4 @@
-import { atom } from "jotai";
+import { atom, PrimitiveAtom } from "jotai";
 import { gScriptState } from ".";
 import { moveScriptCursor } from "../script-item-ops";
 
@@ -27,5 +27,12 @@ export const moveSelectedAtom = atom(
         if (newIdx !== undefined) {
             set(selectedRefAtom, newIdx);
         }
+    }
+);
+
+export const selectAtom = atom(
+    (get) => null,
+    (get, set, atom: PrimitiveAtom<boolean>, value: boolean) => {
+        set(atom, value);
     }
 );
