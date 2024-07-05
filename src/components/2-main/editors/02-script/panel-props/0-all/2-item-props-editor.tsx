@@ -8,28 +8,26 @@ import { useAtomValue } from "jotai";
 import { selectedRefAtom } from "@/store/app-state/client-data/0-all/5-selected-atom";
 
 export function ItemPropsEditor() {
-    const { scriptItems } = useSnapshot(gScriptState);
-    
+    const { scriptItems: scriptItemsSnap } = useSnapshot(gScriptState);
+
     //const { selectedIdx } = useSnapshot(rightPanel);
     // const scriptItemSnap = scriptItems[selectedIdx];
 
-    const selectedRef = useAtomValue(selectedRefAtom)
+    const selectedRef = useAtomValue(selectedRefAtom);
 
-    const scriptItemSnap = scriptItems[selectedRef];
+    const scriptItemSnap = scriptItemsSnap[selectedRef];
     if (!scriptItemSnap) {
         return null;
     }
 
     const scriptItem = gScriptState.scriptItems[selectedRef];
-    const propsEditor = getPropsEditor({ scriptItemSnap, scriptItem });
+    const propsEditor = getPropsEditor({ scriptItem, scriptItemSnap });
 
     return (
-        <div className={classNames("min-h-[20rem] overflow-hidden", editorFrameClasses, focusClasses)}>
-            <div className="text-xs grid grid-rows-[auto,1fr] gap-2">
-                <InPanelPropsTitle scriptItemSnap={scriptItemSnap} />
+        <div className={classNames("min-h-[20rem] overflow-hidden", "text-xs grid grid-rows-[auto,1fr] gap-2", editorFrameClasses, focusClasses)}>
+            <InPanelPropsTitle scriptItemSnap={scriptItemSnap} />
 
-                {propsEditor}
-            </div>
+            {propsEditor}
         </div>
     );
 }

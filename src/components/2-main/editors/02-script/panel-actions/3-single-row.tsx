@@ -1,10 +1,10 @@
+import { HTMLAttributes } from "react";
+import { useAtomValue } from "jotai";
 import { ScriptItem } from "@/store";
 import { classNames } from "@/utils";
 import { rowClasses, rowSelectedClasses } from "@/components/ui/shared-styles";
 import { MenuState, RowMenuButton } from "./5-row-popup-menu";
 import { rowColumnDetails } from "./4-row-column-details";
-import { HTMLAttributes } from "react";
-import { useAtomValue } from "jotai";
 
 type SingleRowProps = HTMLAttributes<HTMLDivElement> & {
     scriptItemSnap: ScriptItem;
@@ -16,11 +16,8 @@ const singleRowClasses = "py-0.5 grid grid-cols-[min-content,5rem,1fr,min-conten
 
 export function SingleRow({ scriptItemSnap, menuState, idx, ...rest }: SingleRowProps) {
 
-    //const isSelected = useSnapshot(gEditorState.metaItems)[idx].isSelected;
     const isSelected = useAtomValue(scriptItemSnap.unsaved.selectedAtom);
     
-    console.log(`idx:${idx} isSelected=${isSelected}`);
-
     const { icon, name, details } = rowColumnDetails(scriptItemSnap);
     return (
         <div className={classNames(singleRowClasses, rowClasses, isSelected && rowSelectedClasses)} {...rest}>

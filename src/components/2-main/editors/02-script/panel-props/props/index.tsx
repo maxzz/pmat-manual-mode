@@ -5,7 +5,7 @@ import { PropsEditorField } from "./panel-field";
 import { PropsEditorKey } from "./panel-key";
 import { PropsEditorPos } from "./panel-pos";
 
-export function getPropsEditor({ scriptItemSnap, scriptItem }: { scriptItemSnap: ScriptItem; scriptItem: ScriptItem; }): ReactNode {
+export function getPropsEditor({ scriptItem, scriptItemSnap }: { scriptItem: ScriptItem; scriptItemSnap: ScriptItem; }): ReactNode {
     switch (scriptItemSnap.type) {
         case 'field': /**/ return <PropsEditorField item={scriptItem as SrcriptItemField} />;
         case 'key':   /**/ return <PropsEditorKey item={scriptItem as SrcriptItemKey} />;
