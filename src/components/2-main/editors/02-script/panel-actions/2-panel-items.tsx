@@ -1,6 +1,6 @@
 import { useSetAtom } from "jotai";
 import { useSnapshot } from "valtio";
-import { gScriptState, moveSelectedAtom, removeScriptItem, selectAtom, swapScriptItems } from "@/store";
+import { gScriptState, moveSelectedAtom, removeScriptItem, selectAtom, swapAtom, swapScriptItems } from "@/store";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { SingleRow } from "./3-single-row";
 import { MenuState } from "./5-row-popup-menu";
@@ -12,6 +12,7 @@ export function PanelActionsList() {
 
     const moveSelected = useSetAtom(moveSelectedAtom);
     const selectItem = useSetAtom(selectAtom);
+    const swap = useSetAtom(swapAtom);
 
     return (<>
         {/* <ScrollList> */}
@@ -28,12 +29,14 @@ export function PanelActionsList() {
                         },
                         onUp: () => {
                             if (idx > 0) {
-                                swapScriptItems(gScriptState, idx, idx - 1);
+                                // swapScriptItems(gScriptState, idx, idx - 1);
+                                swap(idx, idx - 1);
                             }
                         },
                         onDn: () => {
                             if (idx < lastItemIdx) {
-                                swapScriptItems(gScriptState, idx, idx + 1);
+                                // swapScriptItems(gScriptState, idx, idx + 1);
+                                swap(idx, idx + 1);
                             }
                         },
                         hasUp: idx > 0,
