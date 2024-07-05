@@ -3,6 +3,7 @@ import type { ScriptItem, ScriptItemKey } from "../script-items-types";
 import type { ScriptState, EditorState } from "../0-all";
 import { createScriptItem } from "./1-create-script-item";
 import { swap, uuid } from "@/utils";
+import { ref } from "valtio";
 
 // export function setSelectedIdx(editorState: EditorState, idxNew: number, idxCurrent: number | undefined = undefined) {
 //     if (idxCurrent !== undefined) {
@@ -15,10 +16,10 @@ import { swap, uuid } from "@/utils";
 export function addScriptItem(clientState: ScriptState, type: ScriptItemKey) {
     let item: ScriptItem = {
         ...createScriptItem(type),
-        unsaved: {
+        unsaved: ref({
             id4: uuid.asRelativeNumber(),
             selectedAtom: atom(false),
-        },
+        }),
     };
     clientState.scriptItems.push(item);
     // editorState.metaItems.push({ uui5d: uuid.asRelativeNumber(), isSelected: false });
