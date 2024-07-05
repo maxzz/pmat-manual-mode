@@ -9,7 +9,7 @@ export type ItemMeta = {
 };
 
 export type EditorState = { // in mem data
-    selectedIdxRef: number;
+    // selectedIdxRef: number;
     metaItems: ItemMeta[];
 };
 
@@ -21,9 +21,11 @@ function initEditorState(scriptItems: ScriptItem[]): EditorState {
         })
     );
     return {
-        selectedIdxRef: 0,
+        // selectedIdxRef: 0,
         metaItems: metaItems,
     };
 }
 
 export const gEditorState = proxy<EditorState>(initEditorState(gScriptState.scriptItems));
+
+export const rightPanel = proxy({ selectedIdx: 0 });

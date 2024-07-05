@@ -1,5 +1,5 @@
 import { useSnapshot } from "valtio";
-import { gScriptState, gEditorState, moveScriptCursor, removeScriptItem, swapScriptItems } from "@/store";
+import { gScriptState, gEditorState, moveScriptCursor, removeScriptItem, swapScriptItems, rightPanel } from "@/store";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { SingleRow } from "./3-single-row";
 import { MenuState } from "./5-row-popup-menu";
@@ -9,19 +9,21 @@ import { classNames } from "@/utils";
 export function PanelActionsList() {
     const { scriptItems: scriptItemsSnap } = useSnapshot(gScriptState);
 
+    const { selectedIdx } = useSnapshot(rightPanel);
+
     function onKeydown(event: React.KeyboardEvent<HTMLDivElement>) {
-        const newIdx = moveScriptCursor(gEditorState.selectedIdxRef, gEditorState.metaItems.length, event.key);
+        const newIdx = moveScriptCursor(selectedIdx, gEditorState.metaItems.length, event.key);
         if (newIdx !== undefined) {
-            gEditorState.metaItems[gEditorState.selectedIdxRef].isSelected = false;
+            gEditorState.metaItems[selectedIdx].isSelected = false;
             gEditorState.metaItems[newIdx].isSelected = true;
-            gEditorState.selectedIdxRef = newIdx;
+            rightPanel.selectedIdx = newIdx;
         }
     }
 
     const setSelectedIdx = (idx: number) => {
-        gEditorState.metaItems[gEditorState.selectedIdxRef].isSelected = false;
+        gEditorState.metaItems[selectedIdx].isSelected = false;
         gEditorState.metaItems[idx].isSelected = true;
-        gEditorState.selectedIdxRef = idx;
+        rightPanel.selectedIdx = idx;
     };
 
     return (<>
@@ -51,7 +53,7 @@ export function PanelActionsList() {
                             menuState={menuState}
                             idx={idx}
                             onClick={() => setSelectedIdx(idx)}
-                            key={scriptItemSnap.unsaved.uuid}
+                            key={scriptItemSnap.unsaved.id4}
                         />
                     );
                 })

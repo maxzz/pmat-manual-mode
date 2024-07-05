@@ -1,3 +1,4 @@
+import { PrimitiveAtom } from "jotai";
 import { SrcriptItemField } from "./1-item-field";
 import { SrcriptItemKey } from "./2-item-key";
 import { SrcriptItemPos } from "./3-item-position";
@@ -7,7 +8,8 @@ export type ScriptItemData = SrcriptItemField | SrcriptItemKey | SrcriptItemPos 
 
 export type ScriptItemMeta = {
     unsaved: {
-        uuid: number;
+        id4: number;
+        selectedAtom: PrimitiveAtom<boolean>;
     };
 };
 

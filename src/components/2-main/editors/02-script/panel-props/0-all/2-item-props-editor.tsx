@@ -1,5 +1,5 @@
 import { useSnapshot } from "valtio";
-import { gScriptState, gEditorState } from "@/store";
+import { gScriptState, gEditorState, rightPanel } from "@/store";
 import { InPanelPropsTitle } from "./3-panel-editor-title";
 import { getPropsEditor } from "../props";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
@@ -7,14 +7,14 @@ import { classNames } from "@/utils";
 
 export function ItemPropsEditor() {
     const { scriptItems } = useSnapshot(gScriptState);
-    const { selectedIdxRef } = useSnapshot(gEditorState);
+    const { selectedIdx } = useSnapshot(rightPanel);
 
-    const scriptItemSnap = scriptItems[selectedIdxRef];
+    const scriptItemSnap = scriptItems[selectedIdx];
     if (!scriptItemSnap) {
         return null;
     }
 
-    const scriptItem = gScriptState.scriptItems[selectedIdxRef];
+    const scriptItem = gScriptState.scriptItems[selectedIdx];
     const propsEditor = getPropsEditor({ scriptItemSnap, scriptItem });
 
     return (

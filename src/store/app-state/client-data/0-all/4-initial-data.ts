@@ -1,6 +1,6 @@
-import { ScriptItem } from "../script-items-types";
+import { ScriptItemData } from "../script-items-types";
 
-export const initialScriptItems: ScriptItem[] = [
+export const initialScriptItems: ScriptItemData[] = [
     {
         type: 'pos', x: 0, y: 1,
     },

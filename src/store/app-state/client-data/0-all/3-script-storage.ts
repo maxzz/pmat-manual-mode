@@ -1,3 +1,4 @@
+import { atom } from "jotai";
 import { subscribe } from "valtio";
 import type { ScriptItem } from "@/store";
 import { ScriptState, gScriptState } from "./2-script-state";
@@ -22,13 +23,18 @@ export function loadUiInitialStateFromStorage(): ScriptState {
         }
     }
 
-    const initialState: ScriptState = {
+    const initialState = {
         scriptItems: [...initialScriptItems],
     };
 
-    const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData });
+    const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData }) as ScriptState;
 
-    ready.scriptItems.forEach((item) => item.unsaved = { uuid: uuid.asRelativeNumber() });
+    ready.scriptItems.forEach((item) => {
+        item.unsaved = {
+            id4: uuid.asRelativeNumber(),
+            selectedAtom: atom(false),
+        };
+    });
 
     return ready;
 }
