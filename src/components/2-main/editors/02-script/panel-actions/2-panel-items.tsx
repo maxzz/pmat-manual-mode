@@ -46,10 +46,6 @@ export function PanelActionsList() {
             {/* <ScrollList> */}
             {scriptItemsSnap.map(
                 (scriptItemSnap, idx) => {
-                    if (!scriptItemSnap) {
-                        return null;
-                    }
-
                     const lastItemIdx = scriptItemsSnap.length - 1;
 
                     const menuState: MenuState = {
@@ -77,8 +73,10 @@ export function PanelActionsList() {
                             idx={idx}
                             onClick={() => {
                                 // setSelectedIdx(idx);
-                                setSelectedRef(idx);
-                                selectItem(scriptItemSnap.unsaved.selectedAtom, true);
+                                //setSelectedRef(idx);
+                                selectItem(scriptItemSnap.unsaved.selectedAtom, true, idx);
+
+                                // selectItem(gScriptState.scriptItems[idx].unsaved.selectedAtom, true);
                             }}
                             key={scriptItemSnap.unsaved.id4}
                         />

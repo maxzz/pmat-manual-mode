@@ -32,7 +32,14 @@ export const moveSelectedAtom = atom(
 
 export const selectAtom = atom(
     null,
-    (get, set, atom: PrimitiveAtom<boolean>, value: boolean) => {
-        set(atom, value);
+    (get, set, itemSelectAtom: PrimitiveAtom<boolean>, value: boolean, newIdx: number) => {
+        const currentIdx = get(_selectedRefAtom);
+        console.log('currentIdx', currentIdx);
+        if (currentIdx !== -1) {
+            set(gScriptState.scriptItems[currentIdx].unsaved.selectedAtom, false);
+        }
+
+        set(itemSelectAtom, value);
+        set(selectedRefAtom, newIdx);
     }
 );

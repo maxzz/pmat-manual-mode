@@ -18,7 +18,8 @@ export function SingleRow({ scriptItemSnap, menuState, idx, ...rest }: SingleRow
 
     //const isSelected = useSnapshot(gEditorState.metaItems)[idx].isSelected;
     const isSelected = useAtomValue(scriptItemSnap.unsaved.selectedAtom);
-    console.log("isSelected", isSelected);
+    
+    console.log(`idx:${idx} isSelected=${isSelected}`);
 
     const { icon, name, details } = rowColumnDetails(scriptItemSnap);
     return (
