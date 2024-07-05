@@ -28,4 +28,3 @@ function initEditorState(scriptItems: ScriptItem[]): EditorState {
 
 export const gEditorState = proxy<EditorState>(initEditorState(gScriptState.scriptItems));
 
-export const rightPanel = proxy({ selectedIdx: 0 });

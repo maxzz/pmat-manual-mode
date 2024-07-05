@@ -12,7 +12,7 @@ import { swap, uuid } from "@/utils";
 //     editorState.selectedIdxRef = idxNew;
 // }
 
-export function addScriptItem(clientState: ScriptState, editorState: EditorState, type: ScriptItemKey) {
+export function addScriptItem(clientState: ScriptState, type: ScriptItemKey) {
     let item: ScriptItem = {
         ...createScriptItem(type),
         unsaved: {
@@ -21,15 +21,15 @@ export function addScriptItem(clientState: ScriptState, editorState: EditorState
         },
     };
     clientState.scriptItems.push(item);
-    editorState.metaItems.push({ uui5d: uuid.asRelativeNumber(), isSelected: false });
+    // editorState.metaItems.push({ uui5d: uuid.asRelativeNumber(), isSelected: false });
 }
 
-export function removeScriptItem(clientState: ScriptState, editorState: EditorState, idx: number) {
+export function removeScriptItem(clientState: ScriptState, idx: number) {
     clientState.scriptItems.splice(idx, 1);
-    editorState.metaItems.splice(idx, 1);
+    // editorState.metaItems.splice(idx, 1);
 }
 
-export function swapScriptItems(clientState: ScriptState, editorState: EditorState, idxCurrent: number, idxNew: number) {
+export function swapScriptItems(clientState: ScriptState, idxCurrent: number, idxNew: number) {
     // if (editorState.selectedIdxRef === idxCurrent) {
     //     // setSelectedIdx(editorState, idxNew, idxCurrent);
 
@@ -39,5 +39,5 @@ export function swapScriptItems(clientState: ScriptState, editorState: EditorSta
     // }
 
     swap(clientState.scriptItems, idxCurrent, idxNew);
-    swap(editorState.metaItems, idxCurrent, idxNew);
+    // swap(editorState.metaItems, idxCurrent, idxNew);
 }
