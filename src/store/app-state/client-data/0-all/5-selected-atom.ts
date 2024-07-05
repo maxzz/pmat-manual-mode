@@ -1,4 +1,4 @@
-import { atom, Getter, PrimitiveAtom, Setter } from "jotai";
+import { atom, Getter, Setter } from "jotai";
 import { gScriptState } from ".";
 import { moveScriptCursor } from "../script-item-ops";
 import { swap } from "@/utils";
@@ -24,10 +24,11 @@ export const selectedIdxAtom = atom(
 
 export const selectItemAtom = atom(
     null,
-    (get, set, itemSelectAtom: PrimitiveAtom<boolean>, value: boolean, newIdx: number) => {
+    (get, set, idx: number, value: boolean) => {
+        const itemSelectAtom = gScriptState.scriptItems[idx].unsaved.selectedAtom;
         deselectCurrent(get, set);
         set(itemSelectAtom, value);
-        set(selectedIdxAtom, newIdx);
+        set(selectedIdxAtom, idx);
     }
 );
 
@@ -44,6 +45,6 @@ export const swapItemsAtom = atom(
     null,
     (get, set, idxCurrent: number, idxNew: number) => {
         swap(gScriptState.scriptItems, idxCurrent, idxNew);
-        set(selectItemAtom, gScriptState.scriptItems[idxNew].unsaved.selectedAtom, true, idxNew);
+        set(selectItemAtom, idxNew, true);
     }
 );
