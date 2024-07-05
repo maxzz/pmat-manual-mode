@@ -29,9 +29,9 @@ export function PanelActionsList() {
         // }
     }
 
-    const setSelectedIdx = (idx: number) => {
-        setSelectedRef(idx);
-    };
+    // const setSelectedIdx = (idx: number) => {
+    //     setSelectedRef(idx);
+    // };
 
     // const setSelectedIdx = (idx: number) => {
     //     gEditorState.metaItems[selectedIdx].isSelected = false;
@@ -53,9 +53,19 @@ export function PanelActionsList() {
                     const lastItemIdx = scriptItemsSnap.length - 1;
 
                     const menuState: MenuState = {
-                        onDelete: () => { removeScriptItem(gScriptState, idx); },
-                        onUp: () => { idx > 0 && swapScriptItems(gScriptState, idx, idx - 1); },
-                        onDn: () => { idx < lastItemIdx && swapScriptItems(gScriptState, idx, idx + 1); },
+                        onDelete: () => {
+                            removeScriptItem(gScriptState, idx);
+                        },
+                        onUp: () => {
+                            if (idx > 0) {
+                                swapScriptItems(gScriptState, idx, idx - 1);
+                            }
+                        },
+                        onDn: () => {
+                            if (idx < lastItemIdx) {
+                                swapScriptItems(gScriptState, idx, idx + 1);
+                            }
+                        },
                         hasUp: idx > 0,
                         hasDn: idx < lastItemIdx,
                     };
@@ -66,7 +76,8 @@ export function PanelActionsList() {
                             menuState={menuState}
                             idx={idx}
                             onClick={() => {
-                                setSelectedIdx(idx);
+                                // setSelectedIdx(idx);
+                                setSelectedRef(idx);
                                 selectItem(scriptItemSnap.unsaved.selectedAtom, true);
                             }}
                             key={scriptItemSnap.unsaved.id4}
