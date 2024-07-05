@@ -19,7 +19,7 @@ export const selectedRefAtom = atom(
 );
 
 export const moveSelectedAtom = atom(
-    (get) => get(_selectedRefAtom),
+    null,
     (get, set, keyName: string) => {
         const currentIdx = get(_selectedRefAtom);
 
@@ -31,7 +31,7 @@ export const moveSelectedAtom = atom(
 );
 
 export const selectAtom = atom(
-    (get) => null,
+    null,
     (get, set, atom: PrimitiveAtom<boolean>, value: boolean) => {
         set(atom, value);
     }
