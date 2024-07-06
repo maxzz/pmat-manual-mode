@@ -13,18 +13,18 @@ export type EditorState = { // in mem data
     metaItems: ItemMeta[];
 };
 
-function initEditorState(scriptItems: ScriptItem[]): EditorState {
-    const metaItems = scriptItems.map<ItemMeta>(
-        (_item) => ({
-            uui5d: uuid.asRelativeNumber(),
-            isSelected: false,
-        })
-    );
-    return {
-        // selectedIdxRef: 0,
-        metaItems: metaItems,
-    };
-}
+// function initEditorState(scriptItems: ScriptItem[]): EditorState {
+//     const metaItems = scriptItems.map<ItemMeta>(
+//         (_item) => ({
+//             uui5d: uuid.asRelativeNumber(),
+//             isSelected: false,
+//         })
+//     );
+//     return {
+//         // selectedIdxRef: 0,
+//         metaItems: metaItems,
+//     };
+// }
 
-export const gEditorState = proxy<EditorState>(initEditorState(gScriptState.scriptItems));
+// export const gEditorState = proxy<EditorState>(initEditorState(gScriptState.scriptItems));
 
