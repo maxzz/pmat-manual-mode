@@ -1,3 +1,3 @@
 export * from "./1-editor-state";
 export * from "./2-script-state";
-export * from "./5-selected-atom";
+export * from "./5-op-atoms";

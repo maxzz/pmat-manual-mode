@@ -1,6 +1,6 @@
 import { useSetAtom } from "jotai";
 import { useSnapshot } from "valtio";
-import { gScriptState, selectByKeyAtom, removeScriptItem, selectItemAtom, swapItemsAtom, swapScriptItems } from "@/store";
+import { gScriptState, selectByKeyAtom, removeScriptItem, selectItemAtom, swapItemsAtom } from "@/store";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { SingleRow } from "./3-single-row";
 import { MenuState } from "./5-row-popup-menu";
@@ -27,16 +27,8 @@ export function PanelActionsList() {
                         onDelete: () => {
                             removeScriptItem(gScriptState, idx);
                         },
-                        onUp: () => {
-                            if (idx > 0) {
-                                swapItems(idx, idx - 1);
-                            }
-                        },
-                        onDn: () => {
-                            if (idx < lastItemIdx) {
-                                swapItems(idx, idx + 1);
-                            }
-                        },
+                        onUp: () => swapItems(idx, idx - 1),
+                        onDn: () => swapItems(idx, idx + 1),
                         hasUp: idx > 0,
                         hasDn: idx < lastItemIdx,
                     };

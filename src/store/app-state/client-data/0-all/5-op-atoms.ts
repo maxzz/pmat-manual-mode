@@ -15,18 +15,18 @@ const _selectedRefAtom = atom(-1);
 
 export const selectedIdxAtom = atom(
     (get) => get(_selectedRefAtom),
-    (get, set, newIdx: number) => {
+    (get, set, idx: number) => {
         deselectCurrent(get, set);
-        set(gScriptState.scriptItems[newIdx].unsaved.selectedAtom, true);
-        set(_selectedRefAtom, newIdx);
+        set(gScriptState.scriptItems[idx].unsaved.selectedAtom, true);
+        set(_selectedRefAtom, idx);
     }
 );
 
 export const selectItemAtom = atom(
     null,
     (get, set, idx: number, value: boolean) => {
-        const itemSelectAtom = gScriptState.scriptItems[idx].unsaved.selectedAtom;
         deselectCurrent(get, set);
+        const itemSelectAtom = gScriptState.scriptItems[idx].unsaved.selectedAtom;
         set(itemSelectAtom, value);
         set(selectedIdxAtom, idx);
     }
@@ -35,8 +35,8 @@ export const selectItemAtom = atom(
 export const selectByKeyAtom = atom(
     null,
     (get, set, keyName: string) => {
-        const currentIdx = get(_selectedRefAtom);
-        const newIdx = moveScriptCursor(currentIdx, gScriptState.scriptItems.length, keyName);
+        const idx = get(_selectedRefAtom);
+        const newIdx = moveScriptCursor(idx, gScriptState.scriptItems.length, keyName);
         newIdx !== undefined && set(selectedIdxAtom, newIdx);
     }
 );
@@ -44,6 +44,9 @@ export const selectByKeyAtom = atom(
 export const swapItemsAtom = atom(
     null,
     (get, set, idxCurrent: number, idxNew: number) => {
+        if (idxNew < 0 || idxNew >= gScriptState.scriptItems.length) {
+            return;
+        }
         swap(gScriptState.scriptItems, idxCurrent, idxNew);
         set(selectItemAtom, idxNew, true);
     }
