@@ -13,7 +13,7 @@ import { ref } from "valtio";
 //     editorState.selectedIdxRef = idxNew;
 // }
 
-export function addScriptItem(clientState: ScriptState, type: ScriptItemKey) {
+export function addScriptItem(clientState: ScriptState, type: ScriptItemKey): ScriptItem {
     let item: ScriptItem = {
         ...createScriptItem(type),
         unsaved: ref({
@@ -21,8 +21,9 @@ export function addScriptItem(clientState: ScriptState, type: ScriptItemKey) {
             selectedAtom: atom(false),
         }),
     };
-    clientState.scriptItems.push(item);
+    //clientState.scriptItems.push(item);
     // editorState.metaItems.push({ uui5d: uuid.asRelativeNumber(), isSelected: false });
+    return item;
 }
 
 export function removeScriptItem(clientState: ScriptState, idx: number) {

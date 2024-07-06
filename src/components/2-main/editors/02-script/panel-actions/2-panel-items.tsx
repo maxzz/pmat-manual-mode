@@ -1,6 +1,6 @@
 import { useSetAtom } from "jotai";
 import { useSnapshot } from "valtio";
-import { gScriptState, selectByKeyAtom, removeScriptItem, selectItemAtom, swapItemsAtom, deleteItemAtom } from "@/store";
+import { gScriptState, selectByKeyAtom, selectItemAtom, swapItemsAtom, deleteItemAtom } from "@/store";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { SingleRow } from "./3-single-row";
 import { MenuState } from "./5-row-popup-menu";
