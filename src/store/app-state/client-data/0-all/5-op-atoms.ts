@@ -56,7 +56,7 @@ export const swapItemsAtom = atom(
 export const deleteItemAtom = atom(
     null,
     (get, set, idx: number) => {
-        removeScriptItem(gScriptState, idx);
+        gScriptState.scriptItems.splice(idx, 1);
 
         const newIdx = Math.max(0, Math.min(idx + 1, gScriptState.scriptItems.length - 1));
         set(selectedIdxAtom, newIdx);
@@ -66,7 +66,8 @@ export const deleteItemAtom = atom(
 export const createItemAtom = atom(
     null,
     (get, set, type: ScriptItemKey) => {
-        const newItem = addScriptItem(gScriptState, type);
+        const newItem = addScriptItem(type);
+
         gScriptState.scriptItems.push(newItem);
         set(selectedIdxAtom, gScriptState.scriptItems.length - 1);   
     }

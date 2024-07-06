@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 import type { ScriptItem, ScriptItemKey } from "../script-items-types";
-import type { ScriptState, EditorState } from "../0-all";
+import type { ScriptState } from "../0-all";
 import { createScriptItem } from "./1-create-script-item";
 import { swap, uuid } from "@/utils";
 import { ref } from "valtio";
@@ -13,7 +13,7 @@ import { ref } from "valtio";
 //     editorState.selectedIdxRef = idxNew;
 // }
 
-export function addScriptItem(clientState: ScriptState, type: ScriptItemKey): ScriptItem {
+export function addScriptItem(type: ScriptItemKey): ScriptItem {
     let item: ScriptItem = {
         ...createScriptItem(type),
         unsaved: ref({
