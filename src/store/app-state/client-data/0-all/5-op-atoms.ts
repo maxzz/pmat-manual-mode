@@ -1,6 +1,6 @@
 import { atom, Getter, Setter } from "jotai";
 import { gScriptState } from ".";
-import { moveScriptCursor } from "../script-item-ops";
+import { moveScriptCursor, removeScriptItem } from "../script-item-ops";
 import { swap } from "@/utils";
 
 // export const rightPanel = proxy({ selectedIdx: 0 });
@@ -49,5 +49,15 @@ export const swapItemsAtom = atom(
         }
         swap(gScriptState.scriptItems, idxCurrent, idxNew);
         set(selectItemAtom, idxNew, true);
+    }
+);
+
+export const deleteItemAtom = atom(
+    null,
+    (get, set, idx: number) => {
+        removeScriptItem(gScriptState, idx);
+
+        const newIdx = Math.max(0, Math.min(idx + 1, gScriptState.scriptItems.length - 1));
+        set(selectedIdxAtom, newIdx);
     }
 );
