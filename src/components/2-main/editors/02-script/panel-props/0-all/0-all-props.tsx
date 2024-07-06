@@ -1,5 +1,5 @@
-import { PanelActionTitle } from "./1-panel-title";
 import { ItemPropsEditor } from "./2-item-props-editor";
+import { PanelActionTitle } from "./1-panel-editor-title";
 
 export function PanelProps() {
     return (

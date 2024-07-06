@@ -1,7 +1,7 @@
 import { useAtomValue } from "jotai";
 import { useSnapshot } from "valtio";
 import { gScriptState, selectedIdxAtom } from "@/store";
-import { InPanelPropsTitle } from "./3-panel-editor-title";
+import { InPanelPropsTitle } from "./1-panel-editor-title";
 import { getPropsEditor } from "../props";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { classNames } from "@/utils";
@@ -20,7 +20,7 @@ export function ItemPropsEditorBody() {
     const propsEditor = getPropsEditor({ scriptItem, scriptItemSnap });
 
     return (<>
-        <InPanelPropsTitle scriptItemSnap={scriptItemSnap} />
+        <InPanelPropsTitle type={scriptItemSnap.type} />
         {propsEditor}
     </>);
 }
