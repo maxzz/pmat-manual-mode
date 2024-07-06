@@ -6,12 +6,12 @@ import { focusClasses, gropuTitleClasses, menuContentClasses, menuItemClasses } 
 import { IconAdd, IconDelay, IconField, IconKey, IconPos } from "@/components/ui/icons";
 import { classNames } from "@/utils";
 
-function rowText(type: ScriptItemKey): { name: string; icon: ReactNode; } {
+function getRowIconAndText(type: ScriptItemKey): { icon: ReactNode; name: string; } {
     switch (type) {
-        case 'field': /**/ return { /**/ name: "Field"     /**/, icon: <IconField /**/ className="ml-2 size-4" /> };
-        case 'key':   /**/ return { /**/ name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 size-4" /> };
-        case 'pos':   /**/ return { /**/ name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 mt-1 size-4" /> };
-        case 'delay': /**/ return { /**/ name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 size-4" /> };
+        case 'field': /**/ return { name: "Field"     /**/, icon: <IconField /**/ className="ml-2 size-4" /> };
+        case 'key':   /**/ return { name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 size-4" /> };
+        case 'pos':   /**/ return { name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 size-4 mt-1" /> };
+        case 'delay': /**/ return { name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 size-4" /> };
         default: {
             const really: never = type;
             return { icon: null, name: '' };
@@ -21,7 +21,7 @@ function rowText(type: ScriptItemKey): { name: string; icon: ReactNode; } {
 
 function MenuRow({ type }: { type: ScriptItemKey; }) {
     const createItem = useSetAtom(createItemAtom);
-    const { name, icon } = rowText(type);
+    const { icon, name } = getRowIconAndText(type);
     return (
         <Menu.Item
             className={classNames(menuItemClasses, "grid grid-cols-[auto,1fr] gap-x-2 items-center")}
@@ -37,10 +37,9 @@ function MenuRow({ type }: { type: ScriptItemKey; }) {
 }
 
 const buttonClasses = "\
-p-2 w-9 \
+size-6 \
 border-primary-500 dark:shadow-primary-100/10 \
-hover:bg-primary-200 \
-dark:hover:bg-primary-700 \
+hover:bg-primary-200 dark:hover:bg-primary-700 \
 border rounded shadow outline-none \
 grid place-items-center";
 
@@ -49,7 +48,7 @@ function ButtonAdd() {
         <Menu.Root>
             <Menu.Trigger asChild>
                 <button className={classNames(buttonClasses, focusClasses)}>
-                    <IconAdd className="w-3 h-3" />
+                    <IconAdd className="size-3" />
                 </button>
             </Menu.Trigger>
 
