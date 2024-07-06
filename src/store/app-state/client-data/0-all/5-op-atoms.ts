@@ -6,13 +6,13 @@ import { swap } from "@/utils";
 
 // export const rightPanel = proxy({ selectedIdx: 0 });
 
+const _selectedRefAtom = atom(-1);
+
 function deselectCurrent(get: Getter, set: Setter) {
     const currentIdx = get(_selectedRefAtom);
     const current = gScriptState.scriptItems[currentIdx];
     current && set(current.unsaved.selectedAtom, false);
 }
-
-const _selectedRefAtom = atom(-1);
 
 export const selectedIdxAtom = atom(
     (get) => get(_selectedRefAtom),
