@@ -1,7 +1,7 @@
 import { atom, Getter, Setter } from "jotai";
 import { ScriptItemKey } from "../script-items-types";
 import { gScriptState } from "./2-script-state";
-import { addScriptItem, moveScriptCursor, removeScriptItem } from "../script-item-ops";
+import { createScriptItem, keyToIndex } from "../script-item-ops";
 import { swap } from "@/utils";
 
 // export const rightPanel = proxy({ selectedIdx: 0 });
@@ -37,7 +37,7 @@ export const selectByKeyAtom = atom(
     null,
     (get, set, keyName: string) => {
         const idx = get(_selectedRefAtom);
-        const newIdx = moveScriptCursor(idx, gScriptState.scriptItems.length, keyName);
+        const newIdx = keyToIndex(idx, gScriptState.scriptItems.length, keyName);
         newIdx !== undefined && set(selectedIdxAtom, newIdx);
     }
 );
@@ -66,7 +66,7 @@ export const deleteItemAtom = atom(
 export const createItemAtom = atom(
     null,
     (get, set, type: ScriptItemKey) => {
-        const newItem = addScriptItem(type);
+        const newItem = createScriptItem(type);
 
         gScriptState.scriptItems.push(newItem);
         set(selectedIdxAtom, gScriptState.scriptItems.length - 1);   

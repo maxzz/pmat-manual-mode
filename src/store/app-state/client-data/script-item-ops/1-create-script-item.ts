@@ -1,6 +1,9 @@
-import type { ScriptItemKey, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItemData } from "../script-items-types";
+import { atom } from "jotai";
+import { ref } from "valtio";
+import { uuid } from "pm-manifest";
+import type { ScriptItemKey, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItemData, ScriptItem } from "../script-items-types";
 
-export function createScriptItem(type: ScriptItemKey): ScriptItemData {
+function createScriptItemByType(type: ScriptItemKey): ScriptItemData {
     switch (type) {
         case "field": {
             const newItem: SrcriptItemField = {
@@ -40,4 +43,15 @@ export function createScriptItem(type: ScriptItemKey): ScriptItemData {
             throw new Error(really);
         }
     }
+}
+
+export function createScriptItem(type: ScriptItemKey): ScriptItem {
+    const rv: ScriptItem = {
+        ...createScriptItemByType(type),
+        unsaved: ref({
+            id4: uuid.asRelativeNumber(),
+            selectedAtom: atom(false),
+        }),
+    };
+    return rv;
 }
