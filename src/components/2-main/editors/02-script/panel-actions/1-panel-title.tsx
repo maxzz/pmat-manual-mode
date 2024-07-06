@@ -1,30 +1,17 @@
-import { ReactNode } from "react";
 import { useSetAtom } from "jotai";
 import { ScriptItemKey, createItemAtom } from "@/store";
 import * as Menu from '@radix-ui/react-dropdown-menu';
-import { focusClasses, gropuTitleClasses, menuContentClasses, menuItemClasses } from "@/components/ui/shared-styles";
-import { IconAdd, IconDelay, IconField, IconKey, IconPos } from "@/components/ui/icons";
+import { focusClasses, groupTitleClasses, menuContentClasses, menuItemClasses } from "@/components/ui/shared-styles";
+import { getRowIconAndText } from "./6-get-row-icon-and-text";
+import { IconAdd } from "@/components/ui/icons";
 import { classNames } from "@/utils";
-
-function getRowIconAndText(type: ScriptItemKey): { icon: ReactNode; name: string; } {
-    switch (type) {
-        case 'field': /**/ return { name: "Field"     /**/, icon: <IconField /**/ className="ml-2 size-4" /> };
-        case 'key':   /**/ return { name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 size-4" /> };
-        case 'pos':   /**/ return { name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 size-4 mt-1" /> };
-        case 'delay': /**/ return { name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 size-4" /> };
-        default: {
-            const really: never = type;
-            return { icon: null, name: '' };
-        }
-    }
-}
 
 function MenuRow({ type }: { type: ScriptItemKey; }) {
     const createItem = useSetAtom(createItemAtom);
     const { icon, name } = getRowIconAndText(type);
     return (
         <Menu.Item
-            className={classNames(menuItemClasses, "grid grid-cols-[auto,1fr] gap-x-2 items-center")}
+            className={classNames(menuItemClasses, "text-xs grid grid-cols-[auto,1fr] gap-x-2 items-center")}
             onClick={() => createItem(type)}
         >
             {icon}
@@ -67,7 +54,7 @@ function ButtonAdd() {
 export function PanelActionsTitle() {
     return (
         <div className="h-7 flex items-end justify-between">
-            <div className={classNames("pl-2", gropuTitleClasses)}>
+            <div className={classNames("pl-2", groupTitleClasses)}>
                 Fill in actions
             </div>
 

@@ -1,30 +1,16 @@
-import { ReactNode } from "react";
-import { ScriptItem, ScriptItemKey } from "@/store/app-state/client-data/script-items-types";
-import { IconField, IconKey, IconPos, IconDelay } from "@/components/ui/icons";
-import { gropuTitleClasses } from "@/components/ui/shared-styles";
+import { ScriptItemKey } from "@/store/app-state/client-data/script-items-types";
+import { groupTitleClasses } from "@/components/ui/shared-styles";
+import { getRowIconAndText } from "../../panel-actions/6-get-row-icon-and-text";
 import { classNames } from "@/utils";
 
 export function PanelActionTitle() {
     return (
-        <div className={classNames("h-7 flex items-end justify-between", gropuTitleClasses)}>
+        <div className={classNames("h-7 flex items-end justify-between", groupTitleClasses)}>
             <div className="pl-2">
                 Action properties
             </div>
         </div>
     );
-}
-
-function itemNameAndIcon(type: ScriptItemKey): { name: string; icon: ReactNode; } {
-    switch (type) {
-        case 'field': /**/ return { name: "Field"     /**/, icon: <IconField /**/ className="ml-2 size-4" />, };
-        case 'key':   /**/ return { name: "Keystroke" /**/, icon: <IconKey   /**/ className="ml-2 size-4" />, };
-        case 'pos':   /**/ return { name: "Position"  /**/, icon: <IconPos   /**/ className="ml-2 size-4 mt-1" />, };
-        case 'delay': /**/ return { name: "Delay"     /**/, icon: <IconDelay /**/ className="ml-2 size-4" />, };
-        default: {
-            const really: never = type;
-            return { name: '', icon: null };
-        }
-    }
 }
 
 const panelEditorTitleClasses = "\
@@ -37,7 +23,7 @@ border-b \
 flex items-center justify-between";
 
 export function InPanelPropsTitle({ type }: { type: ScriptItemKey; }) {
-    const { name, icon } = itemNameAndIcon(type);
+    const { name, icon } = getRowIconAndText(type);
     return (
         <div className="-mx-1 -mt-1">
             <div className={panelEditorTitleClasses}>
