@@ -4,6 +4,9 @@ import { loadUiInitialStateFromStorage, watchScriptStateChanges } from './3-scri
 
 export type ScriptState = { // stored data
     scriptItems: ScriptItem[];
+    scriptState: {
+        selectedIdx: number;
+    };
 };
 
 export const gScriptState = proxy<ScriptState>(loadUiInitialStateFromStorage());

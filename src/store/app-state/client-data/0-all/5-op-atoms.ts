@@ -1,25 +1,43 @@
+import { useCallback } from "react";
 import { atom, Getter, Setter } from "jotai";
+import { atomWithProxy } from "jotai-valtio";
 import { ScriptItemKey } from "../script-items-types";
 import { gScriptState } from "./2-script-state";
 import { createScriptItem, keyToIndex } from "../script-item-ops";
 import { swap } from "@/utils";
+import { useAtomCallback } from "jotai/utils";
 
 // export const rightPanel = proxy({ selectedIdx: 0 });
 
-const _selectedRefAtom = atom(-1);
+const _selectedIdxStoreAtom = atomWithProxy(gScriptState.scriptState);
+
+// const _selectedRefAtom = atom(-1);
+
+export function useInitSelectedIdx() {
+    const cb = useAtomCallback(
+        useCallback(
+            (get: Getter, set: Setter) => {
+                set(selectItemAtom, get(selectedIdxAtom), true);
+            }, []
+        )
+    );
+    return cb;
+}
 
 function deselectCurrent(get: Getter, set: Setter) {
-    const currentIdx = get(_selectedRefAtom);
+    const currentIdx = get(_selectedIdxStoreAtom).selectedIdx;
     const current = gScriptState.scriptItems[currentIdx];
     current && set(current.unsaved.selectedAtom, false);
 }
 
 export const selectedIdxAtom = atom(
-    (get) => get(_selectedRefAtom),
+    (get) => get(_selectedIdxStoreAtom).selectedIdx,
     (get, set, idx: number) => {
         deselectCurrent(get, set);
         set(gScriptState.scriptItems[idx].unsaved.selectedAtom, true);
-        set(_selectedRefAtom, idx);
+
+        const _selectedIdxStore = get(_selectedIdxStoreAtom);
+        set(_selectedIdxStoreAtom, { ..._selectedIdxStore, selectedIdx: idx });
     }
 );
 
@@ -36,7 +54,7 @@ export const selectItemAtom = atom(
 export const selectByKeyAtom = atom(
     null,
     (get, set, keyName: string) => {
-        const idx = get(_selectedRefAtom);
+        const idx = get(_selectedIdxStoreAtom).selectedIdx;
         const newIdx = keyToIndex(idx, gScriptState.scriptItems.length, keyName);
         newIdx !== undefined && set(selectedIdxAtom, newIdx);
     }
@@ -69,6 +87,6 @@ export const createItemAtom = atom(
         const newItem = createScriptItem(type);
 
         gScriptState.scriptItems.push(newItem);
-        set(selectedIdxAtom, gScriptState.scriptItems.length - 1);   
+        set(selectedIdxAtom, gScriptState.scriptItems.length - 1);
     }
 );

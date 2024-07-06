@@ -25,6 +25,9 @@ export function loadUiInitialStateFromStorage(): ScriptState {
 
     const initialState = {
         scriptItems: [...initialScriptItems],
+        scriptState: {
+            selectedIdx: 0,
+        },
     };
 
     const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData }) as ScriptState;
