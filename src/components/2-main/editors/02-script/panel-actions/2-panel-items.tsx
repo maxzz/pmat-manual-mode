@@ -17,7 +17,7 @@ export function PanelActionsList() {
 
     return (<>
         {/* <ScrollList> */}
-        <div className={classNames("min-h-[38px]")} onKeyDown={(e) => selectByKey(e.key)}>
+        <div className={classNames("min-h-[38px]")} tabIndex={0} onKeyDown={(e) => selectByKey(e.key)}>
 
             {/* <ScrollList> */}
             {scriptItemsSnap.map(

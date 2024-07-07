@@ -9,7 +9,7 @@ export function PanelActions() {
     const cb = useInitSelectedIdx();
     useEffect(() => { cb(); }, []);
     return (
-        <div className={classNames("h-full min-h-[20rem] flex flex-col space-y-1 select-none", editorFrameClasses, focusClasses)} tabIndex={0}>
+        <div className={classNames("h-full min-h-[20rem] flex flex-col space-y-1 select-none", editorFrameClasses, focusClasses)}>
             <PanelActionsTitle />
             <PanelActionsList />
         </div>
