@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').colors} */
 import twColors from 'tailwindcss/colors';
 import cursors from './tailwind/cursors';
+import containerQueries from "@tailwindcss/container-queries";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -41,5 +42,7 @@ export default {
             },
         },
     },
-    plugins: [],
-}
+    plugins: [
+        containerQueries,
+    ],
+};
