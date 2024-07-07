@@ -1,9 +1,7 @@
-import { useCallback, useEffect } from "react";
-import { Getter, Setter } from "jotai";
-import { useAtomCallback } from "jotai/utils";
+import { useEffect } from "react";
 import { PanelActionsTitle } from "./1-panel-title";
 import { PanelActionsList } from "./2-panel-items";
-import { selectedIdxAtom, selectItemAtom, useInitSelectedIdx } from "@/store";
+import { useInitSelectedIdx } from "@/store";
 
 export function PanelActions() {
     const cb = useInitSelectedIdx();

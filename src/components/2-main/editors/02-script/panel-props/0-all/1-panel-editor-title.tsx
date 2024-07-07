@@ -22,13 +22,22 @@ border-b \
 \
 flex items-center justify-between";
 
-export function InPanelPropsTitle({ type }: { type: ScriptItemKey; }) {
+export function InPanelPropsTitle({ type }: { type?: ScriptItemKey | undefined; }) {
+    if (!type) {
+        return (
+            <div className="-mx-1 -mt-1">
+                <div className={panelEditorTitleClasses}>
+                    No action selected
+                </div>
+            </div>
+        );
+    }
     const { name, icon } = getRowIconAndText(type);
     return (
         <div className="-mx-1 -mt-1">
             <div className={panelEditorTitleClasses}>
                 <div>
-                    {name}
+                    {'<'}{name}{'>'} action properties
                 </div>
 
                 {icon}

@@ -13,7 +13,7 @@ export function ItemPropsEditorBody() {
 
     const scriptItemSnap = scriptItemsSnap[selectedRef];
     if (!scriptItemSnap) {
-        return null;
+        return <InPanelPropsTitle />;
     }
 
     const scriptItem = gScriptState.scriptItems[selectedRef];
