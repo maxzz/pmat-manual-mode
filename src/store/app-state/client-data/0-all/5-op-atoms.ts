@@ -26,7 +26,7 @@ export function useInitSelectedIdx() {
 
 function deselectCurrent(get: Getter, set: Setter) {
     const currentIdx = get(_selectedIdxStoreAtom).selectedIdx;
-    
+
     const current = gScriptState.scriptItems[currentIdx]?.unsaved.selectedAtom;
     current && set(current, false);
 }
@@ -46,13 +46,18 @@ export const selectedIdxAtom = atom(
 
 export const selectItemAtom = atom(
     null,
-    (get, set, idx: number, value: boolean) => {
-        deselectCurrent(get, set);
+    (get, set, idx: number, value: boolean | ((v: boolean) => boolean)) => {
+        const currentIdx = get(selectedIdxAtom);
+        if (currentIdx !== idx) {
+            deselectCurrent(get, set);
+        }
 
         const current = gScriptState.scriptItems[idx]?.unsaved.selectedAtom;
-        current && set(current, value);
-        
-        set(selectedIdxAtom, idx);
+        if (current) {
+            value = typeof value === "function" ? value(get(current)) : value;
+            set(current, value);
+            set(selectedIdxAtom, value ? idx : -1);
+        }
     }
 );
 
