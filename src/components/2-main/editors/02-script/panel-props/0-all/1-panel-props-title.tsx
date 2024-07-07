@@ -2,7 +2,7 @@ import { ScriptItemKey } from "@/store/app-state/client-data/script-items-types"
 import { getRowIconAndText } from "../../panel-actions/6-get-row-icon-and-text";
 import { panelEditorTitleClasses } from "@/components/ui/shared-styles";
 
-export function InPanelPropsTitle({ type }: { type?: ScriptItemKey | undefined; }) {
+export function PanelPropsTitle({ type }: { type?: ScriptItemKey | undefined; }) {
     const { name, icon } = getRowIconAndText(type);
     const ending = name ? 'properties' : 'No action selected';
     return (

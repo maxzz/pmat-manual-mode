@@ -3,7 +3,7 @@ import { useSnapshot } from "valtio";
 import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { gScriptState, selectedIdxAtom } from "@/store";
 import { getPropsEditor } from "../props";
-import { InPanelPropsTitle } from "./1-editor-title";
+import { PanelPropsTitle } from "./1-panel-props-title";
 import { classNames } from "@/utils";
 
 function ItemPropsEditor() {
@@ -13,14 +13,14 @@ function ItemPropsEditor() {
 
     const scriptItemSnap = scriptItemsSnap[selectedRef];
     if (!scriptItemSnap) {
-        return <InPanelPropsTitle />;
+        return <PanelPropsTitle />;
     }
 
     const scriptItem = gScriptState.scriptItems[selectedRef];
     const propsEditor = getPropsEditor({ scriptItem, scriptItemSnap });
 
     return (<>
-        <InPanelPropsTitle type={scriptItemSnap.type} />
+        <PanelPropsTitle type={scriptItemSnap.type} />
         {propsEditor}
     </>);
 }
