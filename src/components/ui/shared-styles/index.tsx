@@ -1,6 +1,7 @@
 export * from './focus';
 export * from './menu';
 export * from './actions-list';
+export * from './editor-title-w-frame';
 
 export const editorFrameClasses = "p-1 border-primary-500 border rounded";
 

@@ -1,14 +1,6 @@
 import { ScriptItemKey } from "@/store/app-state/client-data/script-items-types";
 import { getRowIconAndText } from "../../panel-actions/6-get-row-icon-and-text";
-
-export const panelEditorTitleClasses = "\
-p-2 h-9 text-sm font-semibold \
-\
-bg-primary-200/50 dark:bg-primary-700/50 \
-border-primary-500 \
-border-b \
-\
-flex items-center justify-between";
+import { panelEditorTitleClasses } from "@/components/ui/shared-styles";
 
 export function InPanelPropsTitle({ type }: { type?: ScriptItemKey | undefined; }) {
     const { name, icon } = getRowIconAndText(type);

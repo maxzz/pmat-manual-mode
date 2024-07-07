@@ -1,7 +1,6 @@
-import { groupTitleClasses } from "@/components/ui/shared-styles";
+import { panelEditorTitleClasses } from "@/components/ui/shared-styles";
 import { classNames } from "@/utils";
 import { MenuAddButton } from "./1-panel-title-menu";
-import { panelEditorTitleClasses } from "../panel-props/0-all/1-editor-title";
 
 export function PanelActionsTitle() {
     return (
