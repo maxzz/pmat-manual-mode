@@ -1,10 +1,10 @@
-import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
-import { classNames } from "@/utils";
-import { gScriptState, selectedIdxAtom } from "@/store";
 import { useAtomValue } from "jotai";
 import { useSnapshot } from "valtio";
+import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
+import { gScriptState, selectedIdxAtom } from "@/store";
 import { getPropsEditor } from "../props";
-import { InPanelPropsTitle } from "./2-editor-title";
+import { InPanelPropsTitle } from "./1-editor-title";
+import { classNames } from "@/utils";
 
 function ItemPropsEditor() {
     const { scriptItems: scriptItemsSnap } = useSnapshot(gScriptState);

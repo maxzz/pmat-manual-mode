@@ -10,16 +10,19 @@ border-b \
 \
 flex items-center justify-between";
 
+function EmptyTitle() {
+    return (
+        <div className="-mx-1 -mt-1">
+            <div className={panelEditorTitleClasses}>
+                <span className="text-xs font-light">No action selected</span>
+            </div>
+        </div>
+    );
+}
+
 export function InPanelPropsTitle({ type }: { type?: ScriptItemKey | undefined; }) {
     if (!type) {
-        return (
-            <div className="-mx-1 -mt-1">
-                <div className={panelEditorTitleClasses}>
-                    
-                    <span className="text-xs font-light">No action selected</span>
-                </div>
-            </div>
-        );
+        return <EmptyTitle />;
     }
 
     const { name, icon } = getRowIconAndText(type);
