@@ -1,8 +1,8 @@
 import { ScriptItemKey } from "@/store/app-state/client-data/script-items-types";
 import { getRowIconAndText } from "../../panel-actions/6-get-row-icon-and-text";
 
-const panelEditorTitleClasses = "\
-px-2 py-2 h-9 text-sm font-semibold \
+export const panelEditorTitleClasses = "\
+p-2 h-9 text-sm font-semibold \
 \
 bg-primary-200/50 dark:bg-primary-700/50 \
 border-primary-500 \

@@ -24,7 +24,7 @@ function MenuRow({ type }: { type: ScriptItemKey; }) {
 }
 
 const buttonClasses = "\
-size-6 \
+w-8 h-6 \
 border-primary-500 dark:shadow-primary-100/10 \
 hover:bg-primary-200 dark:hover:bg-primary-700 \
 border rounded shadow outline-none \
