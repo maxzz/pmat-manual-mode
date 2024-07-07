@@ -25,9 +25,15 @@ function ItemPropsEditor() {
     </>);
 }
 
+const PanelPropsClasses = "\
+min-h-80 text-xs \
+grid grid-rows-[auto,1fr] gap-2 \
+overflow-hidden \
+select-none";
+
 export function PanelProps() {
     return (
-        <div className={classNames("min-h-80 overflow-hidden", "text-xs select-none grid grid-rows-[auto,1fr] gap-2", editorFrameClasses, focusClasses)}>
+        <div className={classNames(PanelPropsClasses, editorFrameClasses, focusClasses)}>
             <ItemPropsEditor />
         </div>
     );
