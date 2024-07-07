@@ -25,7 +25,7 @@ function Modifier({ label, name, item }: { label: string; name: SrcriptItemModif
     const snap = useSnapshot(item);
     return (
         <div className={classNames("flex-1 max-w-36 flex @[190px]:flex-col @[190px]:gap-y-0.5 items-center gap-x-2")}>
-            <div className="self-start @[190px]:pl-2 min-w-12 text-xs font-light">
+            <div className="self-start @[190px]:pl-2 min-w-12 text-xs @[190px]:text-[0.65rem] font-light">
                 {label}
             </div>
 
