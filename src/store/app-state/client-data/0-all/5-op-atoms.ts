@@ -11,7 +11,12 @@ import { useAtomCallback } from "jotai/utils";
 
 const _selectedIdxStoreAtom = atomWithProxy(gScriptState.scriptState);
 
-// const _selectedRefAtom = atom(-1);
+function deselectCurrent(get: Getter, set: Setter) {
+    const currentIdx = get(_selectedIdxStoreAtom).selectedIdx;
+
+    const current = gScriptState.scriptItems[currentIdx]?.unsaved.selectedAtom;
+    current && set(current, false);
+}
 
 export function useInitSelectedIdx() {
     const cb = useAtomCallback(
@@ -22,13 +27,6 @@ export function useInitSelectedIdx() {
         )
     );
     return cb;
-}
-
-function deselectCurrent(get: Getter, set: Setter) {
-    const currentIdx = get(_selectedIdxStoreAtom).selectedIdx;
-
-    const current = gScriptState.scriptItems[currentIdx]?.unsaved.selectedAtom;
-    current && set(current, false);
 }
 
 export const selectedIdxAtom = atom(
