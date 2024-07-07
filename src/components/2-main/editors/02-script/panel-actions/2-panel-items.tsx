@@ -25,9 +25,9 @@ export function PanelActionsList() {
                     const lastItemIdx = scriptItemsSnap.length - 1;
 
                     const menuState: MenuState = {
-                        onDelete: () => deleteItem(idx),
-                        onUp: () => swapItems(idx, idx - 1),
-                        onDn: () => swapItems(idx, idx + 1),
+                        onDelete: (e) => { e.stopPropagation(); deleteItem(idx); },
+                        onUp: (e) => { e.stopPropagation(); swapItems(idx, idx - 1); },
+                        onDn: (e) => { e.stopPropagation(); swapItems(idx, idx + 1); },
                         hasUp: idx > 0,
                         hasDn: idx < lastItemIdx,
                     };

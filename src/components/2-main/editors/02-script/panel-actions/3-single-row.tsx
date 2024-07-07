@@ -4,7 +4,7 @@ import { ScriptItem } from "@/store";
 import { classNames } from "@/utils";
 import { rowClasses, rowSelectedClasses } from "@/components/ui/shared-styles";
 import { MenuState, RowMenuButton } from "./4-row-popup-menu";
-import { rowColumnDetails } from "./5-row-column-details";
+import { rowColumnDetails } from "./5-get-row-icon-and-details";
 
 type SingleRowProps = HTMLAttributes<HTMLDivElement> & {
     scriptItemSnap: ScriptItem;
@@ -31,7 +31,7 @@ export function SingleRow({ scriptItemSnap, menuState, idx, ...rest }: SingleRow
                 {details}
             </div>
 
-            <RowMenuButton item={scriptItemSnap} idx={idx} menuState={menuState} />
+            <RowMenuButton menuState={menuState} />
         </div>
     );
 }

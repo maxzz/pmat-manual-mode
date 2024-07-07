@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import { useClickAway } from "react-use";
-import { ScriptItem } from "@/store";
 import { classNames } from "@/utils";
 import { IconArrowUp, IconArrowDown, IconTrash, IconClose, IconMenu } from "@/components/ui/icons";
 
@@ -31,9 +30,9 @@ function FloatingMenuButtons({ menuState, onClose }: { menuState: MenuState; onC
     const { onDelete, onUp, onDn, hasUp, hasDn } = menuState;
     return (
         <div className={FloatingMenuButtonsClasses}>
-            <IconArrowUp className={classNames(submenuIconClasses, !hasUp && "invisible")} title="Move item up" onClick={(e) => { e.stopPropagation(); onUp(e); }} />
-            <IconArrowDown className={classNames(submenuIconClasses, !hasDn && "invisible")} title="Move item down" onClick={(e) => { e.stopPropagation(); onDn(e); }} />
-            <IconTrash className={submenuDelClasses} title="Delete item" onClick={(e) => { e.stopPropagation(); onDelete(e); }} />
+            <IconArrowUp className={classNames(submenuIconClasses, !hasUp && "invisible")} title="Move item up" onClick={onUp} />
+            <IconArrowDown className={classNames(submenuIconClasses, !hasDn && "invisible")} title="Move item down" onClick={onDn} />
+            <IconTrash className={submenuDelClasses} title="Delete item" onClick={onDelete} />
             <IconClose className={submenuIconClasses} onClick={onClose} />
         </div>
     );
@@ -41,16 +40,17 @@ function FloatingMenuButtons({ menuState, onClose }: { menuState: MenuState; onC
 
 const IconMenuClasses = "p-1 size-5 hover:text-primary-700 hover:bg-primary-400/50 dark:hover:text-white dark:hover:bg-primary-500 rounded";
 
-export function RowMenuButton({ item, idx, menuState }: { item: ScriptItem; idx: number; menuState: MenuState; }) {
+export function RowMenuButton({ menuState }: { menuState: MenuState; }) {
     const btnRef = useRef(null);
     const [menuOpen, setMenuOpen] = useState(false);
-    const onClose = (event: React.MouseEvent) => { event.preventDefault(); setMenuOpen(v => !v); };
 
-    useClickAway(btnRef, () => { setMenuOpen(false); });
+    const onClose = (event: React.MouseEvent) => { event.preventDefault(); setMenuOpen((v) => !v); };
+
+    useClickAway(btnRef, () => setMenuOpen(false));
 
     return (
         <button ref={btnRef} className={classNames("relative mr-1 outline-none")} tabIndex={-1}>
-            <IconMenu className={IconMenuClasses} onClick={(event) => { event.preventDefault(); setMenuOpen((v) => !v); }} />
+            <IconMenu className={IconMenuClasses} onClick={onClose} />
 
             {menuOpen && (
                 <FloatingMenuButtons onClose={onClose} menuState={menuState} />
