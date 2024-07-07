@@ -13,7 +13,9 @@ export function PanelPropsTitle({ type }: { type?: ScriptItemKey | undefined; })
                     <span className="text-xs font-light">{ending}</span>
                 </div>
 
-                {icon}
+                <div className="opacity-50">
+                    {icon}
+                </div>
             </div>
         </div>
     );
