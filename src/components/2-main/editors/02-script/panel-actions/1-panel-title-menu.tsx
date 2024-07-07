@@ -24,10 +24,11 @@ function MenuRow({ type }: { type: ScriptItemKey; }) {
 }
 
 const buttonClasses = "\
-w-8 h-6 \
-border-primary-500 dark:shadow-primary-100/10 \
+w-7 h-6 \
 hover:bg-primary-200 dark:hover:bg-primary-700 \
-border rounded shadow outline-none \
+border-primary-500/50 \
+border rounded outline-none \
+shadow-sm dark:shadow-primary-100/10 \
 grid place-items-center";
 
 export function MenuAddButton() {

@@ -1,6 +1,6 @@
 export function NormalEditor() {
     return (
-        <div className="p-4 max-w-[720px] flex flex-col gap-2">
+        <div className="px-4 pt-4 max-w-3xl flex flex-col gap-2 select-none">
             Normal Editor
         </div>
     );
