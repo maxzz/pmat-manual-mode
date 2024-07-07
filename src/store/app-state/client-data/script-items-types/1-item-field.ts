@@ -1,6 +1,6 @@
 // Field
 
-export type SrcriptItemField = {
+export type SrcriptItemFld = {
     type: 'field',
     id: string;
 };

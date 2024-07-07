@@ -3,8 +3,8 @@ import { useAtomValue } from "jotai";
 import { ScriptItem } from "@/store";
 import { classNames } from "@/utils";
 import { rowClasses, rowSelectedClasses } from "@/components/ui/shared-styles";
-import { MenuState, RowMenuButton } from "./5-row-popup-menu";
-import { rowColumnDetails } from "./4-row-column-details";
+import { MenuState, RowMenuButton } from "./4-row-popup-menu";
+import { rowColumnDetails } from "./5-row-column-details";
 
 type SingleRowProps = HTMLAttributes<HTMLDivElement> & {
     scriptItemSnap: ScriptItem;

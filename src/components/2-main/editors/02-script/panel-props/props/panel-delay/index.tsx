@@ -1,9 +1,9 @@
 import { HTMLAttributes } from "react";
 import { useSnapshot } from "valtio";
-import { SrcriptItemDelay } from "@/store";
+import { SrcriptItemDly } from "@/store";
 import { propsBoxClasses, InputField } from "../../ui";
 
-export function InputDelay({ item }: { item: SrcriptItemDelay; }) {
+export function InputDelay({ item }: { item: SrcriptItemDly; }) {
     const snap = useSnapshot(item, { sync: true });
 
     function onChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -30,7 +30,7 @@ export function InputDelay({ item }: { item: SrcriptItemDelay; }) {
     );
 }
 
-export function PropsEditorDelay({ item, ...rest }: { item: SrcriptItemDelay; } & HTMLAttributes<HTMLElement>) {
+export function PropsEditorDly({ item, ...rest }: { item: SrcriptItemDly; } & HTMLAttributes<HTMLElement>) {
     return (
         <div className={propsBoxClasses} {...rest}>
             <InputDelay item={item} />

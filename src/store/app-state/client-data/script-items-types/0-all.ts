@@ -1,10 +1,10 @@
 import { PrimitiveAtom } from "jotai";
-import { SrcriptItemField } from "./1-item-field";
+import { SrcriptItemFld } from "./1-item-field";
 import { SrcriptItemKey } from "./2-item-key";
 import { SrcriptItemPos } from "./3-item-position";
-import { SrcriptItemDelay } from "./4-item-delay";
+import { SrcriptItemDly } from "./4-item-delay";
 
-export type ScriptItemData = SrcriptItemField | SrcriptItemKey | SrcriptItemPos | SrcriptItemDelay;
+export type ScriptItemData = SrcriptItemFld | SrcriptItemKey | SrcriptItemPos | SrcriptItemDly;
 
 export type ScriptItemMeta = {
     unsaved: {

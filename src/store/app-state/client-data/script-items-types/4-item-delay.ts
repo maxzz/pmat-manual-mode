@@ -1,6 +1,6 @@
 // Delay
 
-export type SrcriptItemDelay = {
+export type SrcriptItemDly = {
     type: 'delay',
     n: number;
 };

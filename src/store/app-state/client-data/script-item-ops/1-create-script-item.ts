@@ -1,12 +1,12 @@
 import { atom } from "jotai";
 import { ref } from "valtio";
 import { uuid } from "pm-manifest";
-import type { ScriptItemKey, SrcriptItemField, SrcriptItemKey, SrcriptItemPos, SrcriptItemDelay, ScriptItemData, ScriptItem } from "../script-items-types";
+import type { ScriptItemKey, SrcriptItemFld, SrcriptItemKey, SrcriptItemPos, SrcriptItemDly, ScriptItemData, ScriptItem } from "../script-items-types";
 
 function createScriptItemByType(type: ScriptItemKey): ScriptItemData {
     switch (type) {
         case "field": {
-            const newItem: SrcriptItemField = {
+            const newItem: SrcriptItemFld = {
                 type: 'field',
                 id: '444',
             };
@@ -32,7 +32,7 @@ function createScriptItemByType(type: ScriptItemKey): ScriptItemData {
             return newItem;
         }
         case "delay": {
-            const newItem: SrcriptItemDelay = {
+            const newItem: SrcriptItemDly = {
                 type: 'delay',
                 n: 1000,
             };
