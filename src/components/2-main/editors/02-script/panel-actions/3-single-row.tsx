@@ -27,7 +27,7 @@ export function SingleRow({ scriptItemSnap, menuState, idx, ...rest }: SingleRow
                 {name}
             </div>
 
-            <div className="px-4 text-[.65rem]">
+            <div className="px-4 text-[.65rem] font-light">
                 {details}
             </div>
 

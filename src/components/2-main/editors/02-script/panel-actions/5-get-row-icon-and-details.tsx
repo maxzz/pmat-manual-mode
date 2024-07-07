@@ -29,10 +29,10 @@ const detailsKey = (item: SrcriptItemKey) => (
 
 export function rowColumnDetails(item: ScriptItem): { name: string; icon: ReactNode; details: ReactNode; } {
     switch (item.type) {
-        case 'field': /**/ return { name: "Field"     /**/, icon: <IconFld className="ml-2 size-4" />,      /**/ details: detailsFld(item) };
-        case 'key':   /**/ return { name: "Keystroke" /**/, icon: <IconKey className="ml-2 size-4" />,      /**/ details: detailsKey(item) };
-        case 'pos':   /**/ return { name: "Position"  /**/, icon: <IconPos className="ml-2 size-4 mt-1" />, /**/ details: detailsPos(item) };
-        case 'delay': /**/ return { name: "Delay"     /**/, icon: <IconDly className="ml-2 size-4" />,      /**/ details: detailsDly(item) };
+        case 'field': /**/ return { name: "Field"     /**/, icon: <IconFld className="ml-2 opacity-50 size-4" />,      /**/ details: detailsFld(item) };
+        case 'key':   /**/ return { name: "Keystroke" /**/, icon: <IconKey className="ml-2 opacity-50 size-4" />,      /**/ details: detailsKey(item) };
+        case 'pos':   /**/ return { name: "Position"  /**/, icon: <IconPos className="ml-2 opacity-50 size-4 mt-1" />, /**/ details: detailsPos(item) };
+        case 'delay': /**/ return { name: "Delay"     /**/, icon: <IconDly className="ml-2 opacity-50 size-4" />,      /**/ details: detailsDly(item) };
         default: {
             const really: never = item;
             return { icon: null, name: '', details: '' };
