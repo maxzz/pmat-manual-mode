@@ -1,7 +1,6 @@
 import { useSetAtom } from "jotai";
 import { useSnapshot } from "valtio";
 import { gScriptState, selectByKeyAtom, selectItemAtom, swapItemsAtom, deleteItemAtom } from "@/store";
-import { editorFrameClasses, focusClasses } from "@/components/ui/shared-styles";
 import { SingleRow } from "./3-single-row";
 import { MenuState } from "./4-row-popup-menu";
 import { classNames } from "@/utils";
@@ -17,7 +16,7 @@ export function PanelActionsList() {
 
     return (<>
         {/* <ScrollList> */}
-        <div className={classNames("min-h-10")} tabIndex={0} onKeyDown={(e) => selectByKey(e.key)}>
+        <div className={classNames("min-h-10 outline-none")} tabIndex={0} onKeyDown={(e) => selectByKey(e.key)}>
 
             {/* <ScrollList> */}
             {scriptItemsSnap.map(
@@ -49,3 +48,7 @@ export function PanelActionsList() {
         {/* </ScrollList> */}
     </>);
 }
+
+//TODO: currect item selection dim wo/ focus
+//TODO: currect item selection on hover when active use the same select color as on focus but wo/ frame
+//TODO: currect item selection on inactive use the same select color as on focus but wo/ frame
