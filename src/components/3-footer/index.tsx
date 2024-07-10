@@ -24,7 +24,7 @@ function ColorModeSwitch() {
 export function SectionFooter() {
     return (
         <div className="px-2 py-1.5 border-primary-500/20 border-t flex items-center justify-between">
-            <a href="https://github.com/maxzz/pmat-manual-mode" target='_blank'>
+            <a className={classNames("p-1.5", colorModeSwitchClasses)} href="https://github.com/maxzz/pmat-manual-mode" target='_blank'>
                 <IconSunnyvale className="size-4 text-primary-500" />
             </a>
 
