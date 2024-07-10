@@ -7,7 +7,7 @@
         "@radix-ui/react-dropdown-menu": "^2.0.5",
         "@radix-ui/react-scroll-area": "^1.0.4",
         "@radix-ui/react-select": "^2.1.1",
-        "jotai": "2.8.4",
+        "jotai": "2.9.0",
         "jotai-valtio": "^0.5.0",
         "pm-manifest": "latest",
         "react": "^18.2.0",
@@ -17,7 +17,7 @@
     },
     "devDependencies": {
         "@tailwindcss/container-queries": "^0.1.1",
-        "@types/node": "20.14.9",
+        "@types/node": "20.14.10",
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
         "@vitejs/plugin-react": "4.3.1",
