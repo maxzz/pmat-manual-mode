@@ -49,7 +49,3 @@ export function PanelActionsList() {
         {/* </ScrollList> */}
     </>);
 }
-
-//TODO: current item selection dim wo/ focus
-//TODO: current item selection on hover when active use the same select color as on focus but wo/ frame
-//TODO: current item selection on inactive use the same select color as on focus but wo/ frame
