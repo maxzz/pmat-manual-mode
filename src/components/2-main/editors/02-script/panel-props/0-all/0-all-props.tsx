@@ -1,6 +1,6 @@
 import { useAtomValue } from "jotai";
 import { useSnapshot } from "valtio";
-import { editorFrameClasses, focusWithinClasses } from "@/components/ui/shared-styles";
+import { editorFrameClasses } from "@/components/ui/shared-styles";
 import { gScriptState, selectedIdxAtom } from "@/store";
 import { getPropsEditor } from "../props";
 import { PanelPropsTitle } from "./1-panel-props-title";
@@ -33,7 +33,7 @@ select-none";
 
 export function PanelProps() {
     return (
-        <div className={classNames(PanelPropsClasses, editorFrameClasses, focusWithinClasses)}>
+        <div className={classNames(PanelPropsClasses, editorFrameClasses/*, focusWithinClasses*/)}>
             <ItemPropsEditor />
         </div>
     );
