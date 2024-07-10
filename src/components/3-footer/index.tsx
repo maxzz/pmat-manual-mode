@@ -16,7 +16,7 @@ function ColorModeSwitch() {
 
     return (
         <div className={classNames("p-1.5", colorModeSwitchClasses)}>
-            <DarkLightSwitch className="size-4" isDark={darkMode} title="Light/Dark Mode Switch" onClick={changeMode} />
+            <DarkLightSwitch className="size-4 text-primary-500" isDark={darkMode} title="Light/Dark Mode Switch" onClick={changeMode} />
         </div>
     );
 }
