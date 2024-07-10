@@ -37,7 +37,7 @@ export function PanelActionsList() {
                             scriptItemSnap={scriptItemSnap}
                             menuState={menuState}
                             idx={idx}
-                            onClick={() => selectItem(idx, (v) => !v)}
+                            onClick={() => selectItem(idx, (v) => /*!v*/true)}
                             key={scriptItemSnap.unsaved.id4}
                         />
                     );
