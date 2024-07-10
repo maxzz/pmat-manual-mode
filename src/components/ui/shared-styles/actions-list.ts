@@ -12,3 +12,5 @@ outline-primary-400 \
 [outline-width:var(--parent-act)] \
 \
 outline rounded-[3px] cursor-default";
+
+export const rowParentActiveClasses = "[--parent-act:0px] focus-within:[--parent-act:1px]";

@@ -3,6 +3,7 @@ import { useSnapshot } from "valtio";
 import { gScriptState, selectByKeyAtom, selectItemAtom, swapItemsAtom, deleteItemAtom } from "@/store";
 import { SingleRow } from "./3-single-row";
 import { MenuState } from "./4-row-popup-menu";
+import { rowParentActiveClasses } from "@/components/ui/shared-styles";
 import { classNames } from "@/utils";
 // import { ScrollList } from "./scroll-list";
 
@@ -16,7 +17,7 @@ export function PanelActionsList() {
 
     return (<>
         {/* <ScrollList> */}
-        <div className={classNames("min-h-10 outline-none [--parent-act:0px] focus-within:[--parent-act:1px]")} tabIndex={0} onKeyDown={(e) => selectByKey(e.key)}>
+        <div className={classNames("min-h-10 outline-none", rowParentActiveClasses)} tabIndex={0} onKeyDown={(e) => selectByKey(e.key)}>
 
             {/* <ScrollList> */}
             {scriptItemsSnap.map(
