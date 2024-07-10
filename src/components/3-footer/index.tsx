@@ -15,7 +15,7 @@ function ColorModeSwitch() {
     }
 
     return (
-        <div className={classNames("absolute p-1.5 right-2", colorModeSwitchClasses)}>
+        <div className={classNames("p-1.5", colorModeSwitchClasses)}>
             <DarkLightSwitch className="size-4" isDark={darkMode} title="Light/Dark Mode Switch" onClick={changeMode} />
         </div>
     );
@@ -23,7 +23,7 @@ function ColorModeSwitch() {
 
 export function SectionFooter() {
     return (
-        <div className="relative px-2 py-3 border-primary-500/20 border-t flex items-center justify-start">
+        <div className="px-2 py-1.5 border-primary-500/20 border-t flex items-center justify-between">
             <a href="https://github.com/maxzz/pmat-manual-mode" target='_blank'>
                 <IconSunnyvale className="size-4 text-primary-500" />
             </a>
