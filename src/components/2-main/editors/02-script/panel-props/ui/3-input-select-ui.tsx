@@ -61,7 +61,7 @@ const Item = forwardRef(({ value, children }: { value: string; children: ReactNo
 });
 
 const triggerClasses = "w-full px-2 py-1 border-primary-400 dark:border-primary-700 border rounded flex items-center justify-between";
-const contentClasses = `text-xs ${popupColorClasses} border-primary-500 border rounded-md shadow shadow-primary-500 overflow-hidden select-none`;
+const contentClasses = `text-xs ${popupColorClasses} border-primary-500 border rounded-md shadow shadow-primary-500/30 overflow-hidden select-none`;
 const scrollButtonClasses = `h-4 ${popupColorClasses} flex items-center justify-center`;
 
 export type StringValueChangeProps = {
