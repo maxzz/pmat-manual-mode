@@ -16,7 +16,7 @@ export function PanelActionsList() {
 
     return (<>
         {/* <ScrollList> */}
-        <div className={classNames("min-h-10 outline-none")} tabIndex={0} onKeyDown={(e) => selectByKey(e.key)}>
+        <div className={classNames("min-h-10 outline-none [--parent-act:0px] focus-within:[--parent-act:1px]")} tabIndex={0} onKeyDown={(e) => selectByKey(e.key)}>
 
             {/* <ScrollList> */}
             {scriptItemsSnap.map(
@@ -49,6 +49,6 @@ export function PanelActionsList() {
     </>);
 }
 
-//TODO: currect item selection dim wo/ focus
-//TODO: currect item selection on hover when active use the same select color as on focus but wo/ frame
-//TODO: currect item selection on inactive use the same select color as on focus but wo/ frame
+//TODO: current item selection dim wo/ focus
+//TODO: current item selection on hover when active use the same select color as on focus but wo/ frame
+//TODO: current item selection on inactive use the same select color as on focus but wo/ frame
