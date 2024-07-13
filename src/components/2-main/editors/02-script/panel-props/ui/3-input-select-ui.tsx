@@ -91,8 +91,9 @@ export function InputSelectUi({ items, value, onValueChange }: InputSelectUiProp
                     <S.Viewport className="px-1 py-2">
                         {items.map(
                             (item) => {
-                                const label = typeof item === 'string' ? item : item[0];
-                                const value = typeof item === 'string' ? item : item[1];
+                                const isString = typeof item === 'string';
+                                const label = isString ? item : item[0];
+                                const value = isString ? item : item[1];
                                 return <Item value={value} key={value}>{label}</Item>;
                             })
                         }
