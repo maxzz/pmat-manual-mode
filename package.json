@@ -9,7 +9,7 @@
         "@radix-ui/react-select": "^2.1.1",
         "jotai": "2.9.1",
         "jotai-valtio": "^0.5.0",
-        "pm-manifest": "latest",
+        "pm-manifest": "^1.2.20",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-use": "^17.5.1",
@@ -17,7 +17,7 @@
     },
     "devDependencies": {
         "@tailwindcss/container-queries": "^0.1.1",
-        "@types/node": "20.14.12",
+        "@types/node": "22.0.0",
         "@types/react": "18.3.3",
         "@types/react-dom": "18.3.0",
         "@vitejs/plugin-react": "4.3.1",
