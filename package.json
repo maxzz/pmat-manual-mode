@@ -7,7 +7,7 @@
         "@radix-ui/react-dropdown-menu": "^2.0.5",
         "@radix-ui/react-scroll-area": "^1.0.4",
         "@radix-ui/react-select": "^2.1.1",
-        "jotai": "2.9.1",
+        "jotai": "2.9.3",
         "jotai-valtio": "^0.5.0",
         "pm-manifest": "^1.2.20",
         "react": "^18.2.0",
