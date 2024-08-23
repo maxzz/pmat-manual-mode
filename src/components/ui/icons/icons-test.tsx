@@ -1,8 +1,4 @@
-import { ReactElement } from 'react';
 import * as allIcons from '.';
-
-//type IconName = keyof typeof allIcons;
-//type Icon = ReactElement;
 
 export function TestAllIcons() {
     return (
@@ -13,12 +9,6 @@ export function TestAllIcons() {
                         <div className="border-sky-500 border rounded" title={name}>
                             <Icon className="size-6" />
                         </div>
-
-                        {/* {Icon['[[FunctionLocation]]']} */}
-
-                        {/* <span className="text-[.55rem]">
-                            {name}
-                        </span> */}
                     </div>
                 ))
             }
