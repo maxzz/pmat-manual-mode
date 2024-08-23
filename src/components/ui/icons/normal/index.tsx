@@ -1,5 +1,7 @@
-export * from './icon01-star';
+export * from './editor-manual-fields';
 export * from './editor-swap-popup';
+
+export * from './icon01-star';
 export * from './icon08-menu-burger';
 export * from './icon09-dot';
 export * from './icon10-check';
