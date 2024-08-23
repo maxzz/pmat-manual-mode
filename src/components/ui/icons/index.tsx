@@ -1,2 +1,2 @@
 export * from './normal';
-export * from './editor-fields';
+export * from './editor-manual-fields';
