@@ -1,6 +1,6 @@
 import { useSnapshot } from 'valtio';
 import { appUi, setAppDarkMode } from '@/store';
-import { DarkLightSwitch } from '../ui/icons/DarkLight';
+import { DarkLightSwitch } from '../ui/icons/dark-light';
 import { IconSunnyvale } from '../ui/icons';
 import { classNames } from '@/utils';
 
