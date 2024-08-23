@@ -1,8 +1,24 @@
-import * as allIcons from '.';
+import { HTMLAttributes, useEffect, useState } from 'react';
+import { classNames } from '@/utils';
 
-export function TestAllIcons() {
+type AllIcons = Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>>;
+
+export function SpyTestAllIcons({ allIcons, className, ...rest }: { allIcons: AllIcons; } & HTMLAttributes<HTMLDivElement>) {
+    const [printIcons, setPrintIcons] = useState(false);
+    useEffect(
+        () => {
+            setPrintIcons((v) => {
+                if (!v) {
+                    printIconsLocation(allIcons);
+                    return !v;
+                }
+                return v;
+            });
+        }, [printIcons, allIcons]
+    );
+
     return (
-        <div className="px-4 flex flex-wrap gap-2">
+        <div className={classNames("flex flex-wrap gap-2", className)} {...rest}>
             {Object.entries(allIcons).map(
                 ([name, Icon]) => (
                     <div className="flex flex-col items-center" key={name}>
@@ -16,9 +32,9 @@ export function TestAllIcons() {
     );
 }
 
-printIconsLocation();
+//printIconsLocation(allIcons);
 
-function printIconsLocation() {
+function printIconsLocation(allIcons: AllIcons) {
     // G: 'js get function location'
     // https://stackoverflow.com/questions/41146373/access-function-location-programmatically 'Access function location programmatically'
     // https://chromedevtools.github.io/devtools-protocol/tot/Runtime/#method-getProperties 'Runtime.getProperties'
