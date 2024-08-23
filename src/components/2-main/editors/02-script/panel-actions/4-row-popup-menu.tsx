@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useClickAway } from "react-use";
 import { classNames } from "@/utils";
-import { IconArrowUp, IconArrowDown, IconTrash, IconClose, IconMenu } from "@/components/ui/icons";
+import { IconArrowUp, IconArrowDown, IconTrash24, IconClose, IconMenu } from "@/components/ui/icons";
 
 export type MenuState = {
     onDelete: (event: React.MouseEvent) => void;
@@ -32,7 +32,7 @@ function FloatingMenuButtons({ menuState, onClose }: { menuState: MenuState; onC
         <div className={FloatingMenuButtonsClasses}>
             <IconArrowUp className={classNames(submenuIconClasses, !hasUp && "invisible")} title="Move item up" onClick={onUp} />
             <IconArrowDown className={classNames(submenuIconClasses, !hasDn && "invisible")} title="Move item down" onClick={onDn} />
-            <IconTrash className={submenuDelClasses} title="Delete item" onClick={onDelete} />
+            <IconTrash24 className={submenuDelClasses} title="Delete item" onClick={onDelete} />
             <IconClose className={submenuIconClasses} onClick={onClose} />
         </div>
     );
