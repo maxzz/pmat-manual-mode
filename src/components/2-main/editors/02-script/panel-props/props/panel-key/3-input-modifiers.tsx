@@ -1,6 +1,7 @@
 import { HTMLAttributes, ReactNode } from "react";
 import { useSnapshot } from "valtio";
-import { SrcriptItemKey, SrcriptItemModifiers, modifierKeys } from "@/store";
+import { SrcriptItemKey, SrcriptItemModifiers } from "@/store";
+import { modifierKeys } from "@/store/manifest";
 import { classNames } from "@/utils";
 import { InputSelectUi } from "../../ui";
 

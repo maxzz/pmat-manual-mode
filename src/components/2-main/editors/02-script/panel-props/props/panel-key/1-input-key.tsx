@@ -1,5 +1,6 @@
 import { useSnapshot } from "valtio";
-import { SrcriptItemKey, actionKeys } from "@/store";
+import { SrcriptItemKey } from "@/store";
+import { actionKeys } from "@/store/manifest";
 import { InputSelect } from "../../ui";
 
 export function InputKey({ item }: { item: SrcriptItemKey; }) {

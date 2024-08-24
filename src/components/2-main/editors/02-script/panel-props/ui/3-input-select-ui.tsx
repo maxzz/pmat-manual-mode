@@ -1,9 +1,9 @@
-import { ForwardedRef, ReactNode, forwardRef } from 'react';
-import { IconCheck, IconChevronDown, IconChevronUp, IconDot } from '@/components/ui/icons';
-import * as S from '@radix-ui/react-select';
-import { focusClasses } from '@/components/ui/shared-styles';
-import { classNames } from '@/utils';
-import { ModifierDisplayText } from '@/store';
+import { ForwardedRef, ReactNode, forwardRef } from "react";
+import { IconCheck, IconChevronDown, IconChevronUp, IconDot } from "@/components/ui/icons";
+import * as S from "@radix-ui/react-select";
+import { focusClasses } from "@/components/ui/shared-styles";
+import { classNames } from "@/utils";
+import { ModifierDisplayText } from "@/store/manifest";
 
 // const item1Classes = 'text-[13px] \
 // leading-none \

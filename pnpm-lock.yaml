@@ -24,8 +24,8 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0(jotai@2.9.3(@types/react@18.3.4)(react@18.3.1))(valtio@1.13.2(@types/react@18.3.4)(react@18.3.1))
       pm-manifest:
-        specifier: ^1.2.22
-        version: 1.2.22
+        specifier: ^1.2.23
+        version: 1.2.23
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -1255,8 +1255,8 @@ packages:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
 
-  pm-manifest@1.2.22:
-    resolution: {integrity: sha512-iNcrdAgUXXrgTsniq2u2Nhe5riTSrG5hrRb7F8WmdcJmSQcudo+gTpjJ4M4l2POT3UIvdFZBF2RWjcTohBfO9A==}
+  pm-manifest@1.2.23:
+    resolution: {integrity: sha512-Ox77UI5oBoQBxIyQin6oUh6K6uW2rifEMLNUBa0fIYUoPjg/IW3/1JhAcNSiLDO8G8ruo6dm85q60dfSoKnImA==}
 
   postcss-import@15.1.0:
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
@@ -2701,7 +2701,7 @@ snapshots:
 
   pirates@4.0.6: {}
 
-  pm-manifest@1.2.22:
+  pm-manifest@1.2.23:
     dependencies:
       fast-xml-parser: 4.4.1
 
