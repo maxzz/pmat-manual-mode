@@ -1,7 +1,7 @@
-import { proxy } from 'valtio';
-import type { ScriptItem } from '../script-items-types';
-import { gScriptState } from './2-script-state';
-import { uuid } from '@/utils';
+import { proxy } from "valtio";
+import type { ScriptItem } from "../script-items-types";
+import { gScriptState } from "./2-script-state";
+import { uuid } from "@/utils";
 
 export type ItemMeta = {
     uui5d: number;

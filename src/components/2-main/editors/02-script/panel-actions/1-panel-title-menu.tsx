@@ -1,6 +1,6 @@
 import { useSetAtom } from "jotai";
 import { ScriptItemKey, createItemAtom } from "@/store";
-import * as Menu from '@radix-ui/react-dropdown-menu';
+import * as Menu from "@radix-ui/react-dropdown-menu";
 import { focusClasses, menuContentClasses, menuItemClasses } from "@/components/ui/shared-styles";
 import { getRowIconAndText } from "./6-get-row-icon-and-text";
 import { IconAdd } from "@/components/ui/icons";

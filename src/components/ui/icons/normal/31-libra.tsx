@@ -1,5 +1,5 @@
-import { HTMLAttributes, SVGAttributes } from 'react';
-import { classNames } from '@/utils';
+import { HTMLAttributes, SVGAttributes } from "react";
+import { classNames } from "@/utils";
 
 export function IconLibra({ className, title, ...rest }: HTMLAttributes<SVGSVGElement> & SVGAttributes<SVGSVGElement>) { // pkg-size.dev
     return (

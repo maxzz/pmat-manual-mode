@@ -1,6 +1,6 @@
-import * as Menu from '@radix-ui/react-dropdown-menu';
-import { IconChevronDown, IconDot } from '@/components/ui/icons';
-import { classNames } from '@/utils';
+import * as Menu from "@radix-ui/react-dropdown-menu";
+import { IconChevronDown, IconDot } from "@/components/ui/icons";
+import { classNames } from "@/utils";
 
 const contentClasses = "\
 px-1.5 py-1 max-h-[50vh] \

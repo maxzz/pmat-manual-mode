@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import * as Scroll from '@radix-ui/react-scroll-area';
+import { ReactNode } from "react";
+import * as Scroll from "@radix-ui/react-scroll-area";
 
 export function ScrollList({ children }: { children: ReactNode; }) {
     return (

@@ -1,8 +1,8 @@
-import { useSnapshot } from 'valtio';
-import { appUi, setAppDarkMode } from '@/store';
-import { DarkLightSwitch } from '../ui/icons/dark-light';
-import { IconSunnyvale } from '../ui/icons';
-import { classNames } from '@/utils';
+import { useSnapshot } from "valtio";
+import { appUi, setAppDarkMode } from "@/store";
+import { DarkLightSwitch } from "../ui/icons/dark-light";
+import { IconSunnyvale } from "../ui/icons";
+import { classNames } from "@/utils";
 
 const colorModeSwitchClasses = "hover:bg-primary-300 dark:hover:bg-primary-700 active:scale-[.97] rounded cursor-pointer";
 
