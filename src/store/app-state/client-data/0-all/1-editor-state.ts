@@ -1,5 +1,5 @@
 import { proxy } from "valtio";
-import type { ScriptItem } from "../script-items-types";
+import type { ScriptItem } from "../9-script-items-types";
 import { gScriptState } from "./2-script-state";
 import { uuid } from "@/utils";
 

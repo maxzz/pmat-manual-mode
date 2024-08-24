@@ -1,9 +1,9 @@
 import { useCallback } from "react";
 import { atom, Getter, Setter } from "jotai";
 import { atomWithProxy } from "jotai-valtio";
-import { ScriptItemKey } from "../script-items-types";
+import { ScriptItemKey } from "../9-script-items-types";
 import { gScriptState } from "./2-script-state";
-import { createScriptItem, keyToIndex } from "../script-item-ops";
+import { createScriptItem, keyToIndex } from "../1-script-list-ops";
 import { swap } from "@/utils";
 import { useAtomCallback } from "jotai/utils";
 
