@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from "react";
-import { SelectItemText } from "@/store";
+import { ModifierDisplayText } from "@/store";
 import { InputSelectUi, StringValueChangeProps } from "./3-input-select-ui";
 import { classNames } from "@/utils";
 
@@ -8,7 +8,7 @@ type InputSelectProps = InputHTMLAttributes<HTMLInputElement> & StringValueChang
     labelClasses?: string;
     horizontal?: boolean;
     
-    items: SelectItemText[];
+    items: ModifierDisplayText[];
 };
 
 export function InputSelect({ items, label, labelClasses, title, horizontal = false, className, ...rest }: InputSelectProps) {

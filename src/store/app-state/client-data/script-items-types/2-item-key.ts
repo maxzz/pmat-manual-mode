@@ -1,6 +1,8 @@
 // Key
 
-export const actionKeys: (readonly [dispalyName: string, fileName: string])[] = [
+export type ActionKeyDisplayText = readonly [dispalyName: string, fileName: string];
+
+export const actionKeys: ActionKeyDisplayText[] = [
     ['Tab',                   /**/ 'tab',       /**/],
     ['Enter',                 /**/ 'enter',     /**/],
     ['Esc',                   /**/ 'escape',    /**/],
@@ -31,13 +33,15 @@ export const actionKeys: (readonly [dispalyName: string, fileName: string])[] = 
     ['F12',                   /**/ 'f12',       /**/],
 ];
 
-export type SelectItemText = string | readonly [label: string, value: string];
-
 export function actionKeyIndexFromFileName(fileNameKey: string): number {
     return actionKeys.findIndex(([, fileName]) => fileName === fileNameKey);
 }
 
-export const modifierKeys: SelectItemText[] = [
+// Modifiers
+
+export type ModifierDisplayText = string | readonly [label: string, value: string];
+
+export const modifierKeys: ModifierDisplayText[] = [
     ['None', '0'],
     ['Any', '3'],
     ['Left', '1'],
@@ -48,6 +52,7 @@ export type SrcriptItemKey = {
     type: 'key',
     char: string;
     repeat: number;
+
     shift: number;
     ctrl: number;
     alt: number;

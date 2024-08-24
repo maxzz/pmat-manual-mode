@@ -3,7 +3,7 @@ import { IconCheck, IconChevronDown, IconChevronUp, IconDot } from '@/components
 import * as S from '@radix-ui/react-select';
 import { focusClasses } from '@/components/ui/shared-styles';
 import { classNames } from '@/utils';
-import { SelectItemText } from '@/store';
+import { ModifierDisplayText } from '@/store';
 
 // const item1Classes = 'text-[13px] \
 // leading-none \
@@ -70,7 +70,7 @@ export type StringValueChangeProps = {
 };
 
 type InputSelectUiProps = StringValueChangeProps & {
-    items: SelectItemText[];
+    items: ModifierDisplayText[];
 };
 
 export function InputSelectUi({ items, value, onValueChange }: InputSelectUiProps) {
