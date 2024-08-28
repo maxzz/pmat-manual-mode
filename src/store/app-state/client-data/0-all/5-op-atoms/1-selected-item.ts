@@ -1,11 +1,7 @@
 import { atom } from "jotai";
-import { atomWithProxy } from "jotai-valtio";
 import { gScriptState } from "../2-script-state";
-import { deselectCurrent } from "./7-deselect-current";
-
-// export const rightPanel = proxy({ selectedIdx: 0 });
-
-export const _selectedIdxStoreAtom = atomWithProxy(gScriptState.scriptState);
+import { _selectedIdxStoreAtom } from "./0-selected-idx-store-atom";
+import { deselectCurrent } from "./4-deselect-current";
 
 export const selectedIdxAtom = atom(
     (get) => get(_selectedIdxStoreAtom).selectedIdx,

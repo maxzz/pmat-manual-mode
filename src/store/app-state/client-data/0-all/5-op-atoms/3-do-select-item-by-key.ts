@@ -1,7 +1,8 @@
 import { atom } from "jotai";
 import { gScriptState } from "../2-script-state";
+import { _selectedIdxStoreAtom } from "./0-selected-idx-store-atom";
 import { keyToIndex } from "../../1-script-list-ops";
-import { _selectedIdxStoreAtom, selectedIdxAtom } from "./4-selected-item";
+import { selectedIdxAtom } from "./1-selected-item";
 
 export const selectByKeyAtom = atom(
     null,

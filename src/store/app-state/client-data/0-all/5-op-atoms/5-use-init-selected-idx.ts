@@ -1,9 +1,8 @@
+import { useCallback } from "react";
 import type { Getter, Setter } from "jotai";
 import { useAtomCallback } from "jotai/utils";
-import { useCallback } from "react";
-import { selectItemAtom } from "./5-do-select-item-atom";
-import { selectedIdxAtom } from "./4-selected-item";
-
+import { selectedIdxAtom } from "./1-selected-item";
+import { selectItemAtom } from "./2-do-select-item-atom";
 
 export function useInitSelectedIdx() {
     const cb = useAtomCallback(
