@@ -67,34 +67,3 @@ export const selectByKeyAtom = atom(
         newIdx !== undefined && set(selectedIdxAtom, newIdx);
     }
 );
-
-export const swapItemsAtom = atom(
-    null,
-    (get, set, idxCurrent: number, idxNew: number) => {
-        if (idxNew < 0 || idxNew >= gScriptState.scriptItems.length) {
-            return;
-        }
-        swap(gScriptState.scriptItems, idxCurrent, idxNew);
-        set(selectItemAtom, idxNew, true);
-    }
-);
-
-export const deleteItemAtom = atom(
-    null,
-    (get, set, idx: number) => {
-        gScriptState.scriptItems.splice(idx, 1);
-
-        const newIdx = Math.max(0, Math.min(idx + 1, gScriptState.scriptItems.length - 1));
-        set(selectedIdxAtom, newIdx);
-    }
-);
-
-export const createItemAtom = atom(
-    null,
-    (get, set, type: ScriptItemKey) => {
-        const newItem = createScriptItem(type);
-
-        gScriptState.scriptItems.push(newItem);
-        set(selectedIdxAtom, gScriptState.scriptItems.length - 1);
-    }
-);
