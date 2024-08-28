@@ -1,7 +1,7 @@
 import { atom } from "jotai";
 import { ref, subscribe } from "valtio";
-import type { ScriptItem } from "@/store";
-import { ScriptState, gScriptState } from "./2-script-state";
+import { type ScriptItem } from "@/store";
+import { type ScriptState, gScriptState } from "./2-script-state";
 import { initialScriptItems } from "./4-initial-data";
 import { mergeDefaultAndLoaded } from "@/utils";
 import { uuid } from "pm-manifest";
@@ -32,12 +32,14 @@ export function loadUiInitialStateFromStorage(): ScriptState {
 
     const ready = mergeDefaultAndLoaded({ defaults: initialState, loaded: storageData }) as ScriptState;
 
-    ready.scriptItems.forEach((item) => {
-        item.unsaved = ref({
-            id4: uuid.asRelativeNumber(),
-            selectedAtom: atom(false),
-        });
-    });
+    ready.scriptItems.forEach(
+        (item) => {
+            item.unsaved = ref({
+                id4: uuid.asRelativeNumber(),
+                selectedAtom: atom(false),
+            });
+        }
+    );
 
     return ready;
 }

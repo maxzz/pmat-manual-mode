@@ -1,4 +1,4 @@
-import { ScriptItemData } from "../9-script-items-types";
+import { type ScriptItemData } from "../9-script-items-types";
 
 export const initialScriptItems: ScriptItemData[] = [
     {

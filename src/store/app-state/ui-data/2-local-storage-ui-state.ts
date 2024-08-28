@@ -1,4 +1,4 @@
-import type { AppUi } from "./1-ui-state";
+import { type AppUi } from "./1-ui-state";
 import { mergeDefaultAndLoaded } from "@/utils";
 
 const STORAGE_UI_KEY = 'pmat-manual-mode:ui';

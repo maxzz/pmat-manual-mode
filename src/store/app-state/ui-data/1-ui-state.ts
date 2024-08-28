@@ -1,5 +1,5 @@
 import { proxy, subscribe } from "valtio";
-import { loadUiInitialState, saveUiState } from "./2-ui-state-storage";
+import { loadUiInitialState, saveUiState } from "./2-local-storage-ui-state";
 import { initializeUiState } from "./3-ui-state-set";
 
 export type UiState = {

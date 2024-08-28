@@ -1,4 +1,4 @@
-import { Mani } from "pm-manifest";
+import { type Mani } from "pm-manifest";
 
 export const testData: Mani.Field[] = [
     {

@@ -1,8 +1,8 @@
-import { PrimitiveAtom } from "jotai";
-import { SrcriptItemFld } from "./1-item-field";
-import { SrcriptItemKey } from "./2-item-key";
-import { SrcriptItemPos } from "./3-item-position";
-import { SrcriptItemDly } from "./4-item-delay";
+import { type PrimitiveAtom } from "jotai";
+import { type SrcriptItemFld } from "./1-item-field";
+import { type SrcriptItemKey } from "./2-item-key";
+import { type SrcriptItemPos } from "./3-item-position";
+import { type SrcriptItemDly } from "./4-item-delay";
 
 export type ScriptItemData = SrcriptItemFld | SrcriptItemKey | SrcriptItemPos | SrcriptItemDly;
 

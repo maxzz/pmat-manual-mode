@@ -1,6 +1,6 @@
 import { proxy } from "valtio";
-import type { ScriptItem } from "../9-script-items-types";
 import { gScriptState } from "./2-script-state";
+import { type ScriptItem } from "../9-script-items-types";
 import { uuid } from "@/utils";
 
 export type ItemMeta = {
