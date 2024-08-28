@@ -4,7 +4,7 @@ import { type ScriptItem } from "@/store";
 import { type ScriptState, gScriptState } from "./2-script-state";
 import { initialScriptItems } from "./4-initial-data";
 import { mergeDefaultAndLoaded } from "@/utils";
-import { uuid } from "pm-manifest";
+import { uuid } from "@/store/manifest";
 
 // Local storage
 

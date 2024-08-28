@@ -1,7 +1,7 @@
 import { atom } from "jotai";
 import { ref } from "valtio";
-import { uuid } from "pm-manifest";
 import type { ScriptItemKey, SrcriptItemFld, SrcriptItemKey, SrcriptItemPos, SrcriptItemDly, ScriptItemData, ScriptItem } from "../9-script-items-types";
+import { uuid } from "@/store/manifest";
 
 function createScriptItemByType(type: ScriptItemKey): ScriptItemData {
     switch (type) {
