@@ -1,7 +1,6 @@
 import { atom } from "jotai";
 import { gScriptState } from "../2-script-state";
-import { selectedIdxAtom } from "./14-do-select-atoms";
-
+import { selectedIdxAtom } from "./4-selected-item";
 
 export const deleteItemAtom = atom(
     null,
