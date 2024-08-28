@@ -2,7 +2,7 @@ import { atom } from "jotai";
 import { gScriptState } from "../2-script-state";
 import { selectedIdxAtom } from "./1-selected-item";
 
-export const deleteItemAtom = atom(
+export const doDeleteItemAtom = atom(
     null,
     (get, set, idx: number) => {
         gScriptState.scriptItems.splice(idx, 1);

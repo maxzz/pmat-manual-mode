@@ -4,7 +4,7 @@ import type { ScriptItemKey } from "../../9-script-items-types";
 import { gScriptState } from "../2-script-state";
 import { selectedIdxAtom } from "./1-selected-item";
 
-export const createItemAtom = atom(
+export const doCreateItemAtom = atom(
     null,
     (get, set, type: ScriptItemKey) => {
         const newItem = createScriptItem(type);

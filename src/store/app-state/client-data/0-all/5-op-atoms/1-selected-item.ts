@@ -1,7 +1,7 @@
 import { atom } from "jotai";
 import { gScriptState } from "../2-script-state";
 import { _selectedIdxStoreAtom } from "./0-selected-idx-store-atom";
-import { deselectCurrent } from "./4-deselect-current";
+import { deselectCurrent } from "./5-deselect-current";
 
 export const selectedIdxAtom = atom(
     (get) => get(_selectedIdxStoreAtom).selectedIdx,

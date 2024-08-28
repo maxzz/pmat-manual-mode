@@ -1,5 +1,5 @@
 import { useSetAtom } from "jotai";
-import { ScriptItemKey, createItemAtom } from "@/store";
+import { ScriptItemKey, doCreateItemAtom } from "@/store";
 import * as Menu from "@radix-ui/react-dropdown-menu";
 import { focusClasses, menuContentClasses, menuItemClasses } from "@/components/ui/shared-styles";
 import { getRowIconAndText } from "./6-get-row-icon-and-text";
@@ -7,7 +7,7 @@ import { IconAdd } from "@/components/ui/icons";
 import { classNames } from "@/utils";
 
 function MenuRow({ type }: { type: ScriptItemKey; }) {
-    const createItem = useSetAtom(createItemAtom);
+    const createItem = useSetAtom(doCreateItemAtom);
     const { icon, name } = getRowIconAndText(type);
     return (
         <Menu.Item
