@@ -21,7 +21,6 @@ export const doSelectIdxAtom = atom(
         const currentAtom = gScriptState.scriptItems[idx]?.unsaved.selectedAtom;
         currentAtom && set(currentAtom, true);
 
-        const _selectedIdxStore = get(_selectedIdxStoreAtom);
-        set(_selectedIdxStoreAtom, { ..._selectedIdxStore, selectedIdx: idx }); // don't need ..._selectedIdxStore
+        set(_selectedIdxStoreAtom, { selectedIdx: idx });
     }
 );
