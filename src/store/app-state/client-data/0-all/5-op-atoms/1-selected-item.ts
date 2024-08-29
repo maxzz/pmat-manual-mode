@@ -6,8 +6,11 @@ import { deselectCurrent } from "./5-deselect-current";
 export const selectedIdxAtom = atom(
     (get) => {
         return get(_selectedIdxStoreAtom).selectedIdx; //TODO: don't combine read and write atoms
-    },
+    }
+);
 
+export const doSelectIdxAtom = atom(
+    null,
     (get, set, idx: number) => {
         deselectCurrent(get, set);
 

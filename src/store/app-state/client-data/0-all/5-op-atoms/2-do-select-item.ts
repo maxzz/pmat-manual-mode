@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 import { gScriptState } from "../2-script-state";
-import { selectedIdxAtom } from "./1-selected-item";
+import { doSelectIdxAtom, selectedIdxAtom } from "./1-selected-item";
 import { deselectCurrent } from "./5-deselect-current";
 
 export const doSelectItemAtom = atom(
@@ -15,7 +15,7 @@ export const doSelectItemAtom = atom(
         if (currentAtom) {
             value = typeof value === "function" ? value(get(currentAtom)) : value;
             set(currentAtom, value);
-            set(selectedIdxAtom, value ? idx : -1);
+            set(doSelectIdxAtom, value ? idx : -1);
         }
     }
 );
