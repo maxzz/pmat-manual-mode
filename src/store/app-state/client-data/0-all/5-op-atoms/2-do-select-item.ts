@@ -11,10 +11,10 @@ export const doSelectItemAtom = atom(
             deselectCurrent(get, set);
         }
 
-        const current = gScriptState.scriptItems[idx]?.unsaved.selectedAtom;
-        if (current) {
-            value = typeof value === "function" ? value(get(current)) : value;
-            set(current, value);
+        const currentAtom = gScriptState.scriptItems[idx]?.unsaved.selectedAtom;
+        if (currentAtom) {
+            value = typeof value === "function" ? value(get(currentAtom)) : value;
+            set(currentAtom, value);
             set(selectedIdxAtom, value ? idx : -1);
         }
     }

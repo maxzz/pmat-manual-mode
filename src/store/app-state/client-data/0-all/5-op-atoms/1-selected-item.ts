@@ -4,14 +4,17 @@ import { _selectedIdxStoreAtom } from "./0-selected-idx-store-atom";
 import { deselectCurrent } from "./5-deselect-current";
 
 export const selectedIdxAtom = atom(
-    (get) => get(_selectedIdxStoreAtom).selectedIdx,
+    (get) => {
+        return get(_selectedIdxStoreAtom).selectedIdx; //TODO: don't combine read and write atoms
+    },
+
     (get, set, idx: number) => {
         deselectCurrent(get, set);
 
-        const current = gScriptState.scriptItems[idx]?.unsaved.selectedAtom;
-        current && set(current, true);
+        const currentAtom = gScriptState.scriptItems[idx]?.unsaved.selectedAtom;
+        currentAtom && set(currentAtom, true);
 
         const _selectedIdxStore = get(_selectedIdxStoreAtom);
-        set(_selectedIdxStoreAtom, { ..._selectedIdxStore, selectedIdx: idx });
+        set(_selectedIdxStoreAtom, { ..._selectedIdxStore, selectedIdx: idx }); // don't need ..._selectedIdxStore
     }
 );
