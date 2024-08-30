@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 import { gScriptState } from "../2-script-state";
-import { doSelectIdxAtom, selectedIdxAtom } from "./1-selected-item";
+import { doSelectIdxAtom, selectedIdxAtom } from "./1-selected-idx";
 import { kbdToIndex } from "../../1-script-list-ops";
 
 export const doSelectByKbdAtom = atom(

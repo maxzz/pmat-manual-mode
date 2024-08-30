@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 import { gScriptState } from "../2-script-state";
-import { doSelectItemAtom } from "./2-do-select-item";
+import { doSetSelectItemAtom } from "./2-do-set-select-item";
 import { swap } from "@/utils";
 
 export const doSwapItemsAtom = atom(
@@ -10,6 +10,6 @@ export const doSwapItemsAtom = atom(
             return;
         }
         swap(gScriptState.scriptItems, idxCurrent, idxNew);
-        set(doSelectItemAtom, idxNew, true);
+        set(doSetSelectItemAtom, idxNew, true);
     }
 );

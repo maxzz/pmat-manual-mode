@@ -1,6 +1,6 @@
 import { useSetAtom } from "jotai";
 import { useSnapshot } from "valtio";
-import { gScriptState, doSelectByKbdAtom, doSelectItemAtom, doSwapItemsAtom, doDeleteItemAtom } from "@/store";
+import { gScriptState, doSelectByKbdAtom, doSetSelectItemAtom, doSwapItemsAtom, doDeleteItemAtom } from "@/store";
 import { SingleRow } from "./3-single-row";
 import { MenuState } from "./4-row-popup-menu";
 import { rowParentActiveClasses } from "@/components/ui/shared-styles";
@@ -11,7 +11,7 @@ export function PanelActionsList() {
     const { scriptItems: scriptItemsSnap } = useSnapshot(gScriptState);
 
     const selectByKey = useSetAtom(doSelectByKbdAtom);
-    const selectItem = useSetAtom(doSelectItemAtom);
+    const selectItem = useSetAtom(doSetSelectItemAtom);
     const deleteItem = useSetAtom(doDeleteItemAtom);
     const swapItems = useSetAtom(doSwapItemsAtom);
 

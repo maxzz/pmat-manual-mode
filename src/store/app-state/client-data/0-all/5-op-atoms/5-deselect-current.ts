@@ -1,6 +1,6 @@
 import type { Getter, Setter } from "jotai";
 import { gScriptState } from "../2-script-state";
-import { selectedIdxAtom } from "./1-selected-item";
+import { selectedIdxAtom } from "./1-selected-idx";
 
 export function deselectCurrent(get: Getter, set: Setter) {
     const currentIdx = get(selectedIdxAtom);
